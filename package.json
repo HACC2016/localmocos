@@ -1,0 +1,24 @@
+{
+  "name": "DAG-Buy-Local",
+  "version": "1.0.0",
+  "description": "2016 HACC",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/javenkn/DAG-Buy-Local.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/javenkn/DAG-Buy-Local/issues"
+  },
+  "homepage": "https://github.com/javenkn/DAG-Buy-Local#readme",
+  "dependencies": {
+    "sequelize": "^3.24.1",
+    "sequelize-cli": "^2.4.0"
+  }
+}
