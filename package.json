@@ -18,6 +18,9 @@
   },
   "homepage": "https://github.com/javenkn/DAG-Buy-Local#readme",
   "dependencies": {
+    "pg": "^6.1.0",
+    "react": "^15.3.1",
+    "react-dom": "^15.3.1",
     "sequelize": "^3.24.1",
     "sequelize-cli": "^2.4.0"
   }
