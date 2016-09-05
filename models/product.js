@@ -13,7 +13,14 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.Product.belongsTo(models.VenderInfo);
-        models.Product.hasMany(models.Image);
+
+
+        
+      // ***** Add Image Models ************
+      //   models.Product.hasMany(models.Image);
+      // ***********************************  
+      // 
+      // 
         models.Product.hasMany(models.Certification);
       }
     }
