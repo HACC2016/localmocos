@@ -6,12 +6,7 @@ module.exports = function(express,app,path,bodyParser,querystring) {
   "response":"Ok"
 };
 
-  /**************** Home Page ***********************/
-
-
-
-
-  
+ 
 
 
   /**************** Log In ***********************/
@@ -52,10 +47,21 @@ app.get('/Search',function(req, res, next) {
               "address":"881 North King Street. Honolulu, HI, 96817",
               "image":"./Images/1442369634.png"} ]
     
-  //  res.json(productList);
-    res.render('searchResults',{productList:productList,sellerList:sellerList})
+    res.json([{"name":"Search Result Data"},productList,sellerList]);
+  //  res.render('searchResults',{productList:productList,sellerList:sellerList})
 });
 
+
+ /**************** Home Page ***********************/
+
+app.get('/',function(req, res, next) {
+    testJson.name="Home Page";
+    res.json(testJson);
+});
+
+
+
+  
 
     return router;
 }

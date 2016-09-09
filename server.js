@@ -19,8 +19,9 @@ Should be set true if your database is setup.
 var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring);
 var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring);
 var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring);
+//var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
+var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring);
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring);
-var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
 
 
 app.set('views', path.resolve(__dirname, 'views'));
