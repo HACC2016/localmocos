@@ -43,8 +43,13 @@ module.exports = function(express, app, path, bodyParser, querystring) {
     });
 
     app.get('/product/new', function(req, res, next) {
-        testJson.name = "New Product Form" + cleanParam(req.url);
-        res.json([testJson]);
+        /* testJson.name = "New Product Form" + cleanParam(req.url);
+        res.json([testJson]); */
+        res.render('productForm', {
+            methodType: 'POST',
+            actionType: '/product/new',
+            formTitle: 'Create New Product'
+        });
     });
 
     app.post('/product/new', function(req, res, next) {
@@ -53,8 +58,14 @@ module.exports = function(express, app, path, bodyParser, querystring) {
     });
 
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
-        testJson.name = "Product Form for id=" + cleanParam(req.url);
-        res.json([testJson]);
+       /* testJson.name = "Product Form for id=" + cleanParam(req.url);
+        res.json([testJson]); */
+
+        res.render('editProductForm', {
+            methodType: 'POST',
+            actionType: '/product/new',
+            formTitle: 'Edit New Product'
+        });
     });
 
     app.put(/product\/\d+\/edit$/, function(req, res, next) {
