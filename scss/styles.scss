@@ -1,6 +1,10 @@
 @import "scss/reset";
 @import "scss/clearfix";
 
+///// FONTS /////
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i';
+@import 'https://fonts.googleapis.com/css?family=Fredericka+the+Great';
+
 ///// VARIABLES /////
 $cyan: #223367;
 $cerulean: #0476A8;
@@ -12,8 +16,6 @@ $white: #FFFFFF;
 
 
 // FOR TEST PURPOSES || DELETE THIS LATER
-@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,400i,700,700i';
-@import 'https://fonts.googleapis.com/css?family=Fredericka+the+Great';
 @import 'https://fonts.googleapis.com/css?family=Homemade+Apple';
 @import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700';
 body { font-family: 'Open Sans', sans-serif;}
@@ -27,23 +29,16 @@ body { font-family: 'Open Sans', sans-serif;}
   box-sizing: border-box;
 }
 
-body{
-  background-color: lighten($light-blue, 10%);
-}
+body{ background-color: lighten($light-blue, 10%); }
 
-h1, h2, h3, h4, h5, h6 {
-  font-weight: bold;
-}
-
+h1, h2, h3, h4, h5, h6 { font-weight: bold; }
 h1 { font-size: 2em }
 h2 { font-size: 1.75em }
 h3 { font-size: 1.5em }
 h4 { font-size: 1.25em }
 h5, h6 { font-size: 1em }
 
-a {
-  text-decoration: none;
-}
+a { text-decoration: none; }
 
 // Container for all HTML Elements //
 .container {
@@ -73,6 +68,8 @@ a {
   h5 {
     flex: 0 0 100%;
     padding: 0 25px;
+    text-transform: uppercase;
+    color: lighten($black, 50%);
   }
 }
 .nav-right {
@@ -84,6 +81,9 @@ a {
   a {
     display: inline-block;
     text-decoration: none;
+    text-transform: uppercase;
+    font-size: 0.85em;
+    font-weight: bold;
     padding: 5px;
     flex: 0 0 15%;
     text-align: center;
@@ -120,21 +120,6 @@ a {
       font-weight: 400;
       line-height: 1.1;
     }
-    form {
-      margin: 10px 0 5px;
-    }
-    input {
-      width: 250px;
-      padding: 5px;
-    }
-    input[type=submit]{
-      width: 75px;
-      text-transform: uppercase;
-    }
-    a {
-      color: $green;
-      font-size: 0.8em;
-    }
   }
 }
 
@@ -142,6 +127,7 @@ a {
   padding: 5px 25px;
   h2 {
     margin: 5px 0 15px;
+    color: $cyan;
   }
 }
 .business-container{
@@ -150,5 +136,77 @@ a {
   justify-content: space-around;
   .business {
     flex: 0 0 0;
+  }
+}
+
+.main-content{
+  width: 100%;
+  margin-top: 50px;
+  padding-top: 25px;
+}
+
+////////////////////////////////////////////
+//////////////// SEARCH BAR ////////////////
+////////////////////////////////////////////
+.center-position{
+  margin: 0 auto;
+}
+
+.search-container {
+  width: 450px;
+  .search-bar {
+    width: 450px;
+    margin: 15px 0 5px;
+    input {
+      width: 75%;
+      height: 40px;
+      padding-left: 10px;
+      float: left;
+      font: bold 15px 'Open Sans', sans-serif;
+      border: 0;
+      background: $white;
+      -moz-border-radius: 3px 0 0 3px;
+      -webkit-border-radius: 3px 0 0 3px;
+      border-radius: 3px 0 0 3px;
+      &:focus {
+        outline: 0;
+        background: $white;
+        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+      }
+    }
+    button {
+      float: right;
+      border: 0;
+      padding: 0;
+      cursor: pointer;
+      height: 40px;
+      width: 25%;
+      font: bold 15px/40px 'Open Sans', sans-serif;
+      color: $white;
+      text-transform: uppercase;
+      background: $teal;
+      -moz-border-radius: 0 3px 3px 0;
+      -webkit-border-radius: 0 3px 3px 0;
+      border-radius: 0 3px 3px 0;
+      &:hover{
+        background: darken($teal, 5%);
+      }
+      &:active, &:focus{
+        background: darken($teal, 15%);
+      }
+    }
+  }
+  p {
+    padding-left: 10px;
+  }
+  .center-text{
+    padding-left: 0;
+    text-align: center}
+  a {
+    color: $green;
+    font-size: 0.8em;
+    font-weight: bold;
   }
 }
