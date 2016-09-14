@@ -148,6 +148,8 @@ a { text-decoration: none }
 }
 .search-container {
   width:100%;
+  background-color: $white;
+  border-bottom: 10px solid $teal;
   padding: 100px 0 50px;
 }
 .center-search-position{
@@ -199,16 +201,17 @@ a { text-decoration: none }
     }
   }
 }
-p {
+.advanced-search {
   padding-left: 10px;
+  a {
+    color: $green;
+    font-size: 0.8em;
+    font-weight: bold;
+  }
 }
 .center-text{
   padding-left: 0;
-  text-align: center}
-a {
-  color: $green;
-  font-size: 0.8em;
-  font-weight: bold;
+  text-align: center;
 }
 
 
