@@ -88,7 +88,9 @@ a { text-decoration: none }
 }
 
 .footer {
-  padding: 5px 25px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 25px;
   font-size: 0.8em;
   color: lighten($black, 50%);
 }
@@ -119,19 +121,23 @@ a { text-decoration: none }
   }
 }
 
-.features {
-  padding: 5px 25px;
+.home-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 25px;
+}
+.featured-businesses{
   h2 {
     margin: 5px 0 15px;
     color: $cyan;
   }
-}
-.business-container{
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-around;
-  .business {
-    flex: 0 0 0;
+  .business-container{
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-around;
+    .business {
+      flex: 0 0 0;
+    }
   }
 }
 
