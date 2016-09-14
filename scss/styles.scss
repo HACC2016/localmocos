@@ -38,7 +38,6 @@ a { text-decoration: none }
   width: 100%;
   min-width: 1100px;
 }
-
 // Navigation Menu Bar //
 .nav-menu {
   position: fixed;
@@ -86,7 +85,13 @@ a { text-decoration: none }
     }
   }
 }
-
+// Container for Main Content //
+.main-content{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 15px 25px;
+}
+// Footer //
 .footer {
   max-width: 1200px;
   margin: 0 auto;
@@ -120,12 +125,6 @@ a { text-decoration: none }
     }
   }
 }
-
-.home-content {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 15px 25px;
-}
 .featured-businesses{
   h2 {
     margin: 5px 0 15px;
@@ -139,10 +138,6 @@ a { text-decoration: none }
       flex: 0 0 0;
     }
   }
-}
-
-.main-content{
-  width: 100%;
 }
 
 ////////////////////////////////////////////
@@ -221,11 +216,12 @@ a { text-decoration: none }
   padding: 25px 25px 5px;
   display: flex;
   flex-flow: row wrap;
+  justify-content: space-between;
   .bus-left{
-    flex: 0 0 50%;
+    flex: 0 0 48%;
   }
   .bus-right{
-    flex: 0 0 50%;
+    flex: 0 0 48%;
   }
 }
 
