@@ -143,71 +143,74 @@ a { text-decoration: none }
 ////////////////////////////////////////////
 //////////////// SEARCH BAR ////////////////
 ////////////////////////////////////////////
+.home-search-container {
+  width: 450px;
+}
+.search-container {
+  width:100%;
+  padding: 100px 0 50px;
+}
 .center-search-position{
-  margin: 50px auto;
-  padding-top: 25px;
+  margin: 0 auto;
+}
+.search-bar {
+  width: 450px;
+  padding: 15px 0 5px;
+  input {
+    width: 75%;
+    height: 40px;
+    padding-left: 10px;
+    float: left;
+    font: bold 15px 'Open Sans', sans-serif;
+    // border: 0;
+    border: 1px solid $teal;
+    background: $white;
+    -moz-border-radius: 3px 0 0 3px;
+    -webkit-border-radius: 3px 0 0 3px;
+    border-radius: 3px 0 0 3px;
+    &:focus {
+      outline: 0;
+      background: $white;
+      border: 0;
+      -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+      -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+      box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+    }
+  }
+  button {
+    float: right;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    height: 40px;
+    width: 25%;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    background: $teal;
+    -moz-border-radius: 0 3px 3px 0;
+    -webkit-border-radius: 0 3px 3px 0;
+    border-radius: 0 3px 3px 0;
+    &:hover{
+      background: darken($teal, 5%);
+    }
+    &:active, &:focus{
+      background: darken($teal, 15%);
+    }
+  }
+}
+p {
+  padding-left: 10px;
+}
+.center-text{
+  padding-left: 0;
+  text-align: center}
+a {
+  color: $green;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 
-.search-container {
-  width: 450px;
-  .search-bar {
-    width: 450px;
-    margin: 15px 0 5px;
-    input {
-      width: 75%;
-      height: 40px;
-      padding-left: 10px;
-      float: left;
-      font: bold 15px 'Open Sans', sans-serif;
-      // border: 0;
-      border: 1px solid $teal;
-      background: $white;
-      -moz-border-radius: 3px 0 0 3px;
-      -webkit-border-radius: 3px 0 0 3px;
-      border-radius: 3px 0 0 3px;
-      &:focus {
-        outline: 0;
-        background: $white;
-        border: 0;
-        -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-        box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-      }
-    }
-    button {
-      float: right;
-      border: 0;
-      padding: 0;
-      cursor: pointer;
-      height: 40px;
-      width: 25%;
-      font: bold 15px/40px 'Open Sans', sans-serif;
-      color: $white;
-      text-transform: uppercase;
-      background: $teal;
-      -moz-border-radius: 0 3px 3px 0;
-      -webkit-border-radius: 0 3px 3px 0;
-      border-radius: 0 3px 3px 0;
-      &:hover{
-        background: darken($teal, 5%);
-      }
-      &:active, &:focus{
-        background: darken($teal, 15%);
-      }
-    }
-  }
-  p {
-    padding-left: 10px;
-  }
-  .center-text{
-    padding-left: 0;
-    text-align: center}
-  a {
-    color: $green;
-    font-size: 0.8em;
-    font-weight: bold;
-  }
-}
 
 ////////////////////////////////////////////
 /////////////// VENDOR  PAGE ///////////////
