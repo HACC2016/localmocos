@@ -24,7 +24,7 @@ body { font-family: 'Open Sans', sans-serif;}
 ////////// ELEMENTS FOR ALL PAGES //////////
 ////////////////////////////////////////////
 *{ margin: 0; padding: 0; box-sizing: border-box; }
-body{ background-color: lighten($light-blue, 10%); }
+body{ background-color: lighten($light-blue, 15%); }
 h1, h2, h3, h4, h5, h6 { font-weight: bold }
 h1 { font-size: 2em }
 h2 { font-size: 1.75em }
@@ -158,7 +158,8 @@ a { text-decoration: none }
       padding-left: 10px;
       float: left;
       font: bold 15px 'Open Sans', sans-serif;
-      border: 0;
+      // border: 0;
+      border: 1px solid $teal;
       background: $white;
       -moz-border-radius: 3px 0 0 3px;
       -webkit-border-radius: 3px 0 0 3px;
@@ -166,6 +167,7 @@ a { text-decoration: none }
       &:focus {
         outline: 0;
         background: $white;
+        border: 0;
         -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
         -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
         box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
