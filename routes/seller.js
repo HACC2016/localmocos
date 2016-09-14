@@ -23,16 +23,15 @@ module.exports = function(express, app, path, bodyParser, querystring) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-        /*
-                res.render('sellerForm', {
+        /**/
+                res.render('vendorForm', {
                     methodType: 'POST',
                     actionType: '/seller/new',
                     formTitle: 'Create New Seller'
                 });
-            }
-   */
-        testJson.name = "Form to Create new Seller";
-        res.json(testJson);
+            // }
+        // testJson.name = "Form to Create new Seller";
+        // res.json(testJson);
     });
 
     app.post('/seller/new', function(req, res) {
@@ -41,27 +40,25 @@ module.exports = function(express, app, path, bodyParser, querystring) {
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
-        /*
+        /* */
                 res.render('sellerEditForm', {
                     methodType: 'PUT',
                     actionType: '/seller/{id}/edit',
                     formTitle: 'Edit Seller'
                 });
-            }
-   */
+           /* } */
         testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
         res.json(testJson);
     });
 
     app.put(/seller\/\d+\/edit$/, function(req, res) {
-        /*
-                res.render('sellerEditForm', {
+        /* */
+                res.render('vendorEditForm', {
                     methodType: 'GET',
                     actionType: '/seller/{id}',
                     formTitle: 'Edit Seller'
                 });
-            }
-   */
+           /* } */
         testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
         res.json(testJson);
     });
@@ -69,14 +66,13 @@ module.exports = function(express, app, path, bodyParser, querystring) {
 
 
     app.get(/seller\/\d+$/, function(req, res) {
-        /*
-                res.render('sellerEditForm', {
+        /* */
+                res.render('vendorEditForm', {
                     methodType: 'GET',
                     actionType: '/seller/{id}',
                     formTitle: 'Edit Seller'
                 });
-            }
-   */
+           /* } */
         testJson.name = "View Seller id=" + cleanParamMiddle(req.url, 2);
         res.json(testJson);
     });
