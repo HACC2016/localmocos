@@ -1,4 +1,4 @@
-include mixins/form.pug
+include includes/form.pug
 form(action="/seller" method="POST" enctype="x-www-form-urlencoded")
 fieldset
   legend Vendor Information:
@@ -39,10 +39,8 @@ fieldset
       option Retailer
       option Wholesaler
       option Other
-        #other(style={display:none})
-          if Other
-            #other(style={display:block})
-            input(type="text" name="otherType")
+    .other(style={display:block})
+      input(type="text" name="otherType")
   label Services:
     select(name="service")
       option Food Service
@@ -50,9 +48,8 @@ fieldset
       option E-Commerce
       option Retail
       option Other
-        if("Other")
-          .other(style={diplay: none})
-            input(type="text" name="otherService")
+    .other(style={diplay: none})
+      input(type="text" name="otherService")
   label Markets:
     select(name="market")
       option US Mainland
@@ -63,10 +60,9 @@ fieldset
       option Asia
       option Europe
       option Guam
-        -if("Other")
-          option Other
-            .other(style={display: block})
-              input(type="text" name="otherMarkets")
+      option Other
+    .other(style={display: block})
+      input(type="text" name="otherMarkets")
   label Certifications/Specialty:
     select(name="certificates")
       option Certified Nursery

@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+include ../includes/head.pug
+body
+  include ../includes/nav.pug
+  .containLogin
+    .login-wrapper
+      .table
+        .login-box
+          block loginLogo
+            .loginLogo
+            .login-title
+            .login-content
+               form(name="login" method="POST" action="/login" enctype="x-www-form-urlencoded")
+                .username
+                  label Username:
+                  br
+                  input(type="text" name="username" placeholder="Username" required)
+                .password
+                  label Password:
+                  br
+                  input(type="text" name="password" placeholder="Password" required)
+                .loginButton
+                  input(type="submit" class="submit" name="submit" value="Submit")
+  include ../includes/footer.pug
