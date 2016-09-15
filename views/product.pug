@@ -6,8 +6,47 @@ html(lang="en")
       include includes/nav.pug
       include includes/search.pug
       div.main-content
-        div.main-product
-          h2 Here are some products
+        div.flex-container
+          div.col-half
+            img(src="https://placehold.it/525x350")
+          div.col-half
+            h2 PRODUCT NAME
+            p This is a description of the product!
+            hr
+            h4 BUSINESS NAME
+            p Address: 123 Aloha Street
+            p Phone: 808-555-5555
+            p Email: aloha@aloha.com
+            p Website: 123 Aloha Street, Honolulu, HI 96813
         div.business-products
           h3 Other Products From The Same Vendor
+          div.flex-container
+            div.col-quarter
+              div.single-product-image
+                a(href="")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div.col-quarter
+              div.single-product-image
+                a(href="")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div.col-quarter
+              div.single-product-image
+                a(href="")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div.col-quarter
+              div.single-product-image
+                a(href="")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
       include includes/footer.pug
