@@ -29,13 +29,13 @@ app.use(bodyParser.urlencoded({
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring);
-var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring);
-var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring);
+var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring,db);
+var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring,db);
+var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring,db);
 //var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
-var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring);
-var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring);
-var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring);
+var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring,db);
+var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring, db);
+var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring,db);
 
 
 app.use(function(req, res) {
