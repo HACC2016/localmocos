@@ -15,6 +15,15 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
+      productType_id: {
+        allowNull: false,
+        type: Sequelize.INTEGER,
+        foreignKey: true,
+        references: {
+          model: 'product_infos',
+          key: 'id'
+        }
+      },
       venderInfo_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
