@@ -129,14 +129,14 @@ a { color: $green; text-decoration: none }
     margin: 5px 0 15px;
     color: $cyan;
   }
-  .businesses-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    .single-business-container {
-      flex: 0 0 250px;
-    }
-  }
+  // .businesses-container{
+  //   display: flex;
+  //   flex-flow: row wrap;
+  //   justify-content: space-between;
+  //   .single-business-container {
+  //     flex: 0 0 250px;
+  //   }
+  // }
 }
 
 .single-business-image img{
@@ -250,43 +250,26 @@ a { color: $green; text-decoration: none }
 ////////////////////////////////////////////
 /////////////// VENDOR  PAGE ///////////////
 ////////////////////////////////////////////
-.business-contact{
-  // padding: 25px 25px 5px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  .bus-left{
-    flex: 0 0 50%;
-  }
-  .bus-right{
-    flex: 0 0 50%;
-  }
-}
-
 .business-info{
-  // padding: 5px 25px;
+  margin-top: 25px;
 }
 
 .business-products{
-  // padding: 5px 25px;
+  margin-top: 25px;
 }
 
 ////////////////////////////////////////////
 /////////////// PRODUCT PAGE ///////////////
 ////////////////////////////////////////////
-.main-product{
-  // padding: 15px 25px 5px;
-}
 
 ////////////////////////////////////////////
 ////////////// SEARCH RESULTS //////////////
 ////////////////////////////////////////////
-.results-header{
-  // padding: 15px 25px 5px;
-}
-
 .results{
-  // padding: 15px 25px 5px;
+  margin-top: 25px;
+}
+.result-listing{
+  margin: 10px 0;
 }
 
 ////////////////////////////////////////////
@@ -300,6 +283,27 @@ a { color: $green; text-decoration: none }
     h2{ font-size: 5em; }
     a { font-weight: bold; }
   }
+}
+
+////////////////////////////////////////////
+///////////// FLEXBOX  SPACING /////////////
+////////////////////////////////////////////
+.flex-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.col-quarter{
+  flex: 0 0 250px;
+}
+.col-half{
+  flex: 0 0 525px;
+}
+.col-third{
+  flex: 0 0 200px;
+}
+.col-two-thirds{
+  flex: 0 0 850px;
 }
 
 // div {border: 1px red dotted;} //delete this later!!!
