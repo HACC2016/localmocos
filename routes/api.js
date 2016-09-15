@@ -1,3 +1,4 @@
+'use strict'
 module.exports = function(express, app, https, path, bodyParser, querystring) {
     var router = express.Router();
 
