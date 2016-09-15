@@ -39,8 +39,8 @@ fieldset
       option Retailer
       option Wholesaler
       option Other
-    .other
-      input(type="text" name="otherType" onchange='getOther()')
+    .other(style={display: 'none'})
+      input(type="text" name="otherType")
   label Services:
     select(name="service")
       option Food Service
