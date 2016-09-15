@@ -41,20 +41,20 @@ module.exports = function(express, app, path, bodyParser, querystring) {
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
         /* */
-                res.render('sellerEditForm', {
-                    methodType: 'PUT',
+                res.render('editVendorForm', {
+                    methodType: 'GET',
                     actionType: '/seller/{id}/edit',
                     formTitle: 'Edit Seller'
                 });
            /* } */
-        testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson);
+       /* testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
+        res.json(testJson); */
     });
 
     app.put(/seller\/\d+\/edit$/, function(req, res) {
         /* */
-                res.render('vendorEditForm', {
-                    methodType: 'GET',
+                res.render('editVendorForm', {
+                    methodType: 'PUT',
                     actionType: '/seller/{id}',
                     formTitle: 'Edit Seller'
                 });

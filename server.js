@@ -44,7 +44,6 @@ app.use(function(req, res) {
 
 
 
-
 if(useDB)
 {
 db.sequelize.sync()
