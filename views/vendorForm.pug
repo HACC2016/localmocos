@@ -39,8 +39,8 @@ fieldset
       option Retailer
       option Wholesaler
       option Other
-    .other(style={display:block})
-      input(type="text" name="otherType")
+    .other
+      input(type="text" name="otherType" onchange=getOther)
   label Services:
     select(name="service")
       option Food Service
@@ -48,7 +48,7 @@ fieldset
       option E-Commerce
       option Retail
       option Other
-    .other(style={diplay: none})
+    .other(style={display: 'none'})
       input(type="text" name="otherService")
   label Markets:
     select(name="market")
@@ -61,7 +61,7 @@ fieldset
       option Europe
       option Guam
       option Other
-    .other(style={display: block})
+    .other(style={display: 'none'})
       input(type="text" name="otherMarkets")
   label Certifications/Specialty:
     select(name="certificates")
