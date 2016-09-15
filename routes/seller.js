@@ -1,4 +1,4 @@
-module.exports = function(express, app, path, bodyParser, querystring) {
+module.exports = function(express, app, path, bodyParser, querystring,db) {
     var router = express.Router();
 
     var testJson = {
@@ -40,27 +40,22 @@ module.exports = function(express, app, path, bodyParser, querystring) {
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-                res.render('editVendorForm', {
-                    methodType: 'GET',
-                    actionType: '/seller/{id}/edit',
-                    formTitle: 'Edit Seller'
-                });
-           /* } */
-       /* testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson); */
-    });
-
-    app.put(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-                res.render('editVendorForm', {
+      // console.log(db.Type.findAll());
+      // 
+      
+    db.Type.findAll({})
+    .then((data) => {
+      console.log(data);
+      res.render('editVendorForm', {
                     methodType: 'PUT',
                     actionType: '/seller/{id}',
                     formTitle: 'Edit Seller'
                 });
+    });
+                
            /* } */
-        testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson);
+        // testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
+        // res.json(testJson);
     });
 
 
