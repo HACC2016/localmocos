@@ -1,9 +1,10 @@
-function getOther (val) {
-  var element=document.getElementByClassName('other');
-
-  if(val === "Other") {
-    element.style.display='block';
+var elements = $('select');
+elements.on('change', function (event) {
+  console.log(event);
+  var input = $(this).next('.other').find('input');
+  if(event.target.value === "Other") {
+    input.css('display', 'block');
   } else {
-    element.style.display='none';
+    input.css('display', 'none');
   }
-}
+})
