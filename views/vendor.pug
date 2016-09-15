@@ -4,10 +4,21 @@ html(lang="en")
   body
     div.container
       include includes/nav.pug
+      include includes/search.pug
       div.main-content
-        include includes/search.pug
+        div.business-contact
+          div.bus-left
+            img(src="https://placehold.it/500x350")
+          div.bus-right
+            h2 BUSINESS NAME
+            p Business Info
+            p Email
+            p Address
+            p Hours
+            p Phone
         div.business-info
-          h2 BUSINESS NAME
+          h3 About Us
+          p Here's some information about what we do
         div.business-products
           h3 Other Products
         include includes/footer.pug
