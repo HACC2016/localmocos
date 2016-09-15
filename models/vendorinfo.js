@@ -3,6 +3,7 @@ module.exports = function(sequelize, DataTypes) {
   var VendorInfo = sequelize.define('VendorInfo', {
     user_id: DataTypes.INTEGER
   }, {
+    tableName: 'vendor_infos',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
