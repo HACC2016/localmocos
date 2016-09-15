@@ -1,4 +1,4 @@
-module.exports = function(express, app, path, bodyParser, querystring) {
+module.exports = function(express, app, path, bodyParser, querystring, db) {
     var router = express.Router();
 
     var testJson = {
