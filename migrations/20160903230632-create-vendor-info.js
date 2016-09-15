@@ -73,7 +73,7 @@ module.exports = {
         }
       },
       cert_id: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.INTEGER,
         foreignKey: true,
         references: {
