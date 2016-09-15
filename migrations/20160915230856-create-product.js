@@ -24,12 +24,12 @@ module.exports = {
           key: 'id'
         }
       },
-      venderInfo_id: {
+      vendorInfo_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
         references: {
-          model: 'vender_infos',
+          model: 'vendor_infos',
           key: 'id'
         }
       },

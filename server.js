@@ -17,13 +17,6 @@ Should be set true if your database is setup.
 
 *********/
 
-var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring);
-var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring);
-var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring);
-//var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
-var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring);
-var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring);
-var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring);
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
@@ -36,18 +29,13 @@ app.use(bodyParser.urlencoded({
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-//////// ROUTES TO TEST PAGES ////////
-// Steven, you can fix this later! :)))
-app.get('/product', function (req, res) {
-  res.render('product', {subtitle: "Products"})
-})
-app.get('/vendor', function (req, res) {
-  res.render('vendor', {subtitle: "Vendor"})
-})
-app.get('/search-results', function (req, res) {
-  res.render('searchResults', {subtitle: "Search Results"})
-})
-////////// END OF TESTING //////////
+var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring);
+var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring);
+var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring);
+//var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
+var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring);
+var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring);
+var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring);
 
 
 app.use(function(req, res) {
