@@ -1,6 +1,7 @@
 var express= require('express');
 var app= express();
 //var pug = require('pug');
+var https = require('https');
 var path = require('path');
 var bodyParser=require('body-parser');
 var querystring= require('querystring');
@@ -22,7 +23,7 @@ var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystri
 //var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
 var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring);
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring);
-
+var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring);
 
 app.set('views', path.resolve(__dirname, 'views'));
 app.set('view engine', 'pug');
