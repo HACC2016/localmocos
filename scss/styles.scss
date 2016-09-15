@@ -134,21 +134,18 @@ a { text-decoration: none }
     margin: 5px 0 15px;
     color: $cyan;
   }
-  .business-container{
+  .businesses-container{
     display: flex;
     flex-flow: row wrap;
     justify-content: space-around;
-    .business {
+    .single-business-container {
       flex: 0 0 0;
     }
   }
 }
-
-.single-business-container{
-  img{
-    width: 250px;
-    height: 250px;
-  }
+.single-business-image img{
+  width: 250px;
+  height: 250px;
 }
 
 ////////////////////////////////////////////
