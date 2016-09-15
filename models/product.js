@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.Product.belongsTo(models.VenderInfo);
+        models.Product.belongsTo(models.VendorInfo);
         models.Product.belongsTo(models.ProductInfo);
 
 
