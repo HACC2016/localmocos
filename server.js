@@ -29,7 +29,6 @@ app.use(bodyParser.urlencoded({
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-
 var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring);
 var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring);
 var sellerRoute=require('./routes/seller')(express,app,path,bodyParser,querystring);
@@ -42,6 +41,7 @@ var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring
 app.use(function(req, res) {
     res.status(404).send("Yo Cant' find page(" + req.url + ")");
 })
+
 
 
 
