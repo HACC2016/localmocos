@@ -267,6 +267,13 @@ a { color: $green; text-decoration: none }
 ////////////////////////////////////////////
 .results{
   margin-top: 25px;
+  .result-description{
+    font-style: italic;
+  }
+  p{font-size:0.9em}
+  span{
+    font-weight: bold;
+  }
 }
 .result-listing{
   margin: 10px 0;
