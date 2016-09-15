@@ -33,7 +33,7 @@ a { color: $green; text-decoration: none }
 // Container for all HTML Elements //
 .container {
   width: 100%;
-  min-width: 1100px;
+  min-width: 1150px;
 }
 // Navigation Menu Bar //
 .nav-menu {
@@ -85,13 +85,13 @@ a { color: $green; text-decoration: none }
 }
 // Container for Main Content //
 .main-content{
-  max-width: 1200px;
+  width: 1150px;
   margin: 0 auto;
-  padding: 15px 25px;
+  padding: 25px;
 }
 // Footer //
 .footer {
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 0 auto;
   padding: 15px 25px;
   font-size: 0.8em;
@@ -134,7 +134,7 @@ a { color: $green; text-decoration: none }
     flex-flow: row wrap;
     justify-content: space-between;
     .single-business-container {
-      flex: 0 0 0;
+      flex: 0 0 250px;
     }
   }
 }
@@ -251,42 +251,42 @@ a { color: $green; text-decoration: none }
 /////////////// VENDOR  PAGE ///////////////
 ////////////////////////////////////////////
 .business-contact{
-  padding: 25px 25px 5px;
+  // padding: 25px 25px 5px;
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
   .bus-left{
-    flex: 0 0 48%;
+    flex: 0 0 50%;
   }
   .bus-right{
-    flex: 0 0 48%;
+    flex: 0 0 50%;
   }
 }
 
 .business-info{
-  padding: 5px 25px;
+  // padding: 5px 25px;
 }
 
 .business-products{
-  padding: 5px 25px;
+  // padding: 5px 25px;
 }
 
 ////////////////////////////////////////////
 /////////////// PRODUCT PAGE ///////////////
 ////////////////////////////////////////////
 .main-product{
-  padding: 15px 25px 5px;
+  // padding: 15px 25px 5px;
 }
 
 ////////////////////////////////////////////
 ////////////// SEARCH RESULTS //////////////
 ////////////////////////////////////////////
 .results-header{
-  padding: 15px 25px 5px;
+  // padding: 15px 25px 5px;
 }
 
 .results{
-  padding: 15px 25px 5px;
+  // padding: 15px 25px 5px;
 }
 
 ////////////////////////////////////////////
