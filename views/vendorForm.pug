@@ -1,79 +1,93 @@
-include mixins/form.pug
+include includes/form.pug
 form(action="/seller" method="POST" enctype="x-www-form-urlencoded")
 fieldset
   legend Vendor Information:
   label Company Name *
-    input(type="text" name="companyName" placeholder="Company name" required)
-  label DBA
-    input(type="text" name="dba" placeholder="Doing business as")
-  label Business Registration Number *
-    input(type="text" name="regNum" placeholder="Business Registration #" required)
-  label Address Line 1 *
-    input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" required)
-  label Address Line 2
-    input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc")
-  label City *
-    input(type="text" name="city" placeholder="City" required)
-  label Zip Code *
-    input(type="text" name="zip" placeholder="Zip Code" required)
-  label Country *
-    input(type="text" name="country" placeholder="Country" required)
-  label Island *
-    input(type="text" name="island" placeholder="Island" required)
-  label Business Phone Number 1 *
-    input(type="tel" name="phoneOne" placeholder="Business Number 1" required)
-  label Business Phone Number 2
-    input(type="tel" name="phoneTwo" placeholder="Business Number 2")
-  label Sales Contact Phone Number *
-    input(type="tel" name="salesNum" placeholder="Sales Number" required)
-  label E-mail *
-    input(type="email" name="e_mail" placeholder="E-mail" required)
-  label Website
-    input(type="url" name="website" placeholder="Website")
-  label Type of Business:
-    select(id="type" name="businessType")
-      option Distributor
-      option Grower
-      option Manufacturer
-      option Processor
-      option Retailer
-      option Wholesaler
-      option Other
-        #other(style={display:none})
-          if Other
-            #other(style={display:block})
-            input(type="text" name="otherType")
-  label Services:
-    select(name="service")
-      option Food Service
-      option Private Label
-      option E-Commerce
-      option Retail
-      option Other
-        if("Other")
-          .other(style={diplay: none})
-            input(type="text" name="otherService")
-  label Markets:
-    select(name="market")
-      option US Mainland
-      option Hawaii
-      option Japan
-      option Canada
-      option Australia
-      option Asia
-      option Europe
-      option Guam
-        -if("Other")
-          option Other
-            .other(style={display: block})
-              input(type="text" name="otherMarkets")
-  label Certifications/Specialty:
-    select(name="certificates")
-      option Certified Nursery
-      option Certified Organic
-      option Gluten Free
-      option Halal
-      option Kosher
-      option Vegan
-      option Vegetarian
-  input(type="submit" value="Post" name="submitForm")
+    block companyName
+      input(type="text" name="companyName" placeholder="Company name" required)
+    label DBA
+      block dba
+        input(type="text" name="dba" placeholder="Doing business as")
+      label Business Registration Number *
+        block regNum
+          input(type="text" name="regNum" placeholder="Business Registration #" required)
+        label Address Line 1 *
+          block addressOne
+            input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" required)
+          label Address Line 2
+            block addressTwo
+              input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc")
+            label City *
+              block city
+                input(type="text" name="city" placeholder="City" required)
+              label Zip Code *
+                block zip
+                  input(type="text" name="zip" placeholder="Zip Code" required)
+                label Country *
+                  block country
+                    input(type="text" name="country" placeholder="Country" required)
+                  label Island *
+                    block island
+                      input(type="text" name="island" placeholder="Island" required)
+                    label Business Phone Number 1 *
+                      block phoneOne
+                        input(type="tel" name="phoneOne" placeholder="Business Number 1" required)
+                      label Business Phone Number 2
+                        block phoneTwo
+                          input(type="tel" name="phoneTwo" placeholder="Business Number 2")
+                        label Sales Contact Phone Number *
+                          block salesNum
+                            input(type="tel" name="salesNum" placeholder="Sales Number" required)
+                          label E-mail *
+                            block email
+                              input(type="email" name="e_mail" placeholder="E-mail" required)
+                            label Website
+                              block website
+                                input(type="url" name="website" placeholder="Website")
+                              label Type of Business:
+                                select(id="type" name="businessType")
+                                  option Distributor
+                                  option Grower
+                                  option Manufacturer
+                                  option Processor
+                                  option Retailer
+                                  option Wholesaler
+                                  option Other
+                                    #other(style={display:none})
+                                      if Other
+                                        #other(style={display:block})
+                                        input(type="text" name="otherType")
+                              label Services:
+                                select(name="service")
+                                  option Food Service
+                                  option Private Label
+                                  option E-Commerce
+                                  option Retail
+                                  option Other
+                                    if("Other")
+                                      .other(style={diplay: none})
+                                        input(type="text" name="otherService")
+                              label Markets:
+                                select(name="market")
+                                  option US Mainland
+                                  option Hawaii
+                                  option Japan
+                                  option Canada
+                                  option Australia
+                                  option Asia
+                                  option Europe
+                                  option Guam
+                                    -if("Other")
+                                      option Other
+                                        .other(style={display: block})
+                                          input(type="text" name="otherMarkets")
+                              label Certifications/Specialty:
+                                select(name="certificates")
+                                  option Certified Nursery
+                                  option Certified Organic
+                                  option Gluten Free
+                                  option Halal
+                                  option Kosher
+                                  option Vegan
+                                  option Vegetarian
+                              input(type="submit" value="Post" name="submitForm")
