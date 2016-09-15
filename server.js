@@ -35,14 +35,29 @@ app.use(bodyParser.urlencoded({
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
+///////// temp for adminLogin ///////
+app.get('/admin/login', function (req, res) {
+  res.render('adminLogin');
+});
 
+//////// temp for vendorLogin //////
+app.get('/seller/login', function (req, res) {
+  res.render('vendorLogin');
+});
 
+////// temp for 404 page //////
+app.use(function (req, res, err) {
+  res.status(404);
 
-app.use(function(req, res) {
-    res.status(404).send("Yo Cant' find page(" + req.url + ")");
-})
+  if(req.accepts('html')) {
+    res.render('404', { url: req.url });
+    return;
+  }
+});
 
-
+// app.use(function(req, res) {
+//     res.status(404).send("Yo Cant' find page(" + req.url + ")");
+// })
 
 if(useDB)
 {
