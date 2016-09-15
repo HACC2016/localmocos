@@ -10,8 +10,8 @@ var db = require('./models');
 const public = path.join(__dirname, 'public');
 
 
-const useDB=true;  
-/**** Setting to false until I set up postgres.  
+const useDB=true;
+/**** Setting to false until I set up postgres.
 Should be set true if your database is setup.
 
 *********/
@@ -35,12 +35,24 @@ app.use(bodyParser.urlencoded({
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
 
-
+//////// ROUTES TO TEST PAGES ////////
+// Steven, you can fix this later! :)))
+app.get('/product', function (req, res) {
+  res.render('product', {subtitle: "Products"})
+})
+app.get('/vendor', function (req, res) {
+  res.render('vendor', {subtitle: "Vendor"})
+})
+app.get('/search-results', function (req, res) {
+  res.render('searchResults', {subtitle: "Search Results"})
+})
+////////// END OF TESTING //////////
 
 
 app.use(function(req, res) {
     res.status(404).send("Yo Cant' find page(" + req.url + ")");
 })
+
 
 
 
