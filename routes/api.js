@@ -1,28 +1,33 @@
 module.exports = function(express, app, https, path, bodyParser, querystring) {
-    var router = express.Router();
+  var router = express.Router();
+  var apiHostname = 'hts.usitc.gov';
+  //HTS Keyword search
+  app.get('/api', function (req, res, next) {
+    res.send('Coming Soon!');
+  })
 
-    //HTS API Code
-    //Currently returns JSON object for copper
-
-    app.get('/api', function (req, res) {
-      var data;
-      let options = {
-        hostname: 'hts.usitc.gov',
-        path: '/api/search/?query=copper',
-        method: 'GET'
-      }
-      https.request(options, (resp) => {
-        resp.setEncoding('utf8');
-        resp.on('data', (chunk) => {
-          data += chunk;
-        })
-        resp.on('end', () => {
-          res.send(data);
-        })
-      }).on('error', (e) => {
-        console.log(`Error: ${e.message}`)
-      }).end();
+  app.post('/api', function (req, res, next) {
+    var results = '';
+    var searchPath = `/api/search?query=${req.body.keyword}`;
+    var options = {
+      hostname: apiHostname,
+      path: searchPath,
+      method: 'GET'
+    };
+    https.request(options, (response) => {
+      response.setEncoding('utf8');
+      response.on('data', (chunk) => {
+        results += chunk;
+      })
+      response.on('end', () => {
+        res.json(JSON.parse(results));
+      })
     })
+    .on('error', (e) => {
+        console.log(`Error: ${e.message}`)
+    })
+    .end();
+  })
 
-    return router;
+  return router;
 }
