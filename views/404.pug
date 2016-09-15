@@ -1,18 +1,21 @@
 doctype html
 html(lang="en")
-include includes/head.pug
-body
-  include includes/nav.pug
-  .faceContain
-    .face
-      if (Math.random() < 0.5) 
-        .randomFace 
-          h1 (❍ᴥ❍ʋ)
-            .message
-              h4 404
-      else
-        .randomFace
-          h1 ~(˘▾˘~)
-            .message
-              h4 404
-  include includes/footer.pug
+  include includes/head.pug
+  body
+    div.container
+      include includes/nav.pug
+      include includes/search.pug
+      div.main-content
+        .faceContain
+          .face
+            if (Math.random() < 0.5)
+              .randomFace
+                h1 (❍ᴥ❍ʋ)
+                  .message
+                    h4 404
+            else
+              .randomFace
+                h1 ~(˘▾˘~)
+                  .message
+                    h4 404
+          include includes/footer.pug
