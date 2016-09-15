@@ -1,10 +1,5 @@
-doctype html
-html(lang="en")
-include includes/head.pug
-body
-  include includes/nav.pug
-  include includes/login.pug
-    block loginLogo
-      .vendorLogo
-        img(src="/images/logos/hibiscus(blue).png")
-  include includes/footer.pug
+extends layouts/login.pug
+prepend loginLogo
+  .vendorLogo
+    img(src="/images/logos/hibiscus(blue).png")
+    h4 Welcome Vendor
