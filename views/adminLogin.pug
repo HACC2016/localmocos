@@ -1,9 +1,5 @@
-doctype html
-html(lang="en")
-include includes/head.pug
-body
-  include includes/nav.pug
-  include includes/login.pug
-    block loginLogo
-      a(src="images/logos/Seal_of_the_State_of_Hawaii.png")
-  include includes/footer.pug
+extends layouts/login.pug
+prepend loginLogo
+  .adminLogo
+    img(src="/images/logos/Seal_of_the_State_of_Hawaii.png")
+    h4 Welcome Admin
