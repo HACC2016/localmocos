@@ -39,7 +39,7 @@ var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring
 
 
 app.use(function(req, res) {
-    res.status(404).send("Yo Cant' find page(" + req.url + ")");
+  res.status(404).render('404');
 })
 
 
