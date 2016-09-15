@@ -4,6 +4,7 @@ module.exports = function(sequelize, DataTypes) {
     job: DataTypes.STRING,
     description: DataTypes.TEXT
   }, {
+    tableName: 'types',
     classMethods: {
       associate: function(models) {
         // associations can be defined here

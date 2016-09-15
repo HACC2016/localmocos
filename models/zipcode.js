@@ -5,6 +5,7 @@ module.exports = function(sequelize, DataTypes) {
     zip: DataTypes.INTEGER,
     island: DataTypes.STRING
   }, {
+    tableName: 'zipcodes',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
