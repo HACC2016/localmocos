@@ -1,18 +1,24 @@
 doctype html
 html(lang="en")
-include includes/head.pug
-body
-  include includes/nav.pug
-  .faceContain
-    .face
-      if (Math.random() < 0.5) 
-        .randomFace 
-          h1 (❍ᴥ❍ʋ)
-            .message
-              h4 404
-      else
-        .randomFace
-          h1 ~(˘▾˘~)
-            .message
-              h4 404
-  include includes/footer.pug
+  include includes/head.pug
+  body
+    div.container
+      include includes/nav.pug
+      include includes/search.pug
+      div.main-content
+        div.error-container
+          if (Math.random() < 0.5)
+            div.error
+              h1 (❍ᴥ❍ʋ)
+              h2 404
+              p Oops! We're sorry, the page you're looking for cannot be found.
+              p
+                a(href="/") Return To The Home Page
+          else
+            div.error
+              h1 ~(˘▾˘~)
+              h2 404
+              p Oops! We're sorry, the page you're looking for cannot be found.
+              p
+                a(href="/") Return To The Home Page
+        include includes/footer.pug

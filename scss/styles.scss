@@ -33,7 +33,8 @@ h2 { font-size: 1.75em }
 h3 { font-size: 1.5em }
 h4 { font-size: 1.25em }
 h5, h6 { font-size: 1em }
-a { text-decoration: none }
+p { margin: 0.5em 0; color: lighten($black, 33%); }
+a { color: $green; text-decoration: none }
 
 // Container for all HTML Elements //
 .container {
@@ -176,7 +177,6 @@ a { text-decoration: none }
   p{
     font-size: 0.9em;
     font-style: italic;
-    color: lighten($black, 33%);
   }
 }
 
@@ -297,5 +297,17 @@ a { text-decoration: none }
   padding: 15px 25px 5px;
 }
 
+////////////////////////////////////////////
+/////////////////// 404  ///////////////////
+////////////////////////////////////////////
+.error-container{
+  padding: 15px 25px 5px;
+  .error{
+    text-align: center;
+    h1{ font-size: 10em; color: $teal; }
+    h2{ font-size: 5em; color: $teal; }
+    a { font-weight: bold; }
+  }
+}
 
 // div {border: 1px red dotted;} //delete this later!!!
