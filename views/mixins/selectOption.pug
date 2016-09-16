@@ -1,0 +1,8 @@
+mixin selectWithOther(fieldname, options)
+  select.name = fieldname
+    each option in options
+      option(value=option.value)= option.text
+    option(value="other") Other
+  input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
+
++selectWithOther("bussinessType", [{"value" 1, "text": "Distributor"},{"value" 2, "text": "Grower"},{"value" 3, "text": "Manufacturer"},{"value" 4, "text": "Processor"},{"value" 5, "text": "Retailer"}, {"value" 6, "text": "Wholesaler"}])
