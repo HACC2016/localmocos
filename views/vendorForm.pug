@@ -11,13 +11,13 @@ form(action="/seller" method="POST" enctype="x-www-form-urlencoded")
   fieldset
     legend Vendor Information:
     label Company Name *
-      input(type="text" name="companyName" placeholder="Company name" value=vendorInfo.user_id required)
+      input(type="text" name="companyName" placeholder="Company name" required)
     label DBA
-      input(type="text" name="dba" placeholder="Doing business as" value=vendorInfo.dba)
+      input(type="text" name="dba" placeholder="Doing business as")
     label Business Registration Number *
       input(type="text" name="regNum" placeholder="Business Registration #" required)
     label Address Line 1 *
-      input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" value=vendorInfo.address1 required)
+      input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" required)
     label Address Line 2
       input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc")
     label City *
