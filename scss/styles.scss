@@ -61,7 +61,12 @@ label { display: block; }
     margin: 0;
     padding: 0 25px;
     text-transform: uppercase;
-    color: lighten($black, 50%);
+    a{
+      color: lighten($black, 50%);
+      &:hover{
+        color: $green;
+      }
+    }
   }
 }
 .nav-right {
@@ -289,9 +294,6 @@ hr{
     font-style: italic;
   }
   p{font-size:0.9em}
-  span{
-    font-weight: bold;
-  }
 }
 .result-listing{
   margin: 10px 0;
@@ -308,6 +310,21 @@ hr{
     h2{ font-size: 5em; }
     a { font-weight: bold; }
   }
+}
+
+////////////////////////////////////////////
+////////////////// ABOUT  //////////////////
+////////////////////////////////////////////
+.about-container{
+  margin-top: 25px;
+  h1{}
+  img{
+    width: 1100px;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  p{font-size:0.9em}
 }
 
 ////////////////////////////////////////////
