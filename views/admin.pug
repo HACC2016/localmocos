@@ -2,21 +2,19 @@ doctype html
 html(lang="en")
   include includes/head.pug
   body
-    extends layouts/loginNav.pug
-      .adminContent
-        .content
-          .sideBar
-            .headerPending
-              h1 Pending Approvals
-              .pendingVendors
-                h3 Vendors #{pendingVendors}
-              .pendingProducts
-                h3 Products #{pendingProducts}
-        .dashboardView
-          .view
-            h1 New Approvals
-            .newApprovals
-              -var m=0;
-              while m < vendors.length || m < products.length
-                .newVendors
+    include layouts/loginNav.pug
+    .adminContent
+      .content
+        .sideBar
+          .headerPending
+            h2 Pending Approvals
+            .pendingVendors
+              h3 Vendors #{pendingVendors}
+            .pendingProducts
+              h3 Products #{pendingProducts}
+      .dashboardView
+        .view
+          h2 New Approvals
+          .newApprovals
+            .newVendors
     include includes/footer.pug
