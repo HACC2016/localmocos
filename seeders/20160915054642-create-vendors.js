@@ -5,6 +5,8 @@ module.exports = {
     return queryInterface.bulkInsert('vendor_infos', [
     {
       user_id: 1,
+      company_name: 'Big Island Candies',
+      business_reg_num: 12341234,
       dba: 'Big Island Candies',
       address1: '585 Hinano St. Hilo, HI. 96720',
       business_ph: '1-800-935-5510',

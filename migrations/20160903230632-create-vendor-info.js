@@ -17,6 +17,14 @@ module.exports = {
           key: 'id'
         }
       },
+      company_name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      business_reg_num: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
       dba: {
         allowNull: false,
         type: Sequelize.STRING
