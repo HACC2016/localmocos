@@ -7,7 +7,10 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'markets',
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.Market.belongsToMany(models.VendorInfo, {
+          through: models.VendorInfoMarket,
+          foreignKey: 'market_id'
+        })
       }
     }
   });
