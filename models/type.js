@@ -13,7 +13,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         models.Type.belongsToMany(models.VendorInfo, {
           through: models.VendorInfoType,
-          foreignKey: 'vendor_info_id'
+          foreignKey: 'type_id'
         });
       }
     }
