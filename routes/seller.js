@@ -77,6 +77,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         res.json(testJson);
     });
 
+    ////// testing vendor view /////
+    app.get('/seller/view', function (req, res) {
+        res.render('vendorDashboard');
+    });
+
     return router;
 }
 
