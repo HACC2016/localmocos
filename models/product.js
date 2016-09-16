@@ -21,14 +21,6 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'product_info_id',
           targetKey: 'id'
         });
-
-
-
-      // ***** Add Image Models ************
-      //   models.Product.hasMany(models.Image);
-      // ***********************************
-      //
-      //
       }
     }
   });
