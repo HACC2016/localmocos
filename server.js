@@ -68,6 +68,9 @@ app.get('/vendorForm', function (req, res) {
 app.get('/editVendorForm', function (req, res) {
   res.render('editVendorForm', {})
 })
+app.get('/about', function (req, res) {
+  res.render('about', {subtitle: "About Us"})
+})
 ////////// END OF TESTING //////////
 
 app.use(function(req, res) {
