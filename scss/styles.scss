@@ -30,6 +30,7 @@ h5, h6 { font-size: 1em }
 p { margin: 0.5em 0; color: lighten($black, 33%); }
 a { color: $green; text-decoration: none }
 strong { font-weight: bold; }
+label { display: block; }
 
 // Container for all HTML Elements //
 .container {
@@ -130,14 +131,6 @@ strong { font-weight: bold; }
     margin: 5px 0 15px;
     color: $cyan;
   }
-  // .businesses-container{
-  //   display: flex;
-  //   flex-flow: row wrap;
-  //   justify-content: space-between;
-  //   .single-business-container {
-  //     flex: 0 0 250px;
-  //   }
-  // }
 }
 
 .single-business-image img{
