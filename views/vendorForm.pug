@@ -12,15 +12,15 @@ include includes/form.pug
       fieldset
         legend Vendor Information:
         label Company Name *
-          input(type="text" name="companyName" placeholder="Company name" required)
+          input(type="text" name="companyName" placeholder="Company name" value=vendor.company required)
         label DBA
-          input(type="text" name="dba" placeholder="Doing business as")
+          input(type="text" name="dba" placeholder="Doing business as" value=vendor.dba)
         label Business Registration Number *
-          input(type="text" name="regNum" placeholder="Business Registration #" required)
+          input(type="text" name="regNum" placeholder="Business Registration #" value=vendor.business_reg_name required)
         label Address Line 1 *
-          input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" required)
+          input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
         label Address Line 2
-          input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc")
+          input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc" value=vendor.address2)
         label City *
           input(type="text" name="city" placeholder="City" required)
         label Zip Code *
@@ -30,15 +30,15 @@ include includes/form.pug
         label Island *
           input(type="text" name="island" placeholder="Island" required)
         label Business Phone Number 1 *
-          input(type="tel" name="phoneOne" placeholder="Business Number 1" required)
+          input(type="tel" name="phoneOne" placeholder="Business Number 1" value=vendor.business_ph required)
         label Business Phone Number 2
           input(type="tel" name="phoneTwo" placeholder="Business Number 2")
         label Sales Contact Phone Number *
-          input(type="tel" name="salesNum" placeholder="Sales Number" required)
+          input(type="tel" name="salesNum" placeholder="Sales Number" value=vendor.sales_ph required)
         label E-mail *
-          input(type="email" name="e_mail" placeholder="E-mail" required)
+          input(type="email" name="e_mail" placeholder="E-mail" value=vendor.email required)
         label Website
-          input(type="url" name="website" placeholder="Website")
+          input(type="url" name="website" placeholder="Website" value=vendor.website)
         label Type of Business:
           +selectWithOther("bussinessType", [{"value": 1, "text": "Distributor"},{"value": 2, "text": "Grower"},{"value": 3, "text": "Manufacturer"},{"value": 4, "text": "Processor"},{"value": 5, "text": "Retailer"}, {"value": 6, "text": "Wholesaler"}])
         label Services:
