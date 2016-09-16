@@ -60,27 +60,34 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
        /* testJson.name = "Product Form for id=" + cleanParam(req.url);
         res.json([testJson]); */
-
+        // const product = {
+        //     name: "BLAH",
+        //     description: "blahksjhefasm",
+        //     price: "$0.24",
+        //     quantity: 3
+        // }
         res.render('editProductForm', {
             methodType: 'POST',
             actionType: '/product/new',
-            formTitle: 'Edit New Product'
+            formTitle: 'Edit New Product',
+            product: {
+                name: req.product.name
+            }
         });
     });
 
     app.put(/product\/\d+\/edit$/, function(req, res, next) {
         // testJson.name = "Product Edit with id=" + cleanParam(req.url);
         // res.json([testJson]);
-        db.Product.findOne({
+        db.product.findOne({
             where: {
                 id: req.params.id
-            }, include: [{
-                model: db.user,
-                required: true
-            }]
+            }
         })
-        .then(function (product) {
-            res.render('editProductForm', {products: product});
+        .then(function (edit) {
+           return edit.update({
+            product_info_id: req.body
+           });
         });
     });
 
