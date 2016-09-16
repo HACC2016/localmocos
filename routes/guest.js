@@ -79,7 +79,10 @@ app.get('/',function(req, res, next) {
     res.render('index', {subtitle: "Find Local Business & Products"})
 });
 
-
+////// testing ///////
+app.get('/about', function (req, res) {
+  res.render('about');
+});
 
 
 

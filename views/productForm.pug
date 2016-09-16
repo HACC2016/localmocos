@@ -1,71 +1,71 @@
 include includes/form.pug
 form(action="/product" method="POST" enctype="x-www-form-urlencoded")
-fieldset
-  legend Product Information:
-  label Name:
-    input(type="text" name="productName" placeholder="Product Name")
-  label Description:
-    input(type="text" name="description" placeholder="Description")
-  label Price:
-    input(type="text" name="price" placeholder="Price")
-  label Quantity:
-    input(type="text" name="qty" placeholder="Quantity")
-  label Farmed Seafood:
-    select(name="seafood")
-      option Fresh Seafood
-      option Frozen Seafood
-      option Processed Seafood
-      option Other
-  label Snack Foods:
-    select(name="snackFoods")
-      option Candles
-      option Chips
-      option Cookies
-      option Crackers
-      option Dried Fruits
-      option Other
-  label Beverages:
-    select(name="beverages")
-      option Alcoholic
-      option Concentrates
-      option Drink Mixes
-      option Juices
-      option Tea
-      option Water
-      option Other
-  label Coffee:
-    select(name="coffee")
-      option Big Island (Excluding Kona)
-      option Kauai
-      option Kona
-      option Maui
-      option Molokai
-      option Oahu
-  label Condiments:
-    select(name="condiments")
-      option Dressings
-      option Jams/Jellies
-      option Pickled Vegetables
-      option Preserved Fruits
-      option Sauces
-      option Other
-  label Dairy:
-    select(name="dairy")
-      option Butter
-      option Cheese
-      option Ice Cream
-      option Milk
-      option Other
-  legend Floral:
-    label Anthuriums
-      input(type="checkbox" name="anthurium" value="product.")
-      input(type="text" name="anthurium_descrip" placeholder="Anthuriums")
-    label Foliage
-      input(type="checkbox" name="foliage" value="second_checkbox")
-      input(type="text" name="foliage_descrip" placeholder="Foliage")
-    label Leis
-      input(type="checkbox" name="leis" value="third_checkbox") 
-      input(type="text" name="leis_descrip" placeholder="Leis")
-    label Other
-      input(type="checkbox" name="other" value="fourth_checkbox")
-      input(type="text" name="other_descrip" placeholder="Other")
+  fieldset
+    legend Product Information:
+    label Name:
+      input(type="text" name="productName" placeholder="Product Name" value=product.name)
+    label Description:
+      input(type="text" name="description" placeholder="Description" value=product.description)
+    label Price:
+      input(type="text" name="price" placeholder="Price" value=product.price)
+    label Quantity:
+      input(type="text" name="qty" placeholder="Quantity" value=product.qty)
+    label Farmed Seafood:
+      select(name="seafood")
+        option Fresh Seafood
+        option Frozen Seafood
+        option Processed Seafood
+        option Other
+    label Snack Foods:
+      select(name="snackFoods")
+        option Candles
+        option Chips
+        option Cookies
+        option Crackers
+        option Dried Fruits
+        option Other
+    label Beverages:
+      select(name="beverages")
+        option Alcoholic
+        option Concentrates
+        option Drink Mixes
+        option Juices
+        option Tea
+        option Water
+        option Other
+    label Coffee:
+      select(name="coffee")
+        option Big Island (Excluding Kona)
+        option Kauai
+        option Kona
+        option Maui
+        option Molokai
+        option Oahu
+    label Condiments:
+      select(name="condiments")
+        option Dressings
+        option Jams/Jellies
+        option Pickled Vegetables
+        option Preserved Fruits
+        option Sauces
+        option Other
+    label Dairy:
+      select(name="dairy")
+        option Butter
+        option Cheese
+        option Ice Cream
+        option Milk
+        option Other
+    legend Floral:
+      label Anthuriums
+        input(type="checkbox" name="anthurium" value="product.")
+        input(type="text" name="anthurium_descrip" placeholder="Anthuriums")
+      label Foliage
+        input(type="checkbox" name="foliage" value="second_checkbox")
+        input(type="text" name="foliage_descrip" placeholder="Foliage")
+      label Leis
+        input(type="checkbox" name="leis" value="third_checkbox") 
+        input(type="text" name="leis_descrip" placeholder="Leis")
+      label Other
+        input(type="checkbox" name="other" value="fourth_checkbox")
+        input(type="text" name="other_descrip" placeholder="Other")

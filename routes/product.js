@@ -46,9 +46,12 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         /* testJson.name = "New Product Form" + cleanParam(req.url);
         res.json([testJson]); */
         res.render('productForm', {
-            methodType: 'POST',
+            // methodType: 'POST',
             actionType: '/product/new',
-            formTitle: 'Create New Product'
+            formTitle: 'Create New Product',
+            product: {
+                
+            }
         });
     });
 
@@ -61,11 +64,24 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
        /* testJson.name = "Product Form for id=" + cleanParam(req.url);
         res.json([testJson]); */
 
-        res.render('editProductForm', {
-            methodType: 'POST',
-            actionType: '/product/new',
-            formTitle: 'Edit New Product'
-        });
+        console.log(cleanParamMiddle(req.url,2));
+        db.Product.findOne({
+            where: {
+                id: cleanParamMiddle(req.url,2)
+            }
+        }).then(function (data) {
+            res.render('editProductForm', {
+                methodType: 'POST',
+                actionType: '/product/new',
+                formTitle: 'Edit New Product',
+                product: {
+                    name: data.name,
+                    description: data.description,
+                    price: data.price,
+                    qty: data.qty
+                }
+            });  
+        })
     });
 
     app.put(/product\/\d+\/edit$/, function(req, res, next) {
@@ -82,6 +98,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     return router;
 }
 
+
+function cleanParamMiddle(thisParam, index) {
+    var paramArray = thisParam.split('/');
+    return paramArray[index];
+}
 
 function cleanParam(thisParam) {
     var paramArray = thisParam.split('/');
