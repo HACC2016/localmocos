@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     vendor_info_id: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     qty: DataTypes.INTEGER,
+    image: DataTypes.TEXT,
     isActive: DataTypes.BOOLEAN
   }, {
     tableName: 'products',
