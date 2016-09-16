@@ -13,7 +13,6 @@ module.exports = {
       email: 'contactus@bigislandcandies.com',
       zip_id: 1,
       market_id: 2,
-      service_id: 1,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()

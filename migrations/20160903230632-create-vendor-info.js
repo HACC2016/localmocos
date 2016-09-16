@@ -63,24 +63,6 @@ module.exports = {
           key: 'id'
         }
       },
-      cert_id: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'certifications',
-          key: 'id'
-        }
-      },
-      service_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'services',
-          key: 'id'
-        }
-      },
       isActive: {
         allowNull: false,
         type: Sequelize.BOOLEAN
