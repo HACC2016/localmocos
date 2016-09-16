@@ -39,11 +39,16 @@ var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring
 
 //////// ROUTES TO TEST PAGES ////////
 app.get('/product', function (req, res) {
-  res.render('product', {subtitle: "Products"})
+  db.Product.findAll().then(function(productArray) {
+    var product = productArray[0];
+    db.VendorInfo.findAll().then(function(vendorArray) {
+      var vendor = vendorArray[0];
+      res.render('product', {subtitle: "Products", product: product.name, description: product.description, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
+    });
+  })
 })
 app.get('/vendor', function (req, res) {
   db.VendorInfo.findAll().then(function(vendorArray) {
-    // res.json(vendorArray[0]);
     var vendor = vendorArray[0];
     res.render('vendor', {subtitle: "Vendor", vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
   });
