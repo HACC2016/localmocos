@@ -25,6 +25,10 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
+      business_description: {
+        allowNull: true,
+        type: Sequelize.TEXT
+      },
       dba: {
         allowNull: false,
         type: Sequelize.STRING
@@ -50,7 +54,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       zip_id: {

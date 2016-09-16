@@ -9,8 +9,36 @@ module.exports = {
       role: 'Vendor',
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      username: 'oceanfire',
+      password: 'fireocean',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      username: 'bergerfarm',
+      password: 'farmberger',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      username: 'biabalone',
+      password: 'abalone',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      username: 'bromeliadshi',
+      password: 'hibro',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
-    ], {})
+    ], {});
   },
 
   down: function (queryInterface, Sequelize) {
