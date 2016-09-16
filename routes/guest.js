@@ -31,7 +31,7 @@ app.get('/Search', function(req, res, next) {
     if(!req.headers.searchinfo){
       res.render('index');
     }
-    else{      
+    else{
     db.Type.searchResults(req.headers.searchinfo)
     .then((data) => {
         var vendorAddedArray=[];
@@ -66,10 +66,10 @@ app.get('/Search', function(req, res, next) {
 console.log([products,vendors]);
       res.render('searchResults',[products,vendors]);
       //res.json(data);
-        });       
+        });
     }
-    }); 
-    
+    });
+
     //  res.render('searchResults',{productList:productList,sellerList:sellerList})
 
     /**************** Home Page ***********************/
