@@ -8,7 +8,13 @@ module.exports = {
       type_id: 1,
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    },
+    {
+      vendor_info_id: 1,
+      type_id: 2,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
     ], {})
   },
 
