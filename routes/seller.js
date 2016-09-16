@@ -33,8 +33,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         ]
       })
       .then((stuff) => {
-        // return res.json(stuff);
-        
         // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
         // .then((data) => {
           return res.json(stuff);
@@ -52,16 +50,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-        
-           /* } */
-       /* testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson); */
-    });
-
-    app.put(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-                res.render('editVendorForm', {
       // console.log(db.Type.findAll());
       // 
       
@@ -92,11 +80,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
            /* } */
         testJson.name = "View Seller id=" + cleanParamMiddle(req.url, 2);
         res.json(testJson);
-    });
-
-    ////// testing vendor view /////
-    app.get('/seller/view', function (req, res) {
-        res.render('vendorDashboard');
     });
 
     return router;
