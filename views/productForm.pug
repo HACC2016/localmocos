@@ -18,6 +18,8 @@ include includes/form.pug
           input(type="text" name="price" placeholder="Price" value=product.price)
         label Quantity:
           input(type="text" name="qty" placeholder="Quantity" value=product.qty)
+        label Image:
+          input(type="url" name="productImg" placeholder="Image Link" value=product.image)
         label Farmed Seafood:
           +selectWithOther("seafood", [{"value": 1, "text": "Fresh Seafood"},{"value": 2, "text": "Frozen Seafood"},{"value": 3, "text": "Processed Seafood"}])
         label Snack Foods:
