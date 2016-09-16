@@ -33,9 +33,12 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         ]
       })
       .then((stuff) => {
-        return res.json(stuff);
+        // return res.json(stuff);
+        res.render('vendorForm',{
+            vendorInfo: {
+          }
+        });
       })
-      // res.render('vendorForm');
     });
 
     app.post('/seller/new', function(req, res) {
@@ -48,11 +51,27 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
         /* */
-                res.render('editVendorForm', {
-                    methodType: 'GET',
-                    actionType: '/seller/{id}/edit',
-                    formTitle: 'Edit Seller'
-                });
+        db.VendorInfo.findOne({
+            where: {
+                id: cleanParamMiddle(req.url,2)
+            }
+        }).then(function (data) {
+            res.render('editVendorForm', {
+                methodType: 'GET',
+                actionType: '/seller/{id}/edit',
+                formTitle: 'Edit Seller',
+                vendorInfo: {
+                    name: data.user_id,
+                    dba: data.dba,
+                    address1: data.address1,
+                    address2: data.address2,
+                    business_ph: data.business_ph,
+                    sales_ph: data.sales_ph,
+                    website: data.website,
+                    email: data.email
+                }
+            });
+        });
            /* } */
        /* testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
         res.json(testJson); */

@@ -46,9 +46,12 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         /* testJson.name = "New Product Form" + cleanParam(req.url);
         res.json([testJson]); */
         res.render('productForm', {
-            methodType: 'POST',
+            // methodType: 'POST',
             actionType: '/product/new',
-            formTitle: 'Create New Product'
+            formTitle: 'Create New Product',
+            product: {
+                
+            }
         });
     });
 
