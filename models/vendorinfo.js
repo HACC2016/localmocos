@@ -2,6 +2,7 @@
 module.exports = function(sequelize, DataTypes) {
   var VendorInfo = sequelize.define('VendorInfo', {
     user_id: DataTypes.INTEGER,
+    image: DataTypes.TEXT,
     company_name: DataTypes.STRING,
     business_reg_num: DataTypes.INTEGER,
     business_description: DataTypes.TEXT,

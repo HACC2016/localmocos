@@ -17,6 +17,10 @@ module.exports = {
           key: 'id'
         }
       },
+      image: {
+        allowNull: true,
+        type: Sequelize.TEXT
+      },
       company_name: {
         allowNull: false,
         type: Sequelize.STRING

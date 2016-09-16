@@ -5,6 +5,7 @@ module.exports = {
     return queryInterface.bulkInsert('vendor_infos', [
     {
       user_id: 1,
+      image: 'http://www.hawaiibusiness.com/wordpress/wp-content/uploads/2014/11/BIC-11-2014_Permanent-Storefront-at-Ala-Moana-Center.jpg',
       company_name: 'Big Island Candies',
       business_reg_num: 12341234,
       business_description: 'Big Island Candies offers gourmet Hawaiian chocolates, cookies and candies, including our world-renowned Macadamia Nut Chocolate Dipped Shortbread Cookies.',
@@ -22,6 +23,7 @@ module.exports = {
     },
     {
       user_id: 2,
+      image: '/images/Adaptations-Oceanfire.jpg',
       company_name: 'Adaptations/Oceanfire',
       business_reg_num: 12341235,
       business_description: 'Adaptations grows kava, passion fruit vine, lemon balm and gotu kola, which are turned into tinctures and other botanical medicines for worldwide distribution.',
@@ -39,6 +41,7 @@ module.exports = {
     },
     {
       user_id: 3,
+      image: '/images/Bergers-Kamaaina-Farm.jpg',
       company_name: "Berger's Kama'aina Farm",
       business_reg_num: 12341236,
       business_description: 'Land watercress tastes different from watercress grown in water, has a longer shelf life and a characteristic "snap" to it.',
@@ -54,6 +57,7 @@ module.exports = {
     },
     {
       user_id: 4,
+      image: '/images/Big-Island-Abalone.jpg',
       company_name: 'Big Island Abalone',
       business_reg_num: 12341237,
       business_description: 'Did you know it takes up to 33 months to raise abalone to be ready for distribution? The Big Island Abalone is great, whether grilled or made into sashimi.',
@@ -71,6 +75,7 @@ module.exports = {
     },
     {
       user_id: 5,
+      image: '/images/Bromeliads-Hawaii.jpg',
       company_name: 'Bromeliads Hawaii',
       business_reg_num: 12341238,
       business_description: 'Fun Fact: Did you know the pineapple is part of the bromeliad family? Bromeliads are easy to care for and do not require much sun or water.',
