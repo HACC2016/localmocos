@@ -37,7 +37,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         // .then((data) => {
           // return res.json(stuff);
         // });
-        res.render('vendorForm');
+        res.render('vendorForm',{
+            vendor:{}
+        });
       });
     });
 
