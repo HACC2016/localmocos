@@ -42,10 +42,11 @@ app.get('/product', function (req, res) {
   res.render('product', {subtitle: "Products"})
 })
 app.get('/vendor', function (req, res) {
-  // db.vendor_infos.findAll().then(function(vendorArray) {
-  //   res.json(vendorArray);
-  // });
-  res.render('vendor', {subtitle: "Vendor"})
+  db.VendorInfo.findAll().then(function(vendorArray) {
+    // res.json(vendorArray[0]);
+    var vendor = vendorArray[0];
+    res.render('vendor', {subtitle: "Vendor", vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
+  });
 })
 app.get('/search-results', function (req, res) {
   res.render('searchResults', {subtitle: "Search Results"})
