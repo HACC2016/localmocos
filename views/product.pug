@@ -17,9 +17,15 @@ html(lang="en")
             p <strong>Address:</strong> #{address}
             p <strong>Phone:</strong> #{phone}
             p <strong>Email:</strong>
-              a(href="mailto:" + email)  #{email}
+              if email
+                a(href="mailto:" + email)  #{email}
+              else
+                |  N/A
             p <strong>Website:</strong>
-              a(href= website, target="_blank")  #{website}
+              if website
+                a(href= website, target="_blank")  #{website}
+              else
+                |  N/A
         div.business-products
           h3 Other Products From The Same Vendor
           div.flex-container
