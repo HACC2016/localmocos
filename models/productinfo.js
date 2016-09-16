@@ -9,7 +9,10 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.ProductInfo.belongsTo(models.ProductType);
+        models.ProductInfo.belongsTo(models.ProductType, {
+          foreignKey: 'product_type_id',
+          targetKey: 'id'
+        });
       }
     }
   });

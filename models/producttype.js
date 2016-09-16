@@ -7,7 +7,9 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'product_types',
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.ProductType.hasMany(models.ProductInfo, {
+          foreignKey: 'product_type_id'
+        });
       }
     }
   });
