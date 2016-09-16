@@ -8,7 +8,10 @@ html(lang="en")
       div.main-content
         div.flex-container
           div.col-half
-            img.business-main-image(src="https://cdn.lovmedia.net/images/vendors/13334/1584/40264-1584-enY2U3y-lovmedia.jpg")
+            if image
+              img.business-main-image(src= img)
+            else
+              img.business-main-image(src="https://placehold.it/525x350")
           div.col-half
             h2 #{vendor}
             p <strong>Address:</strong> #{address}
