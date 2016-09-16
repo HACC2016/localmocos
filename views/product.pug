@@ -8,43 +8,45 @@ html(lang="en")
       div.main-content
         div.flex-container
           div.col-half
-            img(src="https://placehold.it/525x350")
+            img.product-main-image(src="http://hawaiichips.com/wp-content/uploads/Furikake-Mac-Nuts1.jpg")
           div.col-half
-            h2 PRODUCT NAME
-            p This is a description of the product!
+            h2 #{product}
+            p #{description}
             hr
-            h4 BUSINESS NAME
-            p <span>Address:</span> 123 Aloha Street
-            p <span>Phone:</span> 808-555-5555
-            p <span>Email:</span> aloha@aloha.com
-            p <span>Website:</span> 123 Aloha Street, Honolulu, HI 96813
+            h4 #{vendor}
+            p <strong>Address:</strong> #{address}
+            p <strong>Phone:</strong> #{phone}
+            p <strong>Email:</strong>
+              a(href="mailto:" + email)  #{email}
+            p <strong>Website:</strong>
+              a(href= website, target="_blank")  #{website}
         div.business-products
           h3 Other Products From The Same Vendor
           div.flex-container
-            div.col-quarter
+            div(class="col-quarter single-product")
               div.single-product-image
-                a(href="")
+                a(href="#")
                   img(src="https://placehold.it/250x200")
               div.single-product-info
                 h6
                   a(href="#") Product
-            div.col-quarter
+            div(class="col-quarter single-product")
               div.single-product-image
-                a(href="")
+                a(href="#")
                   img(src="https://placehold.it/250x200")
               div.single-product-info
                 h6
                   a(href="#") Product
-            div.col-quarter
+            div(class="col-quarter single-product")
               div.single-product-image
-                a(href="")
+                a(href="#")
                   img(src="https://placehold.it/250x200")
               div.single-product-info
                 h6
                   a(href="#") Product
-            div.col-quarter
+            div(class="col-quarter single-product")
               div.single-product-image
-                a(href="")
+                a(href="#")
                   img(src="https://placehold.it/250x200")
               div.single-product-info
                 h6
