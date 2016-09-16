@@ -23,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         });
         models.VendorInfo.belongsToMany(models.Type, {
           through: models.VendorInfoType,
-          foreignKey: 'type_id'
+          foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.hasMany(models.Market, {
           foreignKey: 'vendor_info_id'

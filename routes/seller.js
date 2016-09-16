@@ -28,6 +28,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         include: [
           {
             model: Type,
+            required: true
 
           }
         ]
