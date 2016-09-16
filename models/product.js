@@ -3,8 +3,8 @@ module.exports = function(sequelize, DataTypes) {
   var Product = sequelize.define('Product', {
     name: DataTypes.STRING,
     description: DataTypes.TEXT,
-    productType_id: DataTypes.INTEGER,
-    venderInfo_id: DataTypes.INTEGER,
+    product_info_id: DataTypes.INTEGER,
+    vendor_info_id: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     qty: DataTypes.INTEGER,
     cert_id: DataTypes.INTEGER,
@@ -14,8 +14,14 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.Product.belongsTo(models.VendorInfo);
-        models.Product.belongsTo(models.ProductInfo);
+        models.Product.belongsTo(models.VendorInfo, {
+          foreignKey: 'vendor_info_id',
+          targetKey: 'id'
+        });
+        models.Product.belongsTo(models.ProductInfo, {
+          foreignKey: 'product_info_id',
+          targetKey: 'id'
+        });
 
 
 
@@ -24,7 +30,9 @@ module.exports = function(sequelize, DataTypes) {
       // ***********************************
       //
       //
-        models.Product.hasMany(models.Certification);
+        models.Product.hasMany(models.Certification, {
+          foreignKey: 'cert_id'
+        });
       }
     }
   });
