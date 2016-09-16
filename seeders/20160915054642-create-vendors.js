@@ -11,7 +11,6 @@ module.exports = {
       sales_ph: '1-800-935-5510',
       website: 'https://www.bigislandcandies.com',
       email: 'contactus@bigislandcandies.com',
-      // type_id: 1,
       zip_id: 1,
       market_id: 2,
       service_id: 1,

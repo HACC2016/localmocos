@@ -14,7 +14,7 @@ module.exports = function(sequelize, DataTypes) {
         models.Type.belongsToMany(models.VendorInfo, {
           through: models.VendorInfoType,
           foreignKey: 'vendor_info_id'
-        })
+        });
       }
     }
   });
