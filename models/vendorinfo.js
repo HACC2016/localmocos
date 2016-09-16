@@ -11,10 +11,6 @@ module.exports = function(sequelize, DataTypes) {
     email: DataTypes.STRING,
   }, {
     tableName: 'vendor_infos',
-    // name: {
-    //   singular: 'vendor_info',
-    //   plural: 'vendor_infos'
-    // },
     classMethods: {
       associate: function(models) {
         // associations can be defined here
