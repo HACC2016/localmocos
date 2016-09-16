@@ -1,20 +1,15 @@
 doctype html
 html(lang="en")
-include includes/head.pug
-body
-  include includes/nav.pug
-  .about-content
-    .about-wrapper
-      .welcome
-        h2 Thank you for buying local.
-      .about-para-one
-        .image-one
-          img(src="/images/about/turtlebay.jpeg" style={width: "300px"})
-        .about-one
-          p Lorem ipsum dolor sit amet, pri an mucius prompta iudicabit, et duis forensibus eum, solum libris constituto ut qui. Cu ius legimus civibus electram, cum in nonumy cotidieque reformidans, et oporteat moderatius quaerendum eum. Ne vix postea nominavi atomorum, eos affert congue scripta no. No sit blandit lobortis scribentur. Doctus percipitur id vix. Aeque everti atomorum in qui.
-      .about-para-two
-        .image-two
-          img(src="/images/about/mo'o.jpg" style={width: "300px"})
-        .about-two
-          p Mea eius tantas euripidis eu, vel te invenire repudiare voluptaria, alienum luptatum ex vix. An ignota hendrerit vim. At rebum liber honestatis sed. Prima eripuit periculis eos te, cum ex aperiam recusabo. No eos eirmod postulant instructior, alterum placerat has et. Accusata dissentiet mel et, ut quo wisi meliore insolens. Quis ubique accumsan ei eos.
-include includes/footer.pug
+  include includes/head.pug
+  body
+    div.container
+      include includes/nav.pug
+      include includes/search.pug
+      div.main-content
+        div.about-container
+          h1 Why Buy Local?
+          img(src="/images/about/turtlebay.jpeg")
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu.
+          p In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus.
+          p Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum. Nam quam nunc, blandit vel, luctus pulvinar, hendrerit id, lorem. Maecenas nec odio et ante tincidunt tempus. Donec vitae sapien ut libero venenatis faucibus. Nullam quis ante. Etiam sit amet orci eget eros faucibus tincidunt. Duis leo. Sed fringilla mauris sit amet nibh.
+      include includes/footer.pug

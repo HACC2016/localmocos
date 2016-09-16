@@ -30,6 +30,7 @@ h5, h6 { font-size: 1em }
 p { margin: 0.5em 0; color: lighten($black, 33%); }
 a { color: $green; text-decoration: none }
 strong { font-weight: bold; }
+label { display: block; }
 
 // Container for all HTML Elements //
 .container {
@@ -60,7 +61,12 @@ strong { font-weight: bold; }
     margin: 0;
     padding: 0 25px;
     text-transform: uppercase;
-    color: lighten($black, 50%);
+    a{
+      color: lighten($black, 50%);
+      &:hover{
+        color: $green;
+      }
+    }
   }
 }
 .nav-right {
@@ -130,14 +136,6 @@ strong { font-weight: bold; }
     margin: 5px 0 15px;
     color: $cyan;
   }
-  // .businesses-container{
-  //   display: flex;
-  //   flex-flow: row wrap;
-  //   justify-content: space-between;
-  //   .single-business-container {
-  //     flex: 0 0 250px;
-  //   }
-  // }
 }
 
 .single-business-image img{
@@ -185,6 +183,10 @@ strong { font-weight: bold; }
 .search-container {
   width:100%;
   background-color: $white;
+  // background-image: url('');
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
   border-bottom: 10px solid $teal;
   padding: 100px 0 50px;
 }
@@ -296,9 +298,6 @@ hr{
     font-style: italic;
   }
   p{font-size:0.9em}
-  span{
-    font-weight: bold;
-  }
 }
 .result-listing{
   margin: 10px 0;
@@ -315,6 +314,21 @@ hr{
     h2{ font-size: 5em; }
     a { font-weight: bold; }
   }
+}
+
+////////////////////////////////////////////
+////////////////// ABOUT  //////////////////
+////////////////////////////////////////////
+.about-container{
+  margin-top: 25px;
+  h1{}
+  img{
+    width: 1100px;
+    height: 400px;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+  p{font-size:0.9em}
 }
 
 ////////////////////////////////////////////

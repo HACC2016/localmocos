@@ -14,9 +14,15 @@ html(lang="en")
             p <strong>Address:</strong> #{address}
             p <strong>Phone:</strong> #{phone}
             p <strong>Email:</strong>
-              a(href="mailto:" + email)  #{email}
+              if email
+                a(href="mailto:" + email)  #{email}
+              else
+                |  N/A
             p <strong>Website:</strong>
-              a(href= website, target="_blank")  #{website}
+              if website
+                a(href= website, target="_blank")  #{website}
+              else
+                |  N/A
         div.business-info
           h3 About Us
           p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.

@@ -29,7 +29,7 @@ app.get('/Login',function(req, res, next) {
     /***************** Search Products **************/
 app.get('/Search', function(req, res, next) {
       res.render('index');
-    }); 
+    });
 
 app.post('/Search', function(req, res, next) {
     db.Type.searchResults(req.body.search)
@@ -65,10 +65,10 @@ app.post('/Search', function(req, res, next) {
 
       res.render('searchResults',[products,vendors]);
       //res.json(data);
-        });       
+        });
     }
-    ); 
-    
+    );
+
     //  res.render('searchResults',{productList:productList,sellerList:sellerList})
 
     /**************** Home Page ***********************/

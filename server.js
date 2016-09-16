@@ -56,6 +56,21 @@ app.get('/vendor', function (req, res) {
 app.get('/search-results', function (req, res) {
   res.render('searchResults', {subtitle: "Search Results"})
 })
+app.get('/productForm', function (req, res) {
+  res.render('productForm', {})
+})
+app.get('/editProductForm', function (req, res) {
+  res.render('editProductForm', {})
+})
+app.get('/vendorForm', function (req, res) {
+  res.render('vendorForm', {})
+})
+app.get('/editVendorForm', function (req, res) {
+  res.render('editVendorForm', {})
+})
+app.get('/about', function (req, res) {
+  res.render('about', {subtitle: "About Us"})
+})
 ////////// END OF TESTING //////////
 
 app.use(function(req, res) {
