@@ -25,36 +25,17 @@ html(lang="en")
                 |  N/A
         div.business-info
           h3 About Us
-          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
+          p #{description}
         div.business-products
           h3 Products Offered
           div.flex-container
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
+            - for (var i = 0; i < products.length; i++) {
+              div(class="col-quarter single-product")
+                div.single-product-image
+                  a(href="#")
+                    img(src= products[i].image)
+                div.single-product-info
+                  h6
+                    a(href="#")= products[i].name
+            - }
       include includes/footer.pug
