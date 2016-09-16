@@ -5,9 +5,16 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT
   }, {
     tableName: 'types',
+    name: {
+      singular: 'type',
+      plural: 'types'
+    },
     classMethods: {
       associate: function(models) {
-        // associations can be defined here
+        models.Type.belongsToMany(models.VendorInfo, {
+          through: models.VendorInfoType,
+          foreignKey: 'vendor_info_id'
+        })
       }
     }
   });
