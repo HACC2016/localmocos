@@ -258,6 +258,7 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
+  border-radius: 10px;
 }
 .business-info{
   margin-top: 25px;
@@ -272,6 +273,7 @@ label { display: block; }
       height: 200px;
       object-fit: cover;
       object-position: 50% 50%;
+      border-radius: 5px;
     }
   }
 }
