@@ -25,13 +25,16 @@ module.exports = function(sequelize, DataTypes) {
           through: models.VendorInfoType,
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Market, {
+        models.VendorInfo.belongsToMany(models.Market, {
+          through: models.VendorInfoMarket,
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Certification, {
+        models.VendorInfo.belongsToMany(models.Certification, {
+          through: models.vendor_info_cert,
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Service, {
+        models.VendorInfo.belongsToMany(models.Service, {
+          through: models.vendor_info_service,
           foreignKey: 'vendor_info_id'
         });
       }

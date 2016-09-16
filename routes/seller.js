@@ -27,9 +27,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       db.VendorInfo.findAll({
         include: [
           {
-            model: Type,
+            model: db.Certification,
             required: true
-
           }
         ]
       })
