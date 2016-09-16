@@ -33,6 +33,7 @@ module.exports = function(sequelize, DataTypes) {
           type: sequelize.QueryTypes.SELECT
         });
 
+        /** Please push up **/
         return searchResultData;
       }
     }
