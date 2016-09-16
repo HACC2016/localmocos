@@ -1,5 +1,5 @@
-module.exports = function(express, app, path, bodyParser, querystring) {
-    var router = express.Router();
+module.exports = function(express,app,path,bodyParser,querystring, db) {
+ var router = express.Router();
 
     /*************
   1. Create new Seller ???

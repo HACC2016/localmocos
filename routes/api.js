@@ -1,5 +1,5 @@
 'use strict';
-module.exports = function(express, app, https, path, bodyParser, querystring) {
+module.exports = function(express, app, https, path, bodyParser, querystring, db) {
   var router = express.Router();
   var apiHostname = 'hts.usitc.gov';
   //HTS Keyword search

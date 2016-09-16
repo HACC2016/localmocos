@@ -10,6 +10,7 @@ module.exports = function(sequelize, DataTypes) {
     cert_id: DataTypes.INTEGER,
     isActive: DataTypes.BOOLEAN
   }, {
+    tableName: 'products',
     classMethods: {
       associate: function(models) {
         // associations can be defined here
