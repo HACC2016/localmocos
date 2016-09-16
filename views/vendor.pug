@@ -6,19 +6,49 @@ html(lang="en")
       include includes/nav.pug
       include includes/search.pug
       div.main-content
-        div.business-contact
-          div.bus-left
-            img(src="https://placehold.it/500x350")
-          div.bus-right
-            h2 BUSINESS NAME
-            p Business Info
-            p Email
-            p Address
-            p Hours
-            p Phone
+        div.flex-container
+          div.col-half
+            img.business-main-image(src="https://cdn.lovmedia.net/images/vendors/13334/1584/40264-1584-enY2U3y-lovmedia.jpg")
+          div.col-half
+            h2 #{vendor}
+            p <strong>Address:</strong> #{address}
+            p <strong>Phone:</strong> #{phone}
+            p <strong>Email:</strong>
+              a(href="mailto:" + email)  #{email}
+            p <strong>Website:</strong>
+              a(href= website, target="_blank")  #{website}
         div.business-info
           h3 About Us
-          p Here's some information about what we do
+          p Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus.
         div.business-products
-          h3 Other Products
-        include includes/footer.pug
+          h3 Products Offered
+          div.flex-container
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+      include includes/footer.pug
