@@ -7,14 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     tableName: 'vendor_info_types',
     classMethods: {
       associate: function(models) {
-        models.VendorInfoType.belongsTo(models.VendorInfo, {
-          foreignKey: 'vendor_info_id',
-          targetKey: 'id'
-        })
-        models.VendorInfoType.belongsTo(models.Type, {
-          foreignKey: 'type_id',
-          targetKey: 'id'
-        })
+        // associations can be defined here
       }
     }
   });

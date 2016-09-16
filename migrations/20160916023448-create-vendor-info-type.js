@@ -9,20 +9,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       vendor_info_id: {
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'vendor_infos',
-          key: 'id'
-        }
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       type_id: {
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'types',
-          key: 'id'
-        }
+        allowNull: false,
+        type: Sequelize.INTEGER
       },
       createdAt: {
         allowNull: false,
