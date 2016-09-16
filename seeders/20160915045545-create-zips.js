@@ -9,7 +9,28 @@ module.exports = {
       island: 'Hawaii',
       createdAt: new Date(),
       updatedAt: new Date()
-    }
+    },
+    {
+      city: 'Captain Cook',
+      zip: 96704,
+      island: 'Hawaii',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      city: 'Mountain View',
+      zip: 96771,
+      island: 'Hawaii',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      city: 'Kailua-Kona',
+      zip: 96740,
+      island: 'Hawaii',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
     ], {})
   },
 

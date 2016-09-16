@@ -24,17 +24,20 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-      db.VendorInfo.findAll({
+      db.User.findAll({
         include: [
           {
-            model: db.Certification,
+            model: db.VendorInfo,
             required: true
           }
         ]
       })
       .then((stuff) => {
-        return res.json(stuff);
-      })
+        // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
+        // .then((data) => {
+          return res.json(stuff);
+        // });
+      });
       // res.render('vendorForm');
     });
 
