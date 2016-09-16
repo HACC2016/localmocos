@@ -15,7 +15,7 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      product_type_id: {
+      product_info_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
