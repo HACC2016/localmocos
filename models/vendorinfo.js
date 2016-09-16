@@ -1,9 +1,20 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var VendorInfo = sequelize.define('VendorInfo', {
-    user_id: DataTypes.INTEGER
+    user_id: DataTypes.INTEGER,
+    dba: DataTypes.STRING,
+    address1: DataTypes.STRING,
+    address2: DataTypes.STRING,
+    business_ph: DataTypes.STRING,
+    sales_ph: DataTypes.STRING,
+    website: DataTypes.STRING,
+    email: DataTypes.STRING,
   }, {
     tableName: 'vendor_infos',
+    // name: {
+    //   singular: 'vendor_info',
+    //   plural: 'vendor_infos'
+    // },
     classMethods: {
       associate: function(models) {
         // associations can be defined here
@@ -14,8 +25,9 @@ module.exports = function(sequelize, DataTypes) {
         models.VendorInfo.hasMany(models.Product, {
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Type, {
-          foreignKey: 'vendor_info_id'
+        models.VendorInfo.belongsToMany(models.Type, {
+          through: models.VendorInfoType,
+          foreignKey: 'type_id'
         });
         models.VendorInfo.hasMany(models.Market, {
           foreignKey: 'vendor_info_id'
