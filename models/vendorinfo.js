@@ -7,8 +7,13 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
-        models.VendorInfo.belongsTo(models.User);
-        models.VendorInfo.hasMany(models.Product);
+        models.VendorInfo.belongsTo(models.User, {
+          foreignKey: 'user_id',
+          targetKey: 'id'
+        });
+        models.VendorInfo.hasMany(models.Product, {
+
+        });
         models.VendorInfo.hasMany(models.Type);
         models.VendorInfo.hasMany(models.Market);
         models.VendorInfo.hasMany(models.Certification);
