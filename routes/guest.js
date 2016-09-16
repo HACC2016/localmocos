@@ -28,11 +28,11 @@ app.get('/Login',function(req, res, next) {
 
     /***************** Search Products **************/
 app.get('/Search', function(req, res, next) {
-    if(!req.headers.searchinfo){
       res.render('index');
-    }
-    else{
-    db.Type.searchResults(req.headers.searchinfo)
+    });
+
+app.post('/Search', function(req, res, next) {
+    db.Type.searchResults(req.body.search)
     .then((data) => {
         var vendorAddedArray=[];
         var vendors=[];
@@ -63,12 +63,11 @@ app.get('/Search', function(req, res, next) {
             })
         }
 
-console.log([products,vendors]);
       res.render('searchResults',[products,vendors]);
       //res.json(data);
         });
     }
-    });
+    );
 
     //  res.render('searchResults',{productList:productList,sellerList:sellerList})
 
