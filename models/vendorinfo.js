@@ -2,6 +2,9 @@
 module.exports = function(sequelize, DataTypes) {
   var VendorInfo = sequelize.define('VendorInfo', {
     user_id: DataTypes.INTEGER,
+    company_name: DataTypes.STRING,
+    business_reg_num: DataTypes.INTEGER,
+    business_description: DataTypes.TEXT,
     dba: DataTypes.STRING,
     address1: DataTypes.STRING,
     address2: DataTypes.STRING,
@@ -29,10 +32,12 @@ module.exports = function(sequelize, DataTypes) {
           through: models.VendorInfoMarket,
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Certification, {
+        models.VendorInfo.belongsToMany(models.Certification, {
+          through: models.vendor_info_cert,
           foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Service, {
+        models.VendorInfo.belongsToMany(models.Service, {
+          through: models.vendor_info_service,
           foreignKey: 'vendor_info_id'
         });
       }

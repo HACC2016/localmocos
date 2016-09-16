@@ -17,6 +17,18 @@ module.exports = {
           key: 'id'
         }
       },
+      company_name: {
+        allowNull: false,
+        type: Sequelize.STRING
+      },
+      business_reg_num: {
+        allowNull: false,
+        type: Sequelize.INTEGER
+      },
+      business_description: {
+        allowNull: true,
+        type: Sequelize.TEXT
+      },
       dba: {
         allowNull: false,
         type: Sequelize.STRING
@@ -42,7 +54,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       email: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       zip_id: {
@@ -60,24 +72,6 @@ module.exports = {
         foreignKey: true,
         references: {
           model: 'markets',
-          key: 'id'
-        }
-      },
-      cert_id: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'certifications',
-          key: 'id'
-        }
-      },
-      service_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'services',
           key: 'id'
         }
       },

@@ -7,7 +7,6 @@ module.exports = function(sequelize, DataTypes) {
     vendor_info_id: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     qty: DataTypes.INTEGER,
-    cert_id: DataTypes.INTEGER,
     isActive: DataTypes.BOOLEAN
   }, {
     tableName: 'products',
@@ -16,22 +15,11 @@ module.exports = function(sequelize, DataTypes) {
         // associations can be defined here
         models.Product.belongsTo(models.VendorInfo, {
           foreignKey: 'vendor_info_id',
-          targetKey: 'id'
+          targetKey: 'id',
         });
         models.Product.belongsTo(models.ProductInfo, {
           foreignKey: 'product_info_id',
           targetKey: 'id'
-        });
-
-
-
-      // ***** Add Image Models ************
-      //   models.Product.hasMany(models.Image);
-      // ***********************************
-      //
-      //
-        models.Product.hasMany(models.Certification, {
-          foreignKey: 'cert_id'
         });
       }
     }
