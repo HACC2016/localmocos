@@ -1,18 +1,18 @@
-var express= require('express');
-var app= express();
+var express = require('express');
+var app = express();
 //var pug = require('pug');
 var https = require('https');
 var path = require('path');
-var bodyParser=require('body-parser');
-var querystring= require('querystring');
+var bodyParser = require('body-parser');
+var querystring = require('querystring');
 var db = require('./models');
 
 
 const public = path.join(__dirname, 'public');
 
 
-const useDB=true;
-/**** Setting to false until I set up postgres.
+const useDB = true;
+/**** Setting to false until I set up postgres.  
 Should be set true if your database is setup.
 
 *********/
