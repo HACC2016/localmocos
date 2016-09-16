@@ -60,35 +60,30 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
        /* testJson.name = "Product Form for id=" + cleanParam(req.url);
         res.json([testJson]); */
-        // const product = {
-        //     name: "BLAH",
-        //     description: "blahksjhefasm",
-        //     price: "$0.24",
-        //     quantity: 3
-        // }
-        res.render('editProductForm', {
-            methodType: 'POST',
-            actionType: '/product/new',
-            formTitle: 'Edit New Product',
-            product: {
-                name: req.product.name
+
+        console.log(cleanParamMiddle(req.url,2));
+        db.Product.findOne({
+            where: {
+                id: cleanParamMiddle(req.url,2)
             }
-        });
+        }).then(function (data) {
+            res.render('editProductForm', {
+                methodType: 'POST',
+                actionType: '/product/new',
+                formTitle: 'Edit New Product',
+                product: {
+                    name: data.name,
+                    description: data.description,
+                    price: data.price,
+                    qty: data.qty
+                }
+            });  
+        })
     });
 
     app.put(/product\/\d+\/edit$/, function(req, res, next) {
-        // testJson.name = "Product Edit with id=" + cleanParam(req.url);
-        // res.json([testJson]);
-        db.product.findOne({
-            where: {
-                id: req.params.id
-            }
-        })
-        .then(function (edit) {
-           return edit.update({
-            product_info_id: req.body
-           });
-        });
+        testJson.name = "Product Edit with id=" + cleanParam(req.url);
+        res.json([testJson]);
     });
 
     app.put(/product\/\d+\/delete$/, function(req, res, next) {
@@ -100,6 +95,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     return router;
 }
 
+
+function cleanParamMiddle(thisParam, index) {
+    var paramArray = thisParam.split('/');
+    return paramArray[index];
+}
 
 function cleanParam(thisParam) {
     var paramArray = thisParam.split('/');
