@@ -35,10 +35,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       .then((stuff) => {
         // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
         // .then((data) => {
-          return res.json(stuff);
+          // return res.json(stuff);
         // });
+        res.render('vendorForm');
       });
-      // res.render('vendorForm');
     });
 
     app.post('/seller/new', function(req, res) {
