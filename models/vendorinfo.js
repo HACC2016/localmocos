@@ -12,12 +12,20 @@ module.exports = function(sequelize, DataTypes) {
           targetKey: 'id'
         });
         models.VendorInfo.hasMany(models.Product, {
-
+          foreignKey: 'vendor_info_id'
         });
-        models.VendorInfo.hasMany(models.Type);
-        models.VendorInfo.hasMany(models.Market);
-        models.VendorInfo.hasMany(models.Certification);
-        models.VendorInfo.hasMany(models.Service);
+        models.VendorInfo.hasMany(models.Type, {
+          foreignKey: 'vendor_info_id'
+        });
+        models.VendorInfo.hasMany(models.Market, {
+          foreignKey: 'vendor_info_id'
+        });
+        models.VendorInfo.hasMany(models.Certification, {
+          foreignKey: 'vendor_info_id'
+        });
+        models.VendorInfo.hasMany(models.Service, {
+          foreignKey: 'vendor_info_id'
+        });
       }
     }
   });
