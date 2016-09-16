@@ -39,6 +39,8 @@ include includes/form.pug
           input(type="email" name="e_mail" placeholder="E-mail" value=vendor.email required)
         label Website
           input(type="url" name="website" placeholder="Website" value=vendor.website)
+        label Image
+          input(type="url" name="images" placeholder="Image Link" value=vendor.image)
         label Type of Business:
           +selectWithOther("bussinessType", [{"value": 1, "text": "Distributor"},{"value": 2, "text": "Grower"},{"value": 3, "text": "Manufacturer"},{"value": 4, "text": "Processor"},{"value": 5, "text": "Retailer"}, {"value": 6, "text": "Wholesaler"}])
         label Services:
