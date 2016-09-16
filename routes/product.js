@@ -69,8 +69,19 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.put(/product\/\d+\/edit$/, function(req, res, next) {
-        testJson.name = "Product Edit with id=" + cleanParam(req.url);
-        res.json([testJson]);
+        // testJson.name = "Product Edit with id=" + cleanParam(req.url);
+        // res.json([testJson]);
+        db.Product.findOne({
+            where: {
+                id: req.params.id
+            }, include: [{
+                model: db.user,
+                required: true
+            }]
+        })
+        .then(function (product) {
+            res.render('editProductForm', {products: product});
+        });
     });
 
     app.put(/product\/\d+\/delete$/, function(req, res, next) {
