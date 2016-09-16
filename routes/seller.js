@@ -65,7 +65,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     //                  }
     //             });
     // });
-
+    //////// For the edit page of the seller ///////
     db.VendorInfo.findOne({
         where: {
             id: cleanParamMiddle(req.url,2)
