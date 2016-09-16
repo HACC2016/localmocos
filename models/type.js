@@ -5,10 +5,6 @@ module.exports = function(sequelize, DataTypes) {
     description: DataTypes.TEXT
   }, {
     tableName: 'types',
-    name: {
-      singular: 'type',
-      plural: 'types'
-    },
     classMethods: {
       associate: function(models) {
         models.Type.belongsToMany(models.VendorInfo, {

@@ -41,15 +41,6 @@ module.exports = {
         allowNull: false,
         type: Sequelize.INTEGER
       },
-      cert_id: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'certifications',
-          key: 'id'
-        }
-      },
       image: {
         allowNull: true,
         type: Sequelize.STRING,
