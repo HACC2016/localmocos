@@ -14,20 +14,14 @@ $green: #037074;
 $black: #000000;
 $white: #FFFFFF;
 
-
-// FOR TEST PURPOSES || DELETE THIS LATER
-@import 'https://fonts.googleapis.com/css?family=Homemade+Apple';
-@import 'https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300,300i,700';
-body { font-family: 'Open Sans', sans-serif;}
-
 ////////////////////////////////////////////
 ////////// ELEMENTS FOR ALL PAGES //////////
 ////////////////////////////////////////////
 *{ margin: 0; padding: 0; box-sizing: border-box; }
-body{ background-color: lighten($light-blue, 15%); }
+body{ background-color: lighten($light-blue, 15%); font-family: 'Open Sans', sans-serif; }
 h1, h2, h3, h4, h5, h6 { font-weight: bold; }
-h1, h2, h3 { margin: 5px 0 15px; }
-h4, h5, h6 { margin: 5px 0; }
+h1, h2, h3 { margin: 5px 0 15px; color: $teal; }
+h4, h5, h6 { margin: 5px 0; color: $cerulean; }
 h1 { font-size: 2em }
 h2 { font-size: 1.75em }
 h3 { font-size: 1.5em }
@@ -35,11 +29,12 @@ h4 { font-size: 1.25em }
 h5, h6 { font-size: 1em }
 p { margin: 0.5em 0; color: lighten($black, 33%); }
 a { color: $green; text-decoration: none }
+strong { font-weight: bold; }
 
 // Container for all HTML Elements //
 .container {
   width: 100%;
-  min-width: 1100px;
+  min-width: 1150px;
 }
 // Navigation Menu Bar //
 .nav-menu {
@@ -91,13 +86,13 @@ a { color: $green; text-decoration: none }
 }
 // Container for Main Content //
 .main-content{
-  max-width: 1200px;
+  width: 1150px;
   margin: 0 auto;
-  padding: 15px 25px;
+  padding: 25px;
 }
 // Footer //
 .footer {
-  max-width: 1200px;
+  max-width: 1150px;
   margin: 0 auto;
   padding: 15px 25px;
   font-size: 0.8em;
@@ -135,40 +130,21 @@ a { color: $green; text-decoration: none }
     margin: 5px 0 15px;
     color: $cyan;
   }
-  .businesses-container{
-    display: flex;
-    flex-flow: row wrap;
-    justify-content: space-between;
-    .single-business-container {
-      flex: 0 0 0;
-    }
-    a{
-      display: block;
-      width: 100px;
-      height: 30px;
-      // font-weight: bold;
-      font-size: 0.9em;
-      line-height: 28px;
-      margin-top: 5px;
-      text-align: center;
-      border-radius: 3px;
-      background-color: $cerulean;
-      color: $white;
-      &:hover{
-        background: darken($cerulean, 5%);
-      }
-      &:active, &:focus{
-        background: darken($cerulean, 15%);
-      }
-    }
-  }
+  // .businesses-container{
+  //   display: flex;
+  //   flex-flow: row wrap;
+  //   justify-content: space-between;
+  //   .single-business-container {
+  //     flex: 0 0 250px;
+  //   }
+  // }
 }
+
 .single-business-image img{
   width: 250px;
   height: 250px;
   border-radius: 5px;
 }
-
 .single-business-info{
   height: 100px;
   h4{
@@ -177,6 +153,26 @@ a { color: $green; text-decoration: none }
   p{
     font-size: 0.9em;
     font-style: italic;
+  }
+}
+.single-business-link{
+  a{
+    display: block;
+    margin-top: 5px;
+    width: 100px;
+    height: 30px;
+    line-height: 28px;
+    border-radius: 3px;
+    font-size: 0.9em;
+    text-align: center;
+    color: $white;
+    background-color: $cerulean;
+    &:hover{
+      background: darken($cerulean, 5%);
+    }
+    &:active, &:focus{
+      background: darken($cerulean, 15%);
+    }
   }
 }
 
@@ -204,7 +200,6 @@ a { color: $green; text-decoration: none }
     padding-left: 10px;
     float: left;
     font: bold 15px 'Open Sans', sans-serif;
-    // border: 0;
     border: 1px solid $teal;
     background: $white;
     -moz-border-radius: 3px 0 0 3px;
@@ -243,11 +238,9 @@ a { color: $green; text-decoration: none }
 }
 .advanced-search {
   padding-left: 10px;
-  a {
-    color: $green;
-    font-size: 0.8em;
-    font-weight: bold;
-  }
+  color: $green;
+  font-size: 0.8em;
+  font-weight: bold;
 }
 .center-text{
   padding-left: 0;
@@ -258,43 +251,57 @@ a { color: $green; text-decoration: none }
 ////////////////////////////////////////////
 /////////////// VENDOR  PAGE ///////////////
 ////////////////////////////////////////////
-.business-contact{
-  padding: 25px 25px 5px;
-  display: flex;
-  flex-flow: row wrap;
-  justify-content: space-between;
-  .bus-left{
-    flex: 0 0 48%;
-  }
-  .bus-right{
-    flex: 0 0 48%;
-  }
+.business-main-image{
+  width: 525px;
+  height: 350px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
-
 .business-info{
-  padding: 5px 25px;
+  margin-top: 25px;
 }
 
 .business-products{
-  padding: 5px 25px;
+  margin-top: 25px;
+  .single-product{
+    height: 250px;
+    .single-product-image{
+      width: 250px;
+      height: 200px;
+      object-fit: cover;
+      object-position: 50% 50%;
+    }
+  }
 }
 
 ////////////////////////////////////////////
 /////////////// PRODUCT PAGE ///////////////
 ////////////////////////////////////////////
-.main-product{
-  padding: 15px 25px 5px;
+.product-main-image{
+  width: 525px;
+  height: 350px;
+  object-fit: cover;
+  object-position: 50% 50%;
 }
-
+hr{
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
 ////////////////////////////////////////////
 ////////////// SEARCH RESULTS //////////////
 ////////////////////////////////////////////
-.results-header{
-  padding: 15px 25px 5px;
-}
-
 .results{
-  padding: 15px 25px 5px;
+  margin-top: 25px;
+  .result-description{
+    font-style: italic;
+  }
+  p{font-size:0.9em}
+  span{
+    font-weight: bold;
+  }
+}
+.result-listing{
+  margin: 10px 0;
 }
 
 ////////////////////////////////////////////
@@ -304,10 +311,31 @@ a { color: $green; text-decoration: none }
   padding: 15px 25px 5px;
   .error{
     text-align: center;
-    h1{ font-size: 10em; color: $teal; }
-    h2{ font-size: 5em; color: $teal; }
+    h1{ font-size: 10em; }
+    h2{ font-size: 5em; }
     a { font-weight: bold; }
   }
+}
+
+////////////////////////////////////////////
+///////////// FLEXBOX  SPACING /////////////
+////////////////////////////////////////////
+.flex-container{
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+.col-quarter{
+  flex: 0 0 250px;
+}
+.col-half{
+  flex: 0 0 525px;
+}
+.col-third{
+  flex: 0 0 200px;
+}
+.col-two-thirds{
+  flex: 0 0 850px;
 }
 
 // div {border: 1px red dotted;} //delete this later!!!
