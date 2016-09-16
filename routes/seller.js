@@ -54,42 +54,13 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/seller\/\d+\/edit$/, function(req, res) {
       // console.log(db.Type.findAll());
       // 
-    
-    // db.Type.findAll({})
-    // .then((data) => {
-    //   console.log(data);
-    //   res.render('editVendorForm', {
-    //                 methodType: 'PUT',
-    //                 actionType: '/seller/{id}',
-    //                 formTitle: 'Edit Seller'
-    //                  }
-    //             });
-    // });
-    //////// For the edit page of the seller ///////
-    db.VendorInfo.findOne({
-        where: {
-            id: cleanParamMiddle(req.url,2)
-        }
-    })
+    db.Type.findAll({})
     .then((data) => {
       console.log(data);
       res.render('editVendorForm', {
                     methodType: 'PUT',
                     actionType: '/seller/{id}',
-                    formTitle: 'Edit Seller',
-                    vendor: {
-                        user: data.user_id,
-                        company: data.company_name,
-                        business_reg_name: data.business_reg_name,
-                        business_description: data.business_description,
-                        dba: data.dba,
-                        address1: data.address1,
-                        address2: data.address2,
-                        business_ph: data.business_ph,
-                        sales_ph: data.sales_ph,
-                        website: data.website,
-                        email: data.email
-                    }
+                    formTitle: 'Edit Seller'
                 });
     });
                 
