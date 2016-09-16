@@ -23,20 +23,15 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-        /**/
-                res.render('vendorForm', {
-                    methodType: 'POST',
-                    actionType: '/seller/new',
-                    formTitle: 'Create New Seller'
-                });
-            // }
-        // testJson.name = "Form to Create new Seller";
-        // res.json(testJson);
+      res.render('vendorForm');
     });
 
     app.post('/seller/new', function(req, res) {
-        testJson.name = "Created new Seller";
-        res.json(testJson);
+      res.render('vendorForm', {
+          methodType: 'POST',
+          actionType: '/seller/new',
+          formTitle: 'Create New Seller'
+      });
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
