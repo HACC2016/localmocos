@@ -6,6 +6,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         "response": "Ok"
     };
 
+    var Type = db.Type;
 
     /*************
   1. Create new Seller
@@ -23,7 +24,18 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-      res.render('vendorForm');
+      db.VendorInfo.findAll({
+        include: [
+          {
+            model: Type,
+
+          }
+        ]
+      })
+      .then((stuff) => {
+        return res.json(stuff);
+      })
+      // res.render('vendorForm');
     });
 
     app.post('/seller/new', function(req, res) {

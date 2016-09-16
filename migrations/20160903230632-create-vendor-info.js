@@ -45,15 +45,15 @@ module.exports = {
         allowNull: false,
         type: Sequelize.STRING
       },
-      type_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'types',
-          key: 'id'
-        }
-      },
+      // type_id: {
+      //   allowNull: false,
+      //   type: Sequelize.INTEGER,
+      //   foreignKey: true,
+      //   references: {
+      //     model: 'types',
+      //     key: 'id'
+      //   }
+      // },
       zip_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
