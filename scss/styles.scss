@@ -183,6 +183,10 @@ label { display: block; }
 .search-container {
   width:100%;
   background-color: $white;
+  // background-image: url('');
+  // background-repeat: no-repeat;
+  // background-position: center;
+  // background-size: cover;
   border-bottom: 10px solid $teal;
   padding: 100px 0 50px;
 }
