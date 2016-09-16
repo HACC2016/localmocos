@@ -12,7 +12,7 @@ const public = path.join(__dirname, 'public');
 
 
 const useDB = true;
-/**** Setting to false until I set up postgres.  
+/**** Setting to false until I set up postgres.
 Should be set true if your database is setup.
 
 *********/
@@ -52,6 +52,21 @@ app.get('/vendor', function (req, res) {
     var vendor = vendorArray[0];
     res.render('vendor', {subtitle: "Vendor", vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
   });
+})
+app.get('/vendor/:id', function (req, res) {
+  db.VendorInfo.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function (vendorObject) {
+    var vendor = vendorObject;
+    db.Product.findAll({
+      where: {vendor_info_id: req.params.id}
+    })
+    .then(function(productArray){
+    res.render('vendor', {subtitle: vendor.dba, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
+    });
+  });
+
 })
 app.get('/search-results', function (req, res) {
   res.render('searchResults', {subtitle: "Search Results"})
