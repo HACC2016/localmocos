@@ -6,6 +6,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         "response": "Ok"
     };
 
+    var Type = db.Type;
 
     /*************
   1. Create new Seller
@@ -23,20 +24,29 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-        /**/
-                res.render('vendorForm', {
-                    methodType: 'POST',
-                    actionType: '/seller/new',
-                    formTitle: 'Create New Seller'
-                });
-            // }
-        // testJson.name = "Form to Create new Seller";
-        // res.json(testJson);
+      db.User.findAll({
+        include: [
+          {
+            model: db.VendorInfo,
+            required: true
+          }
+        ]
+      })
+      .then((stuff) => {
+        // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
+        // .then((data) => {
+          return res.json(stuff);
+        // });
+      });
+      // res.render('vendorForm');
     });
 
     app.post('/seller/new', function(req, res) {
-        testJson.name = "Created new Seller";
-        res.json(testJson);
+      res.render('vendorForm', {
+          methodType: 'POST',
+          actionType: '/seller/new',
+          formTitle: 'Create New Seller'
+      });
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {

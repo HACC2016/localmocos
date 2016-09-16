@@ -15,7 +15,7 @@ module.exports = {
       description: {
         type: Sequelize.TEXT
       },
-      productType_id: {
+      product_info_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
@@ -24,7 +24,7 @@ module.exports = {
           key: 'id'
         }
       },
-      vendorInfo_id: {
+      vendor_info_id: {
         allowNull: false,
         type: Sequelize.INTEGER,
         foreignKey: true,
@@ -40,15 +40,6 @@ module.exports = {
       qty: {
         allowNull: false,
         type: Sequelize.INTEGER
-      },
-      cert_id: {
-        allowNull: true,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'certifications',
-          key: 'id'
-        }
       },
       image: {
         allowNull: true,

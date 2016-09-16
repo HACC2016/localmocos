@@ -37,9 +37,29 @@ var productRoute=require('./routes/product')(express,app,path,bodyParser,queryst
 var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring, db);
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring,db);
 
+//////// ROUTES TO TEST PAGES ////////
+app.get('/product', function (req, res) {
+  db.Product.findAll().then(function(productArray) {
+    var product = productArray[0];
+    db.VendorInfo.findAll().then(function(vendorArray) {
+      var vendor = vendorArray[0];
+      res.render('product', {subtitle: "Products", product: product.name, description: product.description, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
+    });
+  })
+})
+app.get('/vendor', function (req, res) {
+  db.VendorInfo.findAll().then(function(vendorArray) {
+    var vendor = vendorArray[0];
+    res.render('vendor', {subtitle: "Vendor", vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
+  });
+})
+app.get('/search-results', function (req, res) {
+  res.render('searchResults', {subtitle: "Search Results"})
+})
+////////// END OF TESTING //////////
 
 app.use(function(req, res) {
-  res.status(404).render('404');
+  res.status(404).render('404', {subtitle: "Page Not Found"});
 })
 
 

@@ -6,8 +6,49 @@ html(lang="en")
       include includes/nav.pug
       include includes/search.pug
       div.main-content
-        div.main-product
-          h2 Here are some products
+        div.flex-container
+          div.col-half
+            img.product-main-image(src="http://hawaiichips.com/wp-content/uploads/Furikake-Mac-Nuts1.jpg")
+          div.col-half
+            h2 #{product}
+            p #{description}
+            hr
+            h4 #{vendor}
+            p <strong>Address:</strong> #{address}
+            p <strong>Phone:</strong> #{phone}
+            p <strong>Email:</strong>
+              a(href="mailto:" + email)  #{email}
+            p <strong>Website:</strong>
+              a(href= website, target="_blank")  #{website}
         div.business-products
           h3 Other Products From The Same Vendor
-        include includes/footer.pug
+          div.flex-container
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+            div(class="col-quarter single-product")
+              div.single-product-image
+                a(href="#")
+                  img(src="https://placehold.it/250x200")
+              div.single-product-info
+                h6
+                  a(href="#") Product
+      include includes/footer.pug

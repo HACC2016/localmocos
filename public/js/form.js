@@ -1,9 +1,19 @@
-function getOther (val) {
-  var element=document.getElementByClassName('other');
-
-  if(val === "Other") {
-    element.style.display='block';
+var elements = $("select");
+elements.on("change", function (event) {
+  console.log(event);
+  var input = $(this).next("div.other").find("input");
+  if(event.target.value === "Other") {
+    input.css("visibility", "visible");
   } else {
-    element.style.display='none';
+    input.css("display", "none");
   }
-}
+});
+
+// elements.change(function (event) {
+//   var input = $(this).find("input").each();
+//   if(event.target.value === "Other"){
+//     input.show();
+//   } else {
+//     input.hide();
+//   }
+// });
