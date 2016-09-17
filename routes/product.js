@@ -28,13 +28,13 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         "image": "./Images/1442369634.png"
     }]
 
-    var productsInfo;
+    var productType;
 
-    db.ProductInfo.findAll({
+    db.ProductType.findAll({
     })
     .then((data) => {
-        productsInfo = JSON.parse(JSON.stringify(data));
-    })
+        productType = JSON.parse(JSON.stringify(data));
+    });
 
     /*************
   1. Search Products
@@ -55,10 +55,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         res.json([testJson]); */
         res.render('productForm', {
             // methodType: 'POST',
-            actionType: '/product/new',
-            formTitle: 'Create New Product',
+            // actionType: '/product/new',
+            // formTitle: 'Create New Product',
             product: {},
-            productsInfo: productsInfo
+            productType: productType
         });
     });
 
@@ -73,7 +73,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             vendor_info_id: req.body.vendor_info_id,
             price: req.body.price,
             qty: req.body.qty,
-            image: req.body.image
+            image: req.body.image,
         })
         .then(function (product) {
             res.render('product', {product: product});
@@ -94,6 +94,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 methodType: 'POST',
                 actionType: '/product/new',
                 formTitle: 'Edit New Product',
+                productsInfo: productsInfo,
                 product: {
                     name: data.name,
                     description: data.description,

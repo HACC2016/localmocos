@@ -1,12 +1,5 @@
 include includes/form.pug
   .product-content
-    mixin selectWithOther(fieldname, options)
-      select.name = fieldname
-        each option in options
-          option(value=option.value)= option.text
-        option(value="other") Other
-      input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
-
     form(action="/product" method="POST" enctype="x-www-form-urlencoded")
       fieldset
         legend Product Information:
@@ -21,13 +14,16 @@ include includes/form.pug
         label Image:
           input(type="url" name="image" placeholder="Image Link" value=product.image)
         label Farmed Seafood:
-          +selectWithOther("seafood", [{"value": 1, "text": "Fresh Seafood"},{"value": 2, "text": "Frozen Seafood"},{"value": 3, "text": "Processed Seafood"}])
+          select(name="product_info_id")
+            option
+            option Frozen Seafood
+            option Processed Seafood
         label Snack Foods:
-          +selectWithOther("snackFoods", [{"value": 1, "text": "Candles"},{"value": 2, "text": "Chips"},{"value": 3, "text": "Cookies"},{"value": 4, "text": "Crackers"},{"value": 5, "text": "Dried Fruits"}])
+          select(name="product_info_id")
         label Beverages:
-          +selectWithOther("beverages", [{"value": 1, "text": "Alcoholic"},{"value": 2, "text": "Concentrates"},{"value": 3, "text": "Drink Mixes"},{"value": 4, "text": "Juices"},{"value": 5, "text": "Tea"}, {"value": 6, "text": "Water"}])
         label Coffee:
-          select(name="coffee")
+          select(name="product_types")
+            option 
             option Big Island (Excluding Kona)
             option Kauai
             option Kona
@@ -35,9 +31,7 @@ include includes/form.pug
             option Molokai
             option Oahu
         label Condiments:
-          +selectWithOther("condiments", [{"value": 1, "text": "Dressings"},{"value": 2, "text": "Jams/Jellies"},{"value": 3, "text": "Pickled Vegetables"},{"value": 4, "text": "Preserved Fruits"},{"value": 5, "text": "Sauces"}])
         label Dairy:
-          +selectWithOther("dairy", [{"value": 1, "text": "Butter"},{"value": 2, "text": "Cheese"},{"value": 3, "text": "Ice Cream"},{"value": 4, "text": "Milk"}])
         legend Floral:
         label Anthuriums
           input(type="radio" name="anthurium")
