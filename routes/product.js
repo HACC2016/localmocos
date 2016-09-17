@@ -70,10 +70,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             name: req.body.name,
             description: req.body.description,
             product_info_id: req.body.product_info_id,
-            vendor_info_id: req.body.vendor_info_id,
+            vendor_info_id: 1,
             price: req.body.price,
             qty: req.body.qty,
             image: req.body.image,
+            isActive: 1
         })
         .then(function (product) {
             res.render('product', {product: product});
@@ -102,7 +103,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     qty: data.qty,
                     image: data.image
                 }
-            });  
+            });
         })
     });
 
