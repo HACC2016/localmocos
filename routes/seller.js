@@ -5,8 +5,34 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         "name": "Product",
         "response": "Ok"
     };
+    var businessType;
+    var services;
+    var markets;
+    var certs;
 
-    var Type = db.Type;
+    db.Type.findAll({
+    })
+    .then((data) => {
+      businessType = JSON.parse(JSON.stringify(data));
+    });
+
+    db.Service.findAll({
+    })
+    .then((data) => {
+      services = JSON.parse(JSON.stringify(data));
+    })
+
+    db.Market.findAll({
+    })
+    .then((data) => {
+      markets = JSON.parse(JSON.stringify(data));
+    })
+
+    db.Certification.findAll({
+    })
+    .then((data) => {
+      certs = JSON.parse(JSON.stringify(data));
+    })
 
     /*************
   1. Create new Seller
@@ -24,22 +50,15 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-      db.User.findAll({
-        include: [
-          {
-            model: db.VendorInfo,
-            required: true
-          }
-        ]
-      })
-      .then((stuff) => {
-        // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
-        // .then((data) => {
-          // return res.json(stuff);
-        // });
-        res.render('vendorForm',{
-            vendor:{}
-        });
+
+
+
+      res.render('vendorForm',{
+          vendor: {},
+          businessType: businessType,
+          services: services,
+          markets: markets,
+          certs: certs
       });
     });
 
@@ -62,7 +81,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           console.log(city, locals.city, island, locals.island)
           throw new TypeError('City and Island do not match')
         }
-        console.log(city, island);
       })
       // .then(() => {
       //   VendorInfo.create({
