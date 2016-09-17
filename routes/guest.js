@@ -51,6 +51,7 @@ app.post('/Search', function(req, res, next) {
                 "business_ph":data[i].business_ph,
                 "website":data[i].website,
                 "email":data[i].email,
+                "image":data[i].busimage,
               });
             }
 
