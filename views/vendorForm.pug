@@ -24,7 +24,7 @@ include includes/form.pug
         label City *
           input(type="text" name="city" placeholder="City" required)
         label Zip Code *
-          input(type="text" name="zip" placeholder="Zip Code" required)
+          input(type="text" inputmode="numeric" name="zip" placeholder="Zip Code" required)
         label Country *
           input(type="text" name="country" placeholder="Country" required)
         label Island *
@@ -49,5 +49,5 @@ include includes/form.pug
           +selectWithOther("market", markets)
         label Certifications/Specialty:
           +selectWithOther("specialty", certs)
-        input(type="submit" value="Post" name="submitForm")
+        input(type="submit" value="Submit" class="submit")
 include includes/onChange.pug
