@@ -15,10 +15,10 @@ module.exports = function(sequelize, DataTypes) {
       searchResults: function(searchString) {
         var searchArray=searchString.split(' ');
 
-        var select='SELECT name, t1.description, "productType_id",t2.type product_type,"vendorInfo_id" ';
+        var select='SELECT name, t1.description, "product_info_id",t2.type product_type,"vendor_info_id" ';
         var selectVendorInfo= ',t3.id bid, t3.dba,t3.address1,t3.address2,t3.business_ph,t3.business_ph,t3.website,t3.email ';
-        var join1=' FROM "products" t1 JOIN product_types t2 ON t1."productType_id"=t2.id ';
-        var join2=' JOIN vendor_infos t3 ON t1."vendorInfo_id"=t3.id ';
+        var join1=' FROM "products" t1 JOIN product_types t2 ON t1."product_info_id"=t2.id ';
+        var join2=' JOIN vendor_infos t3 ON t1."vendor_info_id"=t3.id ';
         var where=" WHERE ";
         var thisWhere;
         var whereValues='';

@@ -145,7 +145,7 @@ label { display: block; }
 }
 .single-business-info{
   height: 100px;
-  h4{
+  h4 a{
     color: $cerulean;
   }
   p{
@@ -304,6 +304,13 @@ hr{
 }
 .result-listing{
   margin: 10px 0;
+  img{
+    width: 200px;
+    height: 150px;
+    object-fit: cover;
+    object-position: 50% 50%;
+    border-radius: 5px;
+  }
 }
 
 ////////////////////////////////////////////
