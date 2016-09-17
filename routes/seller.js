@@ -50,9 +50,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-
-
-
       res.render('vendorForm',{
           vendor: {},
           businessType: businessType,
@@ -94,17 +91,19 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
-      // console.log(db.Type.findAll());
-      //
-    db.Type.findAll({})
-    .then((data) => {
-      console.log(data);
-      res.render('editVendorForm', {
-                    methodType: 'PUT',
-                    actionType: '/seller/{id}',
-                    formTitle: 'Edit Seller'
-                });
-    });
+      var sellerId = cleanParamMiddle(req.url, 2);
+      db.VendorInfo.findById(sellerId)
+      .then((data) => {
+        var vendor = JSON.parse(JSON.stringify(data));
+        console.log(vendor);
+        res.render('vendorForm',{
+          vendor: vendor,
+          businessType: businessType,
+          services: services,
+          markets: markets,
+          certs: certs
+        });
+      })
 
            /* } */
         // testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);

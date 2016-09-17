@@ -12,11 +12,11 @@ include includes/form.pug
       fieldset
         legend Vendor Information:
         label Company Name *
-          input(type="text" name="companyName" placeholder="Company name" value=vendor.company required)
+          input(type="text" name="companyName" placeholder="Company name" value=vendor.company_name required)
         label DBA
           input(type="text" name="dba" placeholder="Doing business as" value=vendor.dba)
         label Business Registration Number *
-          input(type="text" name="regNum" placeholder="Business Registration #" value=vendor.business_reg_name required)
+          input(type="text" name="regNum" placeholder="Business Registration #" value=vendor.business_reg_num required)
         label Address Line 1 *
           input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
         label Address Line 2
