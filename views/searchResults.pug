@@ -7,53 +7,49 @@ html(lang="en")
       include includes/search.pug
       div.main-content
         div.results-header
-          h1 Search Results for [INSERT HERE]
+          h1 Search Results for: #{term}
         div.results
-          h2 Product Results
-          div(class="result-listing flex-container")
-            div(class="result-image col-third")
-              a(href="")
-                img(src="https://placehold.it/200x150")
-            div(class="result-details col-two-thirds")
-              h4
-                a(href="#") Rainbow Papaya
-              p.result-description Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow!
-              p <strong>Phone:</strong> 808-555-5555
-              p <strong>E-Mail:</strong> aloha@aloha.com
-              p <strong>Address:</strong> 123 Aloha Street, Honolulu, HI 96813
-          div(class="result-listing flex-container")
-            div(class="result-image col-third")
-              a(href="")
-                img(src="https://placehold.it/200x150")
-            div(class="result-details col-two-thirds")
-              h4
-                a(href="#") Rainbow Papaya
-              p.result-description Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow!
-              p <strong>Phone:</strong> 808-555-5555
-              p <strong>E-Mail:</strong> aloha@aloha.com
-              p <strong>Address:</strong> 123 Aloha Street, Honolulu, HI 96813
+          -var pluralProducts = (products.length > 1 || products.length === 0) ? "Matches" : "Match"
+          h2 Product Results [#{products.length} #{pluralProducts}]
+          if products.length > 0
+            div(class="result-listing flex-container")
+              div(class="result-image col-third")
+                a(href="")
+                  if products[0].image
+                    img(src= products[0].image)
+                  else
+                    img(src="https://placehold.it/200x150")
+              div(class="result-details col-two-thirds")
+                h4
+                  a(href="#") #{products[0].name}
+                p.result-description #{products[0].description}
+                p <strong>Address:</strong> #{products[0].address1}
+                p <strong>Phone:</strong> #{products[0].business_ph}
+                p <strong>E-Mail:</strong>
+                  if products[0].email
+                    a(href="mailto:" + products[0].email)  #{products[0].email}
+                  else
+                    |  N/A
         div.results
-          h2 Vendor Results
-          div(class="result-listing flex-container")
-            div(class="result-image col-third")
-              a(href="")
-                img(src="https://placehold.it/200x150")
-            div(class="result-details col-two-thirds")
-              h4
-                a(href="#") Rainbow Papaya
-              p.result-description Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow!
-              p <strong>Phone:</strong> 808-555-5555
-              p <strong>E-Mail:</strong> aloha@aloha.com
-              p <strong>Address:</strong> 123 Aloha Street, Honolulu, HI 96813
-          div(class="result-listing flex-container")
-            div(class="result-image col-third")
-              a(href="")
-                img(src="https://placehold.it/200x150")
-            div(class="result-details col-two-thirds")
-              h4
-                a(href="#") Rainbow Papaya
-              p.result-description Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow! Taste the rainbow!
-              p <strong>Phone:</strong> 808-555-5555
-              p <strong>E-Mail:</strong> aloha@aloha.com
-              p <strong>Address:</strong> 123 Aloha Street, Honolulu, HI 96813
+          -var pluralVendors = (vendors.length > 1 || vendors.length === 0) ? "Matches" : "Match"
+          h2 Vendor Results [#{vendors.length} #{pluralVendors}]
+          if vendors.length > 0
+            div(class="result-listing flex-container")
+              div(class="result-image col-third")
+                a(href="")
+                  if vendors[0].image
+                    img(src= vendors[0].image)
+                  else
+                    img(src="https://placehold.it/200x150")
+              div(class="result-details col-two-thirds")
+                h4
+                  a(href="#") #{vendors[0].dba}
+                p.result-description Description goes here... #{vendors[0].business_description}
+                p <strong>Address:</strong> #{vendors[0].address1}
+                p <strong>Phone:</strong> #{vendors[0].business_ph}
+                p <strong>E-Mail:</strong>
+                  if vendors[0].email
+                    a(href="mailto:" + vendors[0].email)  #{vendors[0].email}
+                  else
+                    |  N/A
       include includes/footer.pug

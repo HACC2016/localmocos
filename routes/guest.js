@@ -63,8 +63,8 @@ app.post('/Search', function(req, res, next) {
             })
         }
 
-      res.render('searchResults',[products,vendors]);
-      //res.json(data);
+      res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
+      // res.json(data);
         });
     }
     );
