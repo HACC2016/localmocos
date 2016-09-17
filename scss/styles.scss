@@ -258,6 +258,7 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
+  border-radius: 10px;
 }
 .business-info{
   margin-top: 25px;
@@ -267,11 +268,12 @@ label { display: block; }
   margin-top: 25px;
   .single-product{
     height: 250px;
-    .single-product-image{
+    .single-product-image img{
       width: 250px;
       height: 200px;
       object-fit: cover;
       object-position: 50% 50%;
+      border-radius: 5px;
     }
   }
 }
@@ -284,6 +286,7 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
+  border-radius: 10px;
 }
 hr{
   margin-top: 1em;
@@ -338,18 +341,29 @@ hr{
   display: flex;
   flex-flow: row wrap;
   justify-content: space-between;
+  .col-quarter{
+    flex: 0 0 250px;
+  }
+  .col-half{
+    flex: 0 0 525px;
+  }
+  .col-third{
+    flex: 0 0 200px;
+  }
+  .col-two-thirds{
+    flex: 0 0 850px;
+  }
 }
-.col-quarter{
-  flex: 0 0 250px;
-}
-.col-half{
-  flex: 0 0 525px;
-}
-.col-third{
-  flex: 0 0 200px;
-}
-.col-two-thirds{
-  flex: 0 0 850px;
+.flex-container-4col{
+  display: flex;
+  flex-flow: row wrap;
+  .col-quarter{
+    flex: 0 0 250px;
+    margin: 0 33px 0px 0;
+    &:nth-child(4n){
+      margin: 0 0 0 0;
+    }
+  }
 }
 
 // div {border: 1px red dotted;} //delete this later!!!

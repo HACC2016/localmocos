@@ -76,8 +76,14 @@ app.post('/Search', function(req, res, next) {
 app.get('/',function(req, res, next) {
     // testJson.name="Home Page";
     // res.json(testJson);
-    res.render('index', {subtitle: "Find Local Business & Products"})
+  db.VendorInfo.findAll({
+    where: {id: {gte: 2, lte: 5}}
+  })
+  .then(function (vendorArray) {
+    res.render('index', {subtitle: "Find Local Business & Products", vendors: vendorArray})
+  });
 });
+
 
 ////// testing ///////
 app.get('/about', function (req, res) {

@@ -12,7 +12,7 @@ const public = path.join(__dirname, 'public');
 
 
 const useDB = true;
-/**** Setting to false until I set up postgres.  
+/**** Setting to false until I set up postgres.
 Should be set true if your database is setup.
 
 *********/
@@ -38,21 +38,45 @@ var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, qu
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring,db);
 
 //////// ROUTES TO TEST PAGES ////////
-app.get('/product', function (req, res) {
-  db.Product.findAll().then(function(productArray) {
-    var product = productArray[0];
-    db.VendorInfo.findAll().then(function(vendorArray) {
-      var vendor = vendorArray[0];
-      res.render('product', {subtitle: "Products", product: product.name, description: product.description, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
-    });
+app.get('/product-test/:id', function (req, res) {
+  db.Product.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function (productObject) {
+    var product = productObject;
+    db.VendorInfo.findOne({
+      where: {id: product.vendor_info_id}
+    })
+    .then(function (vendorObject) {
+      var vendor = vendorObject;
+      db.Product.findAll({
+        where: {
+          id: {$ne: product.id},
+          vendor_info_id: vendor.id,
+        }
+      })
+      .then(function (productArray) {
+        res.render('product', {subtitle: product.name, product: product.name, description: product.description, image: product.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, products: productArray})
+      })
+    })
   })
 })
-app.get('/vendor', function (req, res) {
-  db.VendorInfo.findAll().then(function(vendorArray) {
-    var vendor = vendorArray[0];
-    res.render('vendor', {subtitle: "Vendor", vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website})
+
+app.get('/vendor/:id', function (req, res) {
+  db.VendorInfo.findOne({
+    where: {id: req.params.id}
+  })
+  .then(function (vendorObject) {
+    var vendor = vendorObject;
+    db.Product.findAll({
+      where: {vendor_info_id: req.params.id}
+    })
+    .then(function(productArray){
+    res.render('vendor', {subtitle: vendor.dba, image: vendor.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
+    });
   });
 })
+
 app.get('/search-results', function (req, res) {
   res.render('searchResults', {subtitle: "Search Results"})
 })
