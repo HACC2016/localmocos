@@ -56,7 +56,11 @@ app.get('/product-test/:id', function (req, res) {
         }
       })
       .then(function (productArray) {
-        res.render('product', {subtitle: product.name, product: product.name, description: product.description, image: product.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, products: productArray})
+        res.render('product', {
+          subtitle: product.name,
+          product: product,
+          vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+          products: productArray})
       })
     })
   })
