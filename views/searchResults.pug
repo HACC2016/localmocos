@@ -9,7 +9,7 @@ html(lang="en")
         div.results-header
           h1 Search Results for: #{term}
         div.results
-          h2 Product Results
+          h2 Product Results [#{products.length} Matches]
           if products.length > 0
             div(class="result-listing flex-container")
               div(class="result-image col-third")
@@ -30,7 +30,7 @@ html(lang="en")
                   else
                     |  N/A
         div.results
-          h2 Vendor Results
+          h2 Vendor Results [#{vendors.length} Matches]
           if vendors.length > 0
             div(class="result-listing flex-container")
               div(class="result-image col-third")
