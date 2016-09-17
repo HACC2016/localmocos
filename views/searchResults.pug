@@ -9,7 +9,8 @@ html(lang="en")
         div.results-header
           h1 Search Results for: #{term}
         div.results
-          h2 Product Results [#{products.length} Matches]
+          -var pluralProducts = (products.length > 1 || products.length === 0) ? "Matches" : "Match"
+          h2 Product Results [#{products.length} #{pluralProducts}]
           if products.length > 0
             div(class="result-listing flex-container")
               div(class="result-image col-third")
@@ -30,7 +31,8 @@ html(lang="en")
                   else
                     |  N/A
         div.results
-          h2 Vendor Results [#{vendors.length} Matches]
+          -var pluralVendors = (vendors.length > 1 || vendors.length === 0) ? "Matches" : "Match"
+          h2 Vendor Results [#{vendors.length} #{pluralVendors}]
           if vendors.length > 0
             div(class="result-listing flex-container")
               div(class="result-image col-third")
