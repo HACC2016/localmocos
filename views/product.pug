@@ -8,13 +8,13 @@ html(lang="en")
       div.main-content
         div.flex-container
           div.col-half
-            if image
-              img.product-main-image(src= image)
+            if product.image
+              img.product-main-image(src= product.image)
             else
               img.product-main-image(src="https://placehold.it/525x350")
           div.col-half
-            h2 #{product}
-            p #{description}
+            h2 #{product.name}
+            p #{product.description}
             hr
             h4 #{vendor}
             p <strong>Address:</strong> #{address}
@@ -29,20 +29,19 @@ html(lang="en")
                 a(href= website, target="_blank")  #{website}
               else
                 |  N/A
-        if products.length > 0
-          div.business-products
-            h3 Other Products From The Same Vendor
-            div.flex-container-4col
-              - for (var i = 0; i < products.length; i++) {
-                div(class="col-quarter single-product")
-                  div.single-product-image
-                    a(href="#")
-                      if products[i].image
-                        img(src= products[i].image)
-                      else
-                        img(src="https://placehold.it/250x200")
-                  div.single-product-info
-                    h6
-                      a(href="#")= products[i].name
-              - }
+        div.business-products
+          h3 Other Products From The Same Vendor
+          //--div.flex-container-4col
+            - for (var i = 0; i < products.length; i++) {
+              div(class="col-quarter single-product")
+                div.single-product-image
+                  a(href="#")
+                    if products[i].image
+                      img(src= products[i].image)
+                    else
+                      img(src="https://placehold.it/250x200")
+                div.single-product-info
+                  h6
+                    a(href="#")= products[i].name
+            - }
       include includes/footer.pug
