@@ -8,7 +8,10 @@ html(lang="en")
       div.main-content
         div.flex-container
           div.col-half
-            img.product-main-image(src="http://hawaiichips.com/wp-content/uploads/Furikake-Mac-Nuts1.jpg")
+            if image
+              img.product-main-image(src= image)
+            else
+              img.product-main-image(src="https://placehold.it/525x350")
           div.col-half
             h2 #{product}
             p #{description}
@@ -29,32 +32,16 @@ html(lang="en")
         div.business-products
           h3 Other Products From The Same Vendor
           div.flex-container
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
-            div(class="col-quarter single-product")
-              div.single-product-image
-                a(href="#")
-                  img(src="https://placehold.it/250x200")
-              div.single-product-info
-                h6
-                  a(href="#") Product
+            - for (var i = 0; i < products.length; i++) {
+              div(class="col-quarter single-product")
+                div.single-product-image
+                  a(href="#")
+                  if products[i].image
+                    img(src= products[i].image)
+                  else
+                    img(src="https://placehold.it/250x200")
+                div.single-product-info
+                  h6
+                    a(href="#")= products[i].name
+            - }
       include includes/footer.pug
