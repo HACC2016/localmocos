@@ -78,7 +78,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     name: data.name,
                     description: data.description,
                     price: data.price,
-                    qty: data.qty
+                    qty: data.qty,
+                    image: data.image
                 }
             });  
         })
