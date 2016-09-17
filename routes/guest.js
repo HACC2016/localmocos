@@ -65,11 +65,12 @@ app.post('/Search', function(req, res, next) {
                 "business_ph":data[i].business_ph,
                 "website":data[i].website,
                 "email":data[i].email,
+                "image":data[i].image,
             })
         }
 
       res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
-      // res.json(data);
+      // res.json(products);
         });
     }
     );
