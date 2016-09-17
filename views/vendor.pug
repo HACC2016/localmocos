@@ -9,7 +9,7 @@ html(lang="en")
         div.flex-container
           div.col-half
             if image
-              img.business-main-image(src= img)
+              img.business-main-image(src= image)
             else
               img.business-main-image(src="https://placehold.it/525x350")
           div.col-half
@@ -45,3 +45,4 @@ html(lang="en")
                     a(href="#")= products[i].name
             - }
       include includes/footer.pug
+
