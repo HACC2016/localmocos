@@ -37,7 +37,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         // .then((data) => {
           // return res.json(stuff);
         // });
-        res.render('vendorForm');
+        res.render('vendorForm',{
+            vendor:{}
+        });
       });
     });
 
@@ -76,7 +78,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/seller\/\d+\/edit$/, function(req, res) {
       // console.log(db.Type.findAll());
       //
-
     db.Type.findAll({})
     .then((data) => {
       console.log(data);
