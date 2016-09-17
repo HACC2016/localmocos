@@ -12,35 +12,35 @@ include includes/form.pug
       fieldset
         legend Vendor Information:
         label Company Name *
-          input(type="text" name="companyName" placeholder="Company name" value=vendor.company required)
+          input(type="text" name="company_name" placeholder="Company name" value=vendor.company_name required)
         label DBA
           input(type="text" name="dba" placeholder="Doing business as" value=vendor.dba)
         label Business Registration Number *
-          input(type="text" name="regNum" placeholder="Business Registration #" value=vendor.business_reg_name required)
+          input(type="text" name="business_reg_num" placeholder="Business Registration #" value=vendor.business_reg_num required)
         label Address Line 1 *
-          input(type="text" name="addressOne" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
+          input(type="text" name="address1" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
         label Address Line 2
-          input(type="text" name="addressTwo" placeholder="Apt/Suite/Unit/Building/Floor/etc" value=vendor.address2)
+          input(type="text" name="address2" placeholder="Apt/Suite/Unit/Building/Floor/etc" value=vendor.address2)
         label City *
           input(type="text" name="city" placeholder="City" required)
         label Zip Code *
-          input(type="text" name="zip" placeholder="Zip Code" required)
+          input(type="text" inputmode="numeric" name="zip" placeholder="Zip Code" required)
         label Country *
           input(type="text" name="country" placeholder="Country" required)
         label Island *
           input(type="text" name="island" placeholder="Island" required)
         label Business Phone Number 1 *
-          input(type="tel" name="phoneOne" placeholder="Business Number 1" value=vendor.business_ph required)
+          input(type="tel" name="business_ph" placeholder="Business Number 1" value=vendor.business_ph required)
         label Business Phone Number 2
           input(type="tel" name="phoneTwo" placeholder="Business Number 2")
         label Sales Contact Phone Number *
-          input(type="tel" name="salesNum" placeholder="Sales Number" value=vendor.sales_ph required)
+          input(type="tel" name="sales_ph" placeholder="Sales Number" value=vendor.sales_ph required)
         label E-mail *
-          input(type="email" name="e_mail" placeholder="E-mail" value=vendor.email required)
+          input(type="email" name="email" placeholder="E-mail" value=vendor.email required)
         label Website
           input(type="url" name="website" placeholder="Website" value=vendor.website)
         label Image
-          input(type="url" name="images" placeholder="Image Link" value=vendor.image)
+          input(type="url" name="image" placeholder="Image Link" value=vendor.image)
         label Type of Business:
           +selectWithOther("job", businessType)
         label Services:
@@ -49,5 +49,5 @@ include includes/form.pug
           +selectWithOther("market", markets)
         label Certifications/Specialty:
           +selectWithOther("specialty", certs)
-        input(type="submit" value="Post" name="submitForm")
+        input(type="submit" value="Submit" class="submit")
 include includes/onChange.pug

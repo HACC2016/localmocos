@@ -11,7 +11,7 @@ include includes/form.pug
       fieldset
         legend Product Information:
         label Name:
-          input(type="text" name="productName" placeholder="Product Name" value=product.name)
+          input(type="text" name="name" placeholder="Product Name" value=product.name)
         label Description:
           input(type="text" name="description" placeholder="Description" value=product.description)
         label Price:
@@ -19,7 +19,7 @@ include includes/form.pug
         label Quantity:
           input(type="text" name="qty" placeholder="Quantity" value=product.qty)
         label Image:
-          input(type="url" name="productImg" placeholder="Image Link" value=product.image)
+          input(type="url" name="image" placeholder="Image Link" value=product.image)
         label Farmed Seafood:
           +selectWithOther("seafood", [{"value": 1, "text": "Fresh Seafood"},{"value": 2, "text": "Frozen Seafood"},{"value": 3, "text": "Processed Seafood"}])
         label Snack Foods:
@@ -39,16 +39,17 @@ include includes/form.pug
         label Dairy:
           +selectWithOther("dairy", [{"value": 1, "text": "Butter"},{"value": 2, "text": "Cheese"},{"value": 3, "text": "Ice Cream"},{"value": 4, "text": "Milk"}])
         legend Floral:
-          label Anthuriums
-            input(type="checkbox" name="anthurium" value="product.")
-            input(type="text" name="anthurium_descrip" placeholder="Anthuriums")
-          label Foliage
-            input(type="checkbox" name="foliage" value="second_checkbox")
-            input(type="text" name="foliage_descrip" placeholder="Foliage")
-          label Leis
-            input(type="checkbox" name="leis" value="third_checkbox")
-            input(type="text" name="leis_descrip" placeholder="Leis")
-          label Other
-            input(type="checkbox" name="other" value="fourth_checkbox")
-            input(type="text" name="other_descrip" placeholder="Other")
+        label Anthuriums
+          input(type="radio" name="anthurium")
+          input(type="text" name="anthurium_descrip" placeholder="Anthuriums")
+        label Foliage
+          input(type="radio" name="foliage")
+          input(type="text" name="foliage_descrip" placeholder="Foliage")
+        label Leis
+          input(type="radio" name="leis")
+          input(type="text" name="leis_descrip" placeholder="Leis")
+        label Other
+          input(type="radio" name="other")
+          input(type="text" name="other_descrip" placeholder="Other")
+        input(type="submit" value="Submit" class="submit")
 include includes/onChange.pug
