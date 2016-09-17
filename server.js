@@ -57,7 +57,7 @@ app.get('/vendor/:id', function (req, res) {
       where: {vendor_info_id: req.params.id}
     })
     .then(function(productArray){
-    res.render('vendor', {subtitle: vendor.dba, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
+    res.render('vendor', {subtitle: vendor.dba, image: vendor.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
     });
   });
 })
