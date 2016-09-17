@@ -79,7 +79,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           throw new TypeError('City and Island do not match')
         }
       })
-      // .then(() => {
+      // // .then(() => {
       //   VendorInfo.create({
       //     company_name: locals.companyName,
       //     dba: locals.dba,
