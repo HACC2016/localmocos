@@ -22,9 +22,13 @@ html(lang="en")
                 h4
                   a(href="#") #{products[0].name}
                 p.result-description #{products[0].description}
-                p <strong>Phone:</strong> #{products[0].business_ph}
-                p <strong>E-Mail:</strong> #{products[0].email}
                 p <strong>Address:</strong> #{products[0].address1}
+                p <strong>Phone:</strong> #{products[0].business_ph}
+                p <strong>E-Mail:</strong>
+                  if products[0].email
+                    a(href="mailto:" + products[0].email)  #{products[0].email}
+                  else
+                    |  N/A
         div.results
           h2 Vendor Results
           if vendors.length > 0
@@ -39,7 +43,11 @@ html(lang="en")
                 h4
                   a(href="#") #{vendors[0].dba}
                 p.result-description Description goes here... #{vendors[0].business_description}
-                p <strong>Phone:</strong> #{vendors[0].business_ph}
-                p <strong>E-Mail:</strong> #{vendors[0].email}
                 p <strong>Address:</strong> #{vendors[0].address1}
+                p <strong>Phone:</strong> #{vendors[0].business_ph}
+                p <strong>E-Mail:</strong>
+                  if vendors[0].email
+                    a(href="mailto:" + vendors[0].email)  #{vendors[0].email}
+                  else
+                    |  N/A
       include includes/footer.pug
