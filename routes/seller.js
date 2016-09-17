@@ -55,7 +55,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs
+          certs: certs,
+          zipcode: zipcode
       });
     });
 
@@ -101,7 +102,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs
+          certs: certs,
+          zipcode: zipcode
         });
       })
 
