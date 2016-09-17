@@ -1,7 +1,7 @@
 module.exports = function(express,app,path,bodyParser,querystring, db) {
  var router = express.Router();
 
-  /*************
+    /*************
   1. Create new Seller ???
   2. Edit Seller info
   3. Delete Seller(Inactive)
@@ -14,6 +14,10 @@ module.exports = function(express,app,path,bodyParser,querystring, db) {
 
 
   **************/
+  ///// testing admin view /////
+  app.get('/admin', function (req, res) {
+    res.render('admin');
+  });
 
     return router;
 }

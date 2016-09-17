@@ -24,18 +24,21 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     /**** New Seller Form *****/
 
     app.get('/seller/new', function(req, res) {
-      // db.VendorInfo.findAll({
-      //   include: [
-      //     {
-      //       model: db.Service,
-      //       required: true
-      //     }
-      //   ]
-      // })
-      // .then((stuff) => {
-      //   return res.json(stuff);
-      // })
-      return res.render('vendorForm');
+      db.User.findAll({
+        include: [
+          {
+            model: db.VendorInfo,
+            required: true
+          }
+        ]
+      })
+      .then((stuff) => {
+        // db.ProductType.findById(stuff[0].dataValues.ProductInfo.dataValues.product_type_id)
+        // .then((data) => {
+          // return res.json(stuff);
+        // });
+        res.render('vendorForm');
+      });
     });
 
     app.post('/seller', function(req, res, next) {
@@ -71,27 +74,22 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-                res.render('editVendorForm', {
-                    methodType: 'GET',
-                    actionType: '/seller/{id}/edit',
-                    formTitle: 'Edit Seller'
-                });
-           /* } */
-       /* testJson.name = "Form to Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson); */
-    });
+      // console.log(db.Type.findAll());
+      //
 
-    app.put(/seller\/\d+\/edit$/, function(req, res) {
-        /* */
-                res.render('editVendorForm', {
+    db.Type.findAll({})
+    .then((data) => {
+      console.log(data);
+      res.render('editVendorForm', {
                     methodType: 'PUT',
                     actionType: '/seller/{id}',
                     formTitle: 'Edit Seller'
                 });
+    });
+
            /* } */
-        testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson);
+        // testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
+        // res.json(testJson);
     });
 
 

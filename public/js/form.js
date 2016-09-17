@@ -1,13 +1,15 @@
-var elements = $("select");
-elements.on("change", function (event) {
-  console.log(event);
-  var input = $(this).next("div.other").find("input");
-  if(event.target.value === "Other") {
-    input.css("visibility", "visible");
-  } else {
-    input.css("display", "none");
-  }
-});
+$(function () {
+  var elements = $("select");
+  console.log(elements.length);
+  elements.change(function (event) {
+    var input = $(this).next(".other");
+    if(event.target.value === "other") {
+      input.css("visibility", "visible").attr("disabled", false);
+    } else {
+      input.css("visibility", "hidden").attr("disabled", true);
+    }
+  });
+})
 
 // elements.change(function (event) {
 //   var input = $(this).find("input").each();

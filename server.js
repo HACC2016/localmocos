@@ -1,18 +1,18 @@
-var express= require('express');
-var app= express();
+var express = require('express');
+var app = express();
 //var pug = require('pug');
 var https = require('https');
 var path = require('path');
-var bodyParser=require('body-parser');
-var querystring= require('querystring');
+var bodyParser = require('body-parser');
+var querystring = require('querystring');
 var db = require('./models');
 
 
 const public = path.join(__dirname, 'public');
 
 
-const useDB=true;
-/**** Setting to false until I set up postgres.
+const useDB = true;
+/**** Setting to false until I set up postgres.  
 Should be set true if your database is setup.
 
 *********/
@@ -55,6 +55,21 @@ app.get('/vendor', function (req, res) {
 })
 app.get('/search-results', function (req, res) {
   res.render('searchResults', {subtitle: "Search Results"})
+})
+app.get('/productForm', function (req, res) {
+  res.render('productForm', {})
+})
+app.get('/editProductForm', function (req, res) {
+  res.render('editProductForm', {})
+})
+app.get('/vendorForm', function (req, res) {
+  res.render('vendorForm', {})
+})
+app.get('/editVendorForm', function (req, res) {
+  res.render('editVendorForm', {})
+})
+app.get('/about', function (req, res) {
+  res.render('about', {subtitle: "About Us"})
 })
 ////////// END OF TESTING //////////
 

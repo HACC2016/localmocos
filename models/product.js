@@ -7,6 +7,7 @@ module.exports = function(sequelize, DataTypes) {
     vendor_info_id: DataTypes.INTEGER,
     price: DataTypes.FLOAT,
     qty: DataTypes.INTEGER,
+    image: DataTypes.TEXT,
     isActive: DataTypes.BOOLEAN
   }, {
     tableName: 'products',
@@ -21,14 +22,6 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'product_info_id',
           targetKey: 'id'
         });
-
-
-
-      // ***** Add Image Models ************
-      //   models.Product.hasMany(models.Image);
-      // ***********************************
-      //
-      //
       }
     }
   });
