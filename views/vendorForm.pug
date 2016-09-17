@@ -1,9 +1,9 @@
 include includes/form.pug
   .vendor-content
     mixin selectWithOther(fieldname, options)
-      select.name = fieldname
+      select(name=fieldname)
         each option in options
-          option(value=option.value)= option.text
+          option(value=option.id)= option[fieldname]
         option(value="other") Other
       input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
 
@@ -42,12 +42,12 @@ include includes/form.pug
         label Image
           input(type="url" name="images" placeholder="Image Link" value=vendor.image)
         label Type of Business:
-          +selectWithOther("bussinessType", [{"value": 1, "text": "Distributor"},{"value": 2, "text": "Grower"},{"value": 3, "text": "Manufacturer"},{"value": 4, "text": "Processor"},{"value": 5, "text": "Retailer"}, {"value": 6, "text": "Wholesaler"}])
+          +selectWithOther("job", businessType)
         label Services:
-          +selectWithOther("service", [{"value": 1, "text": "Food Service"},{"value": 2, "text": "Private Label"},{"value": 3, "text": "E-Commerce"},{"value": 4, "text": "Retail"}])
+          +selectWithOther("service", services)
         label Markets:
-          +selectWithOther("market", [{"value": 1, "text": "US Mainland"},{"value": 2, "text": "Hawaii"},{"value": 3, "text": "Japan"},{"value": 4, "text": "Canada"},{"value": 5, "text": "Australia"}, {"value": 6, "text": "Asia"},{"value": 7, "text":"Europe"},{"value": 8, "text": "Guam"}])
+          +selectWithOther("market", markets)
         label Certifications/Specialty:
-          +selectWithOther("certificates", [{"value": 1, "text": "Certified Nursery"},{"value": 2, "text": "Certified Organic"},{"value": 3, "text": "Gluten Free"},{"value": 4, "text": "Halal"},{"value": 5, "text": "Kosher"}, {"value": 6, "text": "Vegan"},{"value": 7, "text":"Vegetarian"}])
+          +selectWithOther("specialty", certs)
         input(type="submit" value="Post" name="submitForm")
 include includes/onChange.pug
