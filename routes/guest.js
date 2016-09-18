@@ -64,6 +64,7 @@ app.post('/Search', function(req, res, next) {
                 "name":data[i].name,
                 "description":data[i].description,
                 "product_type":data[i].product_type,
+                "dba":data[i].dba,
                 "address1":data[i].address1,
                 "address2":data[i].address2,
                 "business_ph":data[i].business_ph,
