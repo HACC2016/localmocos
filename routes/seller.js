@@ -92,7 +92,27 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/seller\/\d+\/edit$/, function(req, res) {
       var sellerId = cleanParamMiddle(req.url, 2);
-      db.VendorInfo.findById(sellerId)
+      db.VendorInfo.findById(sellerId, {
+        include:
+        [
+          {
+            model: db.Type,
+            where: {}
+          },
+          {
+            model: db.Service,
+            where: {}
+          },
+          {
+            model: db.Market,
+            where: {}
+          },
+          {
+            model: db.Certification,
+            where: {}
+          }
+        ]
+      })
       .then((data) => {
         var vendor = JSON.parse(JSON.stringify(data));
         console.log(vendor);
