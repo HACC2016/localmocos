@@ -52,6 +52,7 @@ app.post('/Search', function(req, res, next) {
                 "website":data[i].website,
                 "email":data[i].email,
                 "image":data[i].busimage,
+                "business_description":data[i].business_description
               });
             }
 
