@@ -15,14 +15,14 @@ html(lang="en")
             - for (var i = 0; i < products.length; i++) {
               div(class="result-listing flex-container")
                 div(class="result-image col-third")
-                  a(href="/products/" + products[i].pid)
+                  a(href="/product/" + products[i].pid)
                     if products[i].image
                       img(src= products[i].image)
                     else
                       img(src="https://placehold.it/200x150")
                 div(class="result-details col-two-thirds")
                   h4
-                    a(href="/products/" + products[i].pid) #{products[i].name}
+                    a(href="/product/" + products[i].pid) #{products[i].name}
                   p.result-description #{products[i].description}
                   p <strong>Business:</strong> #{products[i].dba}
                   p <strong>Address:</strong> #{products[i].address1}
