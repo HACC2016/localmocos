@@ -12,44 +12,49 @@ html(lang="en")
           -var pluralProducts = (products.length > 1 || products.length === 0) ? "Matches" : "Match"
           h2 Product Results [#{products.length} #{pluralProducts}]
           if products.length > 0
-            div(class="result-listing flex-container")
-              div(class="result-image col-third")
-                a(href="")
-                  if products[0].image
-                    img(src= products[0].image)
-                  else
-                    img(src="https://placehold.it/200x150")
-              div(class="result-details col-two-thirds")
-                h4
-                  a(href="#") #{products[0].name}
-                p.result-description #{products[0].description}
-                p <strong>Address:</strong> #{products[0].address1}
-                p <strong>Phone:</strong> #{products[0].business_ph}
-                p <strong>E-Mail:</strong>
-                  if products[0].email
-                    a(href="mailto:" + products[0].email)  #{products[0].email}
-                  else
-                    |  N/A
+            - for (var i = 0; i < products.length; i++) {
+              div(class="result-listing flex-container")
+                div(class="result-image col-third")
+                  a(href="")
+                    if products[i].image
+                      img(src= products[i].image)
+                    else
+                      img(src="https://placehold.it/200x150")
+                div(class="result-details col-two-thirds")
+                  h4
+                    a(href="#") #{products[i].name}
+                  p.result-description #{products[i].description}
+                  p <strong>Business:</strong> #{products[i].dba}
+                  p <strong>Address:</strong> #{products[i].address1}
+                  p <strong>Phone:</strong> #{products[i].business_ph}
+                  p <strong>E-Mail:</strong>
+                    if products[i].email
+                      a(href="mailto:" + products[i].email)  #{products[i].email}
+                    else
+                      |  N/A
+              -}
         div.results
           -var pluralVendors = (vendors.length > 1 || vendors.length === 0) ? "Matches" : "Match"
           h2 Vendor Results [#{vendors.length} #{pluralVendors}]
           if vendors.length > 0
-            div(class="result-listing flex-container")
-              div(class="result-image col-third")
-                a(href="")
-                  if vendors[0].image
-                    img(src= vendors[0].image)
-                  else
-                    img(src="https://placehold.it/200x150")
-              div(class="result-details col-two-thirds")
-                h4
-                  a(href="#") #{vendors[0].dba}
-                p.result-description Description goes here... #{vendors[0].business_description}
-                p <strong>Address:</strong> #{vendors[0].address1}
-                p <strong>Phone:</strong> #{vendors[0].business_ph}
-                p <strong>E-Mail:</strong>
-                  if vendors[0].email
-                    a(href="mailto:" + vendors[0].email)  #{vendors[0].email}
-                  else
-                    |  N/A
+            - for (var i = 0; i < vendors.length; i++) {
+              div(class="result-listing flex-container")
+                div(class="result-image col-third")
+                  a(href="")
+                    if vendors[i].image
+                      img(src= vendors[i].image)
+                    else
+                      img(src="https://placehold.it/200x150")
+                div(class="result-details col-two-thirds")
+                  h4
+                    a(href="#") #{vendors[i].dba}
+                  p.result-description Description goes here... #{vendors[i].business_description}
+                  p <strong>Address:</strong> #{vendors[i].address1}
+                  p <strong>Phone:</strong> #{vendors[i].business_ph}
+                  p <strong>E-Mail:</strong>
+                    if vendors[i].email
+                      a(href="mailto:" + vendors[i].email)  #{vendors[i].email}
+                    else
+                      |  N/A
+            -}
       include includes/footer.pug
