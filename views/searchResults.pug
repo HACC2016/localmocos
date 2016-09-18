@@ -15,14 +15,14 @@ html(lang="en")
             - for (var i = 0; i < products.length; i++) {
               div(class="result-listing flex-container")
                 div(class="result-image col-third")
-                  a(href="")
+                  a(href="/products/" + products[i].pid)
                     if products[i].image
                       img(src= products[i].image)
                     else
                       img(src="https://placehold.it/200x150")
                 div(class="result-details col-two-thirds")
                   h4
-                    a(href="#") #{products[i].name}
+                    a(href="/products/" + products[i].pid) #{products[i].name}
                   p.result-description #{products[i].description}
                   p <strong>Business:</strong> #{products[i].dba}
                   p <strong>Address:</strong> #{products[i].address1}
@@ -40,14 +40,14 @@ html(lang="en")
             - for (var i = 0; i < vendors.length; i++) {
               div(class="result-listing flex-container")
                 div(class="result-image col-third")
-                  a(href="")
+                  a(href="/vendor/" + vendors[i].bid)
                     if vendors[i].image
                       img(src= vendors[i].image)
                     else
                       img(src="https://placehold.it/200x150")
                 div(class="result-details col-two-thirds")
                   h4
-                    a(href="#") #{vendors[i].dba}
+                    a(href="/vendor/" + vendors[i].bid) #{vendors[i].dba}
                   p.result-description Description goes here... #{vendors[i].business_description}
                   p <strong>Address:</strong> #{vendors[i].address1}
                   p <strong>Phone:</strong> #{vendors[i].business_ph}
