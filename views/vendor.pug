@@ -36,14 +36,14 @@ html(lang="en")
               - for (var i = 0; i < products.length; i++) {
                 div(class="col-quarter single-product")
                   div.single-product-image
-                    a(href="#")
+                    a(href="/product/" + products[i].id)
                       if products[i].image
                         img(src= products[i].image)
                       else
                         img(src="https://placehold.it/250x200")
                   div.single-product-info
                     h6
-                      a(href="#")= products[i].name
+                      a(href="/product/" + products[i].id)= products[i].name
               - }
       include includes/footer.pug
 

@@ -29,20 +29,20 @@ html(lang="en")
                 a(href= website, target="_blank")  #{website}
               else
                 |  N/A
-        //-if products.length > 0
+        if products.length > 0
           div.business-products
             h3 Other Products From The Same Vendor
             div.flex-container-4col
               - for (var i = 0; i < products.length; i++) {
                 div(class="col-quarter single-product")
                   div.single-product-image
-                    a(href="#")
+                    a(href="/product/" + products[i].id)
                       if products[i].image
                         img(src= products[i].image)
                       else
                         img(src="https://placehold.it/250x200")
                   div.single-product-info
                     h6
-                      a(href="#")= products[i].name
+                      a(href="/product/" + products[i].id)= products[i].name
               - }
       include includes/footer.pug
