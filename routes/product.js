@@ -76,8 +76,28 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             image: req.body.image,
             isActive: 1
         })
-        .then(function (product) {
-            res.render('product', {product: product});
+        .then(function (newProductObject) {
+          var product = newProductObject;
+          db.VendorInfo.findOne({
+            where: {id: product.vendor_info_id}
+          })
+          .then(function (vendorObject) {
+            var vendor = vendorObject;
+            db.Product.findAll({
+              where: {
+                id: {$ne: product.id},
+                vendor_info_id: vendor.id,
+              }
+            })
+            .then(function (productArray) {
+              res.render('product', {
+                subtitle: product.name,
+                product: product,
+                vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+                products: productArray
+              });
+            })
+          })
         });
     });
 
