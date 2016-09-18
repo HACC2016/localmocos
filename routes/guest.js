@@ -52,7 +52,10 @@ app.post('/Search', function(req, res, next) {
                 "website":data[i].website,
                 "email":data[i].email,
                 "image":data[i].busimage,
+                "business_description":data[i].business_description
               });
+
+              vendorAddedArray.push(data[i].bid);
             }
 
             /***** Products *********/
@@ -61,6 +64,7 @@ app.post('/Search', function(req, res, next) {
                 "name":data[i].name,
                 "description":data[i].description,
                 "product_type":data[i].product_type,
+                "dba":data[i].dba,
                 "address1":data[i].address1,
                 "address2":data[i].address2,
                 "business_ph":data[i].business_ph,
@@ -70,8 +74,8 @@ app.post('/Search', function(req, res, next) {
             })
         }
 
-      res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
-      // res.json(products);
+         res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
+      // res.json(vendors);
         });
     }
     );
