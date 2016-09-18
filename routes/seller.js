@@ -55,7 +55,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs
+          certs: certs,
+          zipcode: zipcode
       });
     });
 
@@ -79,7 +80,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           throw new TypeError('City and Island do not match')
         }
       })
-      // .then(() => {
+      // // .then(() => {
       //   VendorInfo.create({
       //     company_name: locals.companyName,
       //     dba: locals.dba,
@@ -101,7 +102,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs
+          certs: certs,
+          zipcode: zipcode
         });
       })
 

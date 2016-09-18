@@ -61,6 +61,7 @@ app.post('/Search', function(req, res, next) {
             /***** Products *********/
 
               products.push({
+                "pid":data[i].product_id,
                 "name":data[i].name,
                 "description":data[i].description,
                 "product_type":data[i].product_type,
@@ -75,7 +76,7 @@ app.post('/Search', function(req, res, next) {
         }
 
          res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
-      // res.json(vendors);
+      // res.json(products);
         });
     }
     );
