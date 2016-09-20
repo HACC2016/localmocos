@@ -225,10 +225,7 @@ footer{
     &:focus {
       outline: 0;
       background: $white;
-      border: 0;
-      -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-      -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-      box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+      border: 1px solid $teal;
     }
   }
   button {
@@ -342,7 +339,6 @@ hr{
 ////////////////////////////////////////////
 .about-container{
   margin-top: 25px;
-  h1{}
   img{
     width: 1100px;
     height: 400px;
@@ -350,6 +346,58 @@ hr{
     object-position: 50% 50%;
   }
   p{font-size:0.9em}
+}
+
+////////////////////////////////////////////
+////////////////// LOGIN  //////////////////
+////////////////////////////////////////////
+.login-container{
+  margin: 50px auto;
+  padding: 20px;
+  width: 500px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: $white;
+  -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  .vendorLogo img {
+    margin-bottom: 20px;
+  }
+  .login-content{
+    text-transform: uppercase;
+    input {
+      width: 350px;
+      height: 40px;
+      margin: 10px 0;
+      padding-left: 10px;
+      font: bold 15px 'Open Sans', sans-serif;
+      border: 1px solid lighten($black, 50%);
+      background: $white;
+      border-radius: 3px;
+      &:focus {
+        outline: 0;
+        border: 1px solid $teal;
+      }
+    }
+    input[type="submit"] {
+      width: 150px;
+      height: 40px;
+      padding-left: 0px;
+      border: 0;
+      font: bold 15px/40px 'Open Sans', sans-serif;
+      color: $white;
+      text-transform: uppercase;
+      background: $teal;
+      &:hover{
+        cursor: pointer;
+        background: darken($teal, 5%);
+      }
+      &:active, &:focus{
+        background: darken($teal, 15%);
+      }
+    }
+  }
 }
 
 ////////////////////////////////////////////
