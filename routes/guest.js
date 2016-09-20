@@ -99,7 +99,7 @@ app.get('/',function(req, res, next) {
 
 ////// testing ///////
 app.get('/about', function (req, res) {
-  res.render('about');
+  res.render('about', {subtitle: "Buy Local, It Matters!"});
 });
 
     return router;
