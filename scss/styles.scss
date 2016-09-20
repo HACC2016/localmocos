@@ -31,6 +31,7 @@ p { margin: 0.5em 0; color: lighten($black, 33%); }
 a { color: $green; text-decoration: none }
 strong { font-weight: bold; }
 label { display: block; }
+img {border-radius: 10px;}
 
 // Container for all HTML Elements //
 .container {
@@ -141,7 +142,6 @@ label { display: block; }
 .single-business-image img{
   width: 250px;
   height: 250px;
-  border-radius: 5px;
 }
 .single-business-info{
   height: 100px;
@@ -258,7 +258,6 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
-  border-radius: 10px;
 }
 .business-info{
   margin-top: 25px;
@@ -273,7 +272,6 @@ label { display: block; }
       height: 200px;
       object-fit: cover;
       object-position: 50% 50%;
-      border-radius: 5px;
     }
   }
 }
@@ -286,7 +284,6 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
-  border-radius: 10px;
 }
 hr{
   margin-top: 1em;
@@ -303,13 +300,12 @@ hr{
   p{font-size:0.9em}
 }
 .result-listing{
-  margin: 10px 0;
+  margin: 20px 0;
   img{
     width: 200px;
     height: 150px;
     object-fit: cover;
     object-position: 50% 50%;
-    border-radius: 5px;
   }
 }
 
