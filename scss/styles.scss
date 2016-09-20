@@ -98,12 +98,27 @@ img {border-radius: 10px;}
   padding: 25px;
 }
 // Footer //
-.footer {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 15px 25px;
-  font-size: 0.8em;
-  color: lighten($black, 50%);
+footer{
+  background-color: $teal;
+  height: 200px;
+  .footer-content {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    font-size: 0.8em;
+    p{
+      color: $white;
+    }
+    .copyright{
+      margin-top: 20px;
+    }
+    .state-logo{
+      background-image: url("/images/state-logo.png");
+      background-position: top right;
+      background-repeat: no-repeat;
+      height: 114px;
+    }
+  }
 }
 
 ////////////////////////////////////////////
