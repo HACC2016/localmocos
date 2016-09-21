@@ -40,10 +40,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
   1. Search Products
   2. View Product
   **************/
-    app.get(/products\/\d+$/, function(req, res, next) {
-        testJson.name = "Products from Buyer id =" + cleanParam(req.url);
-        res.json([testJson, productList]); //  <--- Pug should render here
-    });
+    // app.get(/products\/\d+$/, function(req, res, next) {
+    //     testJson.name = "Products from Buyer id =" + cleanParam(req.url);
+    //     res.json([testJson, productList]); //  <--- Pug should render here
+    // });
 
     app.get(/product\/\d+$/, function(req, res, next) {
         // testJson.name = "Product View with id=" + cleanParam(req.url);
@@ -130,8 +130,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
        /* testJson.name = "Product Form for id=" + cleanParam(req.url);
         res.json([testJson]); */
-
-        console.log(cleanParamMiddle(req.url,2));
         db.Product.findOne({
             where: {
                 id: cleanParamMiddle(req.url,2)
@@ -141,13 +139,15 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 methodType: 'POST',
                 actionType: '/product/new',
                 formTitle: 'Edit New Product',
-                productsInfo: productsInfo,
+                // productsInfo: productsInfo,
                 product: {
                     name: data.name,
                     description: data.description,
                     price: data.price,
                     qty: data.qty,
-                    image: data.image
+                    image: data.image,
+                    type: data.product_types,
+                    product_info_id: data.product_info_id
                 }
             });
         })

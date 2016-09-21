@@ -104,7 +104,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           services: services,
           markets: markets,
           certs: certs,
-          zipcode: zipcode
+          // zipcode: zipcode
         });
       })
 
@@ -113,7 +113,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         // res.json(testJson);
     });
 
-
+  //////// testing vendor login  page ////////
+    app.get('/vendor', function (req, res) {
+      res.render('vendorDashboard', {user: req.user.usernmae});
+    });
 
     app.get(/seller\/\d+$/, function(req, res) {
         /* */
@@ -129,6 +132,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     return router;
 }
+
 
 
 function cleanParamMiddle(thisParam, index) {
