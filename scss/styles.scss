@@ -109,14 +109,27 @@ footer{
     p{
       color: $white;
     }
-    .copyright{
+    .admin-login{
       margin-top: 20px;
+      a{
+        color: $white;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
     }
     .state-logo{
       background-image: url("/images/state-logo.png");
       background-position: top right;
       background-repeat: no-repeat;
       height: 114px;
+    }
+  }
+  .copyright{
+    text-align: center;
+    font-weight: bold;
+    p{
+      color: $white;
+      font-size: 0.8em;
     }
   }
 }
@@ -452,60 +465,111 @@ hr{
   -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
   -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
   box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
-    // legend{
-    //   text-align: center;
-    //   font-weight: 700;
-    //   font-size: 20px;
-    //   margin-bottom: 4px;
-    // }
-    // label{
-    //   width: 150px;
-    // }
-    input {
-      width: 450px;
-      height: 40px;
-      margin: 10px 0;
-      padding-left: 10px;
-      font: bold 15px 'Open Sans', sans-serif;
-      border: 2px solid lighten($black, 75%);
-      background: $white;
-      border-radius: 3px;
-      &:focus {
-        outline: 0;
-        border: 2px solid $teal;
-      }
+  input {
+    width: 450px;
+    height: 40px;
+    margin: 10px 0;
+    padding-left: 10px;
+    font: bold 15px 'Open Sans', sans-serif;
+    border: 2px solid lighten($black, 75%);
+    background: $white;
+    border-radius: 3px;
+    &:focus {
+      outline: 0;
+      border: 2px solid $teal;
     }
-    input[type="submit"] {
-      width: 150px;
-      height: 40px;
-      padding-left: 0px;
-      border: 0;
-      font: bold 15px/40px 'Open Sans', sans-serif;
-      color: $white;
-      text-transform: uppercase;
-      background: $teal;
-      &:hover{
-        cursor: pointer;
-        background: darken($teal, 5%);
-        transition: 0.5s;
-      }
-      &:active, &:focus{
-        background: darken($teal, 15%);
-      }
+  }
+  input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    padding-left: 0px;
+    border: 0;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    background: $teal;
+    &:hover{
+      cursor: pointer;
+      background: darken($teal, 5%);
+      transition: 0.5s;
     }
-    select{
-      // margin-bottom: 5px;
-      // width: 100%;
-      // line-height: 30px;
-      width: 450px;
-      height: 40px;
-      margin: 10px 0;
-      background: white;
-      line-height: 40px;
-      font: bold 15px/40px 'Open Sans', sans-serif;
+    &:active, &:focus{
+      background: darken($teal, 15%);
     }
-    .other{
-      display: none;
+  }
+  select{
+    width: 450px;
+    height: 40px;
+    margin: 10px 0;
+    background: white;
+    line-height: 40px;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+  }
+}
+
+////////////////////////////////////////////
+/////////////  Vendor  Form    /////////////
+////////////////////////////////////////////
+.vendor-content{
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  border-radius: 5px;
+  background-color: $white;
+  -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  h1{
+    text-align: center;
+  }
+  span{
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: $teal;
+  }
+  input {
+    width: 560px;
+    height: 40px;
+    margin: 5px 0 10px;
+    padding-left: 10px;
+    font: bold 15px 'Open Sans', sans-serif;
+    border: 2px solid lighten($black, 75%);
+    background: $white;
+    border-radius: 3px;
+    &:focus {
+      outline: 0;
+      border: 2px solid $teal;
     }
+  }
+  input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    padding-left: 0px;
+    border: 0;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    background: $teal;
+    &:hover{
+      cursor: pointer;
+      background: darken($teal, 5%);
+      transition: 0.5s;
+    }
+    &:active, &:focus{
+      background: darken($teal, 15%);
+    }
+  }
+  select{
+    width: 560px;
+    height: 40px;
+    margin: 5px 0 10px;
+    background: white;
+    line-height: 40px;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+  }
+  .other{
+    display: none;
   }
 }

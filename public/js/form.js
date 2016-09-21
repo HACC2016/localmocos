@@ -4,9 +4,9 @@ $(function () {
   elements.change(function (event) {
     var input = $(this).next(".other");
     if(event.target.value === "other") {
-      input.css("visibility", "visible").attr("disabled", false);
+      input.css({"visibility": "visible", "display": "block"}).attr("disabled", false);
     } else {
-      input.css("visibility", "hidden").attr("disabled", true);
+      input.css("visibility", "none").attr("disabled", true);
     }
   });
 })

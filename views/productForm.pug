@@ -9,7 +9,7 @@ html(lang="en")
         div.form-container
           form(action="/product" method="POST" enctype="x-www-form-urlencoded")
             fieldset
-              h1 Add A New Product
+              h1 #{formTitle}
               //- label Name:
               input(type="text" name="name" placeholder="Product Name" value=product.name)
               //- label Description:
