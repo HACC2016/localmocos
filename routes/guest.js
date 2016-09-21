@@ -22,8 +22,9 @@ app.get('/Logout',function(req, res, next) {
 
   /**************** Log Out **********************/
 app.get('/Login',function(req, res, next) {
-      testJson.name="LogIn";
-    res.json(testJson);
+    //   testJson.name="LogIn";
+    // res.json(testJson);
+    res.render('login-vendor', {subtitle: "Vendor Login"})
 });
 
     /***************** Search Products **************/

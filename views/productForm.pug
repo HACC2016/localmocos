@@ -1,106 +1,113 @@
-include includes/form.pug
-  .product-content
-    .product-wrap
-      form(action="/product" method="POST" enctype="x-www-form-urlencoded")
-        fieldset
-          legend Product Information:
-          label Name:
-            input(type="text" name="name" placeholder="Product Name" value=product.name)
-          label Description:
-            input(type="text" name="description" placeholder="Description" value=product.description)
-          label Price:
-            input(type="text" name="price" placeholder="Price" value=product.price)
-          label Quantity:
-            input(type="text" name="qty" placeholder="Quantity" value=product.qty)
-          label Image:
-            input(type="url" name="image" placeholder="Image Link" value=product.image)
-          label Type Of Product:
-            select(id="type" name="type")
-              option(value="") Choose Type
-              option(value="farmedSeafood") Farmed Seafood
-              option(value="snackFoods") Snack Foods
-              option(value="beverages") Beverages
-              option(value="coffee") Coffee
-              option(value="condiments") Condiments
-              option(value="dairy") Dairy
-              option(value="floral") Floral
-          label Specific Type:
-            select(id="specType" name="product_info_id" disabled)
-              option(value="") Choose 1
-              option(value="1" class="farmedSeafood") Fresh Seafood
-              option(value="2" class="farmedSeafood") Frozen Seafood
-              option(value="3" class="farmedSeafood") Processed Seafood
-              option(value="4" class="snackFoods") Candies
-              option(value="5" class="snackFoods") Chips
-              option(value="6" class="snackFoods") Cookies
-              option(value="7" class="snackFoods") Crackers
-              option(value="8" class="snackFoods") Dried Fruits
-              option(value="9" class="beverages") Alcoholic
-              option(value="10" class="beverages") Concentrates
-              option(value="11" class="beverages") Drink Mixes
-              option(value="12" class="beverages") Juices
-              option(value="13" class="beverages") Tea
-              option(value="14" class="beverages") Water
-              option(value="15" class="coffee") Big Island (Excluding Kona)
-              option(value="16" class="coffee") Kauai
-              option(value="17" class="coffee") Kona
-              option(value="18" class="coffee") Maui
-              option(value="19" class="coffee") Molokai
-              option(value="20" class="coffee") Oahu
-              option(value="21" class="condiments") Dressings
-              option(value="22" class="condiments") Jam/Jellies
-              option(value="23" class="condiments") Pickled Vegetables
-              option(value="24" class="condiments") Preserved Fruits
-              option(value="25" class="condiments") Sauces
-              option(value="26" class="dairy") Butter
-              option(value="27" class="dairy") Cheese
-              option(value="28" class="dairy") Ice Cream
-              option(value="29" class="dairy") Milk
-              option(value="30" class="floral") Anthuriums
-              option(value="31" class="floral") Foliage
-              option(value="32" class="floral") Leis
-              option(value="33" class="floral") Other
-          script.
-            var type = document.getElementById('type');
-            type.addEventListener('change', function (e) {
-              var selectedVal = type.options[type.selectedIndex].value;
-              var specType = document.getElementById('specType');
-              specType.disabled = false; // makes specific type drop down work
-              Array.prototype.slice.call(specType.options).forEach(function (element) {
-                  element.hidden = true;
-              }); // hiding all values in Specific Types
-              switch (selectedVal) {
-                case 'farmedSeafood':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'snackFoods':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'beverages':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'coffee':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'condiments':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'dairy':
-                  showOptions(specType, selectedVal);
-                  break;
-                case 'floral':
-                  showOptions(specType, selectedVal);
-                  break;
-                default:
-                  break;
-              }
-            });
-            function showOptions (array, compVal) {
-              Array.prototype.slice.call(array.options).forEach(function (element) {
-                if(element.className === compVal) {
-                  element.hidden = false;
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    div.container
+      include includes/nav.pug
+      include includes/search.pug
+      div.main-content
+        div.form-container
+          form(action="/product" method="POST" enctype="x-www-form-urlencoded")
+            fieldset
+              h1 Add A New Product
+              //- label Name:
+              input(type="text" name="name" placeholder="Product Name" value=product.name)
+              //- label Description:
+              input(type="text" name="description" placeholder="Description" value=product.description)
+              //- label Price:
+              input(type="text" name="price" placeholder="Price" value=product.price)
+              //- label Quantity:
+              input(type="text" name="qty" placeholder="Quantity" value=product.qty)
+              //- label Image:
+              input(type="url" name="image" placeholder="Image Link" value=product.image)
+              //- label Type Of Product:
+              select(id="type" name="type")
+                option(value="") Choose Product Type
+                option(value="farmedSeafood") Farmed Seafood
+                option(value="snackFoods") Snack Foods
+                option(value="beverages") Beverages
+                option(value="coffee") Coffee
+                option(value="condiments") Condiments
+                option(value="dairy") Dairy
+                option(value="floral") Floral
+              //- label Specific Type:
+              select(id="specType" name="product_info_id" disabled)
+                option(value="") Choose 1
+                option(value="1" class="farmedSeafood") Fresh Seafood
+                option(value="2" class="farmedSeafood") Frozen Seafood
+                option(value="3" class="farmedSeafood") Processed Seafood
+                option(value="4" class="snackFoods") Candies
+                option(value="5" class="snackFoods") Chips
+                option(value="6" class="snackFoods") Cookies
+                option(value="7" class="snackFoods") Crackers
+                option(value="8" class="snackFoods") Dried Fruits
+                option(value="9" class="beverages") Alcoholic
+                option(value="10" class="beverages") Concentrates
+                option(value="11" class="beverages") Drink Mixes
+                option(value="12" class="beverages") Juices
+                option(value="13" class="beverages") Tea
+                option(value="14" class="beverages") Water
+                option(value="15" class="coffee") Big Island (Excluding Kona)
+                option(value="16" class="coffee") Kauai
+                option(value="17" class="coffee") Kona
+                option(value="18" class="coffee") Maui
+                option(value="19" class="coffee") Molokai
+                option(value="20" class="coffee") Oahu
+                option(value="21" class="condiments") Dressings
+                option(value="22" class="condiments") Jam/Jellies
+                option(value="23" class="condiments") Pickled Vegetables
+                option(value="24" class="condiments") Preserved Fruits
+                option(value="25" class="condiments") Sauces
+                option(value="26" class="dairy") Butter
+                option(value="27" class="dairy") Cheese
+                option(value="28" class="dairy") Ice Cream
+                option(value="29" class="dairy") Milk
+                option(value="30" class="floral") Anthuriums
+                option(value="31" class="floral") Foliage
+                option(value="32" class="floral") Leis
+                option(value="33" class="floral") Other
+              script.
+                var type = document.getElementById('type');
+                type.addEventListener('change', function (e) {
+                  var selectedVal = type.options[type.selectedIndex].value;
+                  var specType = document.getElementById('specType');
+                  specType.disabled = false; // makes specific type drop down work
+                  Array.prototype.slice.call(specType.options).forEach(function (element) {
+                      element.hidden = true;
+                  }); // hiding all values in Specific Types
+                  switch (selectedVal) {
+                    case 'farmedSeafood':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'snackFoods':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'beverages':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'coffee':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'condiments':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'dairy':
+                      showOptions(specType, selectedVal);
+                      break;
+                    case 'floral':
+                      showOptions(specType, selectedVal);
+                      break;
+                    default:
+                      break;
+                  }
+                });
+                function showOptions (array, compVal) {
+                  Array.prototype.slice.call(array.options).forEach(function (element) {
+                    if(element.className === compVal) {
+                      element.hidden = false;
+                    }
+                  });
                 }
-              });
-            }
-          input(type="submit" value="Submit" class="submit")
-include includes/onChange.pug
+              input(type="submit" value="Submit" class="submit")
+      include includes/footer.pug
+      include includes/onChange.pug

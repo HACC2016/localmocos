@@ -83,7 +83,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             // actionType: '/product/new',
             // formTitle: 'Create New Product',
             product: {},
-            productType: productType
+            productType: productType,
+            subtitle: "Add A New Product"
         });
     });
 

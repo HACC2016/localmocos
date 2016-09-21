@@ -96,6 +96,12 @@ app.get('/vendorForm', function (req, res) {
 app.get('/editVendorForm', function (req, res) {
   res.render('editVendorForm', {})
 })
+app.get('/login-vendor', function (req, res) {
+  res.render('login-vendor', {subtitle: "Vendor Login"})
+})
+app.get('/login-admin', function (req, res) {
+  res.render('login-admin', {subtitle: "Admin Login"})
+})
 app.get('/about', function (req, res) {
   res.render('about', {subtitle: "About Us"})
 })
