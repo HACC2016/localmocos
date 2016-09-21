@@ -1,53 +1,79 @@
-include includes/form.pug
-  .vendor-content
-    mixin selectWithOther(fieldname, options)
-      select(name=fieldname)
-        each option in options
-          option(value=option.id)= option[fieldname]
-        option(value="other") Other
-      input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
+doctype html
+html(lang="en")
+  include includes/head.pug
+  body
+    div.container
+      include includes/nav.pug
+      include includes/search.pug
+      div.main-content
+        div.vendor-content
+          mixin selectWithOther(fieldname, options)
+            select(name=fieldname)
+              each option in options
+                option(value=option.id)= option[fieldname]
+              option(value="other") Other
+            input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
 
-
-    form(action="/seller" method="POST" enctype="x-www-form-urlencoded")
-      fieldset
-        legend Vendor Information:
-        label Company Name *
-          input(type="text" name="company_name" placeholder="Company name" value=vendor.company_name required)
-        label DBA
-          input(type="text" name="dba" placeholder="Doing business as" value=vendor.dba)
-        label Business Registration Number *
-          input(type="text" name="business_reg_num" placeholder="Business Registration #" value=vendor.business_reg_num required)
-        label Address Line 1 *
-          input(type="text" name="address1" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
-        label Address Line 2
-          input(type="text" name="address2" placeholder="Apt/Suite/Unit/Building/Floor/etc" value=vendor.address2)
-        label City *
-          input(type="text" name="city" placeholder="City" required)
-        label Zip Code *
-          input(type="text" name="zipcode" placeholder="Zip Code" value=vendor.zipcode required)
-        label County *
-          input(type="text" name="country" placeholder="County" required)
-        label Island *
-          input(type="text" name="island" placeholder="Island" required)
-        label Business Phone Number 1 *
-          input(type="tel" name="business_ph" placeholder="Business Number 1" value=vendor.business_ph required)
-        label Business Phone Number 2
-          input(type="tel" name="phoneTwo" placeholder="Business Number 2")
-        label Sales Contact Phone Number *
-          input(type="tel" name="sales_ph" placeholder="Sales Number" value=vendor.sales_ph required)
-        label E-mail *
-          input(type="email" name="email" placeholder="E-mail" value=vendor.email required)
-        label Website
-          input(type="url" name="website" placeholder="Website" value=vendor.website)
-        label Image
-          input(type="url" name="image" placeholder="Image Link" value=vendor.image)
-        label Type of Business:
-          +selectWithOther("job", businessType)
-        label Services:
-          +selectWithOther("service", services)
-        label Markets:
-          +selectWithOther("market", markets)
-        label Certifications/Specialty:
-          +selectWithOther("specialty", certs)
-        input(type="submit" value="Submit" class="submit")
-include includes/onChange.pug
+          form(action="/seller" method="POST" enctype="x-www-form-urlencoded")
+            fieldset
+              h1 #{formTitle}
+              label
+                span Company Name *
+                input(type="text" name="company_name" placeholder="Company name" value=vendor.company_name required)
+              label
+                span DBA
+                input(type="text" name="dba" placeholder="Doing business as" value=vendor.dba)
+              label
+                span Business Registration Number *
+                input(type="text" name="business_reg_num" placeholder="Business Registration #" value=vendor.business_reg_num required)
+              label
+                span Address Line 1 *
+                input(type="text" name="address1" placeholder="Address/P.O. Box/Company Name" value=vendor.address1 required)
+              label
+                span Address Line 2
+                input(type="text" name="address2" placeholder="Apt/Suite/Unit/Building/Floor/etc" value=vendor.address2)
+              label
+                span City *
+                input(type="text" name="city" placeholder="City" required)
+              label
+                span Zip Code *
+                input(type="text" name="zipcode" placeholder="Zip Code" value=vendor.zipcode required)
+              label
+                span County *
+                input(type="text" name="country" placeholder="County" required)
+              label
+                span Island *
+                input(type="text" name="island" placeholder="Island" required)
+              label
+                span Business Phone Number 1 *
+                input(type="tel" name="business_ph" placeholder="Business Number 1" value=vendor.business_ph required)
+              label
+                span Business Phone Number 2
+                input(type="tel" name="phoneTwo" placeholder="Business Number 2")
+              label
+                span Sales Contact Phone Number *
+                input(type="tel" name="sales_ph" placeholder="Sales Number" value=vendor.sales_ph required)
+              label
+                span E-mail *
+                input(type="email" name="email" placeholder="E-mail" value=vendor.email required)
+              label
+                span Website
+                input(type="url" name="website" placeholder="Website" value=vendor.website)
+              label
+                span Image
+                input(type="url" name="image" placeholder="Image Link" value=vendor.image)
+              label
+                span Type of Business:
+                +selectWithOther("job", businessType)
+              label
+                span Services:
+                +selectWithOther("service", services)
+              label
+                span Markets:
+                +selectWithOther("market", markets)
+              label
+                span Certifications/Specialty:
+                +selectWithOther("specialty", certs)
+              input(type="submit" value="Submit" class="submit")
+      include includes/onChange.pug
+      include includes/footer.pug
