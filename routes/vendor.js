@@ -51,6 +51,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get('/vendor/new', function(req, res) {
       res.render('vendorForm',{
+          subtitle: "Vendor Registration",
+          formTitle: "Vendor Registration",
           vendor: {},
           businessType: businessType,
           services: services,
