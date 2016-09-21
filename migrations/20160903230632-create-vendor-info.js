@@ -34,7 +34,7 @@ module.exports = {
         type: Sequelize.TEXT
       },
       dba: {
-        allowNull: false,
+        allowNull: true,
         type: Sequelize.STRING
       },
       address1: {
@@ -47,6 +47,10 @@ module.exports = {
       },
       business_ph: {
         allowNull: false,
+        type: Sequelize.STRING
+      },
+      business_ph2: {
+        allowNull: true,
         type: Sequelize.STRING
       },
       sales_ph: {
@@ -67,15 +71,6 @@ module.exports = {
         foreignKey: true,
         references: {
           model: 'zipcodes',
-          key: 'id'
-        }
-      },
-      market_id: {
-        allowNull: false,
-        type: Sequelize.INTEGER,
-        foreignKey: true,
-        references: {
-          model: 'markets',
           key: 'id'
         }
       },

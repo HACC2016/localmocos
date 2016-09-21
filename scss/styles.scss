@@ -31,6 +31,7 @@ p { margin: 0.5em 0; color: lighten($black, 33%); }
 a { color: $green; text-decoration: none }
 strong { font-weight: bold; }
 label { display: block; }
+img {border-radius: 10px;}
 
 // Container for all HTML Elements //
 .container {
@@ -97,12 +98,40 @@ label { display: block; }
   padding: 25px;
 }
 // Footer //
-.footer {
-  max-width: 1150px;
-  margin: 0 auto;
-  padding: 15px 25px;
-  font-size: 0.8em;
-  color: lighten($black, 50%);
+footer{
+  background-color: $teal;
+  height: 200px;
+  .footer-content {
+    max-width: 1150px;
+    margin: 0 auto;
+    padding: 15px 25px;
+    font-size: 0.8em;
+    p{
+      color: $white;
+    }
+    .admin-login{
+      margin-top: 20px;
+      a{
+        color: $white;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
+    }
+    .state-logo{
+      background-image: url("/images/state-logo.png");
+      background-position: top right;
+      background-repeat: no-repeat;
+      height: 114px;
+    }
+  }
+  .copyright{
+    text-align: center;
+    font-weight: bold;
+    p{
+      color: $white;
+      font-size: 0.8em;
+    }
+  }
 }
 
 ////////////////////////////////////////////
@@ -141,7 +170,6 @@ label { display: block; }
 .single-business-image img{
   width: 250px;
   height: 250px;
-  border-radius: 5px;
 }
 .single-business-info{
   height: 100px;
@@ -183,10 +211,10 @@ label { display: block; }
 .search-container {
   width:100%;
   background-color: $white;
-  // background-image: url('');
-  // background-repeat: no-repeat;
-  // background-position: center;
-  // background-size: cover;
+  background-image: url('/images/clouds-field.jpg');
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover;
   border-bottom: 10px solid $teal;
   padding: 100px 0 50px;
 }
@@ -210,10 +238,7 @@ label { display: block; }
     &:focus {
       outline: 0;
       background: $white;
-      border: 0;
-      -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-      -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-      box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+      border: 1px solid $teal;
     }
   }
   button {
@@ -258,7 +283,6 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
-  border-radius: 10px;
 }
 .business-info{
   margin-top: 25px;
@@ -273,7 +297,6 @@ label { display: block; }
       height: 200px;
       object-fit: cover;
       object-position: 50% 50%;
-      border-radius: 5px;
     }
   }
 }
@@ -286,7 +309,6 @@ label { display: block; }
   height: 350px;
   object-fit: cover;
   object-position: 50% 50%;
-  border-radius: 10px;
 }
 hr{
   margin-top: 1em;
@@ -303,13 +325,12 @@ hr{
   p{font-size:0.9em}
 }
 .result-listing{
-  margin: 10px 0;
+  margin: 20px 0;
   img{
     width: 200px;
     height: 150px;
     object-fit: cover;
     object-position: 50% 50%;
-    border-radius: 5px;
   }
 }
 
@@ -331,7 +352,6 @@ hr{
 ////////////////////////////////////////////
 .about-container{
   margin-top: 25px;
-  h1{}
   img{
     width: 1100px;
     height: 400px;
@@ -339,6 +359,63 @@ hr{
     object-position: 50% 50%;
   }
   p{font-size:0.9em}
+}
+
+////////////////////////////////////////////
+////////////////// LOGIN  //////////////////
+////////////////////////////////////////////
+.login-container{
+  margin: 50px auto;
+  padding: 20px;
+  width: 500px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: $white;
+  -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  .vendorLogo img {
+    margin-bottom: 20px;
+  }
+  .adminLogo img {
+    margin-bottom: 20px;
+    width: 71px;
+  }
+  .login-content{
+    text-transform: uppercase;
+    input {
+      width: 350px;
+      height: 40px;
+      margin: 10px 0;
+      padding-left: 10px;
+      font: bold 15px 'Open Sans', sans-serif;
+      border: 2px solid lighten($black, 75%);
+      background: $white;
+      border-radius: 3px;
+      &:focus {
+        outline: 0;
+        border: 2px solid $teal;
+      }
+    }
+    input[type="submit"] {
+      width: 150px;
+      height: 40px;
+      padding-left: 0px;
+      border: 0;
+      font: bold 15px/40px 'Open Sans', sans-serif;
+      color: $white;
+      text-transform: uppercase;
+      background: $teal;
+      &:hover{
+        cursor: pointer;
+        background: darken($teal, 5%);
+        transition: 0.5s;
+      }
+      &:active, &:focus{
+        background: darken($teal, 15%);
+      }
+    }
+  }
 }
 
 ////////////////////////////////////////////
@@ -374,3 +451,125 @@ hr{
 }
 
 // div {border: 1px red dotted;} //delete this later!!!
+
+////////////////////////////////////////////
+/////////////  Product Form    /////////////
+////////////////////////////////////////////
+.form-container{
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  border-radius: 5px;
+  text-align: center;
+  background-color: $white;
+  -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  input {
+    width: 450px;
+    height: 40px;
+    margin: 10px 0;
+    padding-left: 10px;
+    font: bold 15px 'Open Sans', sans-serif;
+    border: 2px solid lighten($black, 75%);
+    background: $white;
+    border-radius: 3px;
+    &:focus {
+      outline: 0;
+      border: 2px solid $teal;
+    }
+  }
+  input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    padding-left: 0px;
+    border: 0;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    background: $teal;
+    &:hover{
+      cursor: pointer;
+      background: darken($teal, 5%);
+      transition: 0.5s;
+    }
+    &:active, &:focus{
+      background: darken($teal, 15%);
+    }
+  }
+  select{
+    width: 450px;
+    height: 40px;
+    margin: 10px 0;
+    background: white;
+    line-height: 40px;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+  }
+}
+
+////////////////////////////////////////////
+/////////////  Vendor  Form    /////////////
+////////////////////////////////////////////
+.vendor-content{
+  margin: 50px auto;
+  padding: 20px;
+  width: 600px;
+  border-radius: 5px;
+  background-color: $white;
+  -webkit-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  box-shadow: 0px -1px 10px 0px rgba(0,0,0,0.5);
+  h1{
+    text-align: center;
+  }
+  span{
+    display: block;
+    text-transform: uppercase;
+    font-size: 0.75em;
+    font-weight: bold;
+    color: $teal;
+  }
+  input {
+    width: 560px;
+    height: 40px;
+    margin: 5px 0 10px;
+    padding-left: 10px;
+    font: bold 15px 'Open Sans', sans-serif;
+    border: 2px solid lighten($black, 75%);
+    background: $white;
+    border-radius: 3px;
+    &:focus {
+      outline: 0;
+      border: 2px solid $teal;
+    }
+  }
+  input[type="submit"] {
+    width: 150px;
+    height: 40px;
+    padding-left: 0px;
+    border: 0;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+    color: $white;
+    text-transform: uppercase;
+    background: $teal;
+    &:hover{
+      cursor: pointer;
+      background: darken($teal, 5%);
+      transition: 0.5s;
+    }
+    &:active, &:focus{
+      background: darken($teal, 15%);
+    }
+  }
+  select{
+    width: 560px;
+    height: 40px;
+    margin: 5px 0 10px;
+    background: white;
+    line-height: 40px;
+    font: bold 15px/40px 'Open Sans', sans-serif;
+  }
+  .other{
+    display: none;
+  }
+}

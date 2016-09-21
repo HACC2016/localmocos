@@ -22,8 +22,9 @@ app.get('/Logout',function(req, res, next) {
 
   /**************** Log Out **********************/
 app.get('/Login',function(req, res, next) {
-      testJson.name="LogIn";
-    res.json(testJson);
+    //   testJson.name="LogIn";
+    // res.json(testJson);
+    res.render('login-vendor', {subtitle: "Vendor Login"})
 });
 
     /***************** Search Products **************/
@@ -61,6 +62,7 @@ app.post('/Search', function(req, res, next) {
             /***** Products *********/
 
               products.push({
+                "pid":data[i].product_id,
                 "name":data[i].name,
                 "description":data[i].description,
                 "product_type":data[i].product_type,
@@ -75,7 +77,7 @@ app.post('/Search', function(req, res, next) {
         }
 
          res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
-      // res.json(vendors);
+      // res.json(products);
         });
     }
     );
@@ -98,7 +100,7 @@ app.get('/',function(req, res, next) {
 
 ////// testing ///////
 app.get('/about', function (req, res) {
-  res.render('about');
+  res.render('about', {subtitle: "Buy Local, It Matters!"});
 });
 
     return router;

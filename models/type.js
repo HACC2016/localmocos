@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       searchResults: function(searchString) {
         var searchArray=searchString.split(' ');
 
-        var select='SELECT name, t1.description,t1.image, "product_info_id",t2.type product_type,"vendor_info_id" ';
+        var select='SELECT t1.id product_id, name, t1.description,t1.image, "product_info_id",t2.type product_type,"vendor_info_id" ';
         var selectVendorInfo= ',t3.id bid, t3.dba,t3.address1,t3.address2,t3.business_ph,t3.business_description,t3.business_ph,t3.website,t3.email,t3.image busimage ';
         var join1=' FROM "products" t1 JOIN product_types t2 ON t1."product_info_id"=t2.id ';
         var join2=' JOIN vendor_infos t3 ON t1."vendor_info_id"=t3.id ';
