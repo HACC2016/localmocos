@@ -35,9 +35,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     })
 
     /*************
-  1. Create new Seller
-  2. Edit Seller info
-  3. Delete Seller(Inactive)
+  1. Create new Vendor
+  2. Edit Vendor info
+  3. Delete Vendor(Inactive)
 
   4. Add Product
   5. Delete Product(Inactive)
@@ -47,9 +47,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
   **************/
 
 
-    /**** New Seller Form *****/
+    /**** New Vendor Form *****/
 
-    app.get('/seller/new', function(req, res) {
+    app.get('/vendor/new', function(req, res) {
       res.render('vendorForm',{
           vendor: {},
           businessType: businessType,
@@ -61,7 +61,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       });
     });
 
-    app.post('/seller', function(req, res, next) {
+    app.post('/vendor', function(req, res, next) {
       var locals = req.body;
       var city = '';
       var island = '';
@@ -92,9 +92,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       // })
     });
 
-    app.get(/seller\/\d+\/edit$/, function(req, res) {
-      var sellerId = cleanParamMiddle(req.url, 2);
-      db.VendorInfo.findById(sellerId)
+    app.get(/vendor\/\d+\/edit$/, function(req, res) {
+      var vendorId = cleanParamMiddle(req.url, 2);
+      db.VendorInfo.findById(vendorId)
       .then((data) => {
         var vendor = JSON.parse(JSON.stringify(data));
         console.log(vendor);
@@ -109,22 +109,34 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       })
 
            /* } */
-        // testJson.name = "Edit Seller id=" + cleanParamMiddle(req.url, 2);
+        // testJson.name = "Edit Vendor id=" + cleanParamMiddle(req.url, 2);
         // res.json(testJson);
     });
 
 
 
-    app.get(/seller\/\d+$/, function(req, res) {
-        /* */
-                res.render('vendorEditForm', {
-                    methodType: 'GET',
-                    actionType: '/seller/{id}',
-                    formTitle: 'Edit Seller'
-                });
-           /* } */
-        testJson.name = "View Seller id=" + cleanParamMiddle(req.url, 2);
-        res.json(testJson);
+    app.get(/vendor\/\d+$/, function(req, res) {
+        // /* */
+        //         res.render('vendorEditForm', {
+        //             methodType: 'GET',
+        //             actionType: '/vendor/{id}',
+        //             formTitle: 'Edit Vendor'
+        //         });
+        //    /* } */
+        // testJson.name = "View Vendor id=" + cleanParamMiddle(req.url, 2);
+        // res.json(testJson);
+      db.VendorInfo.findOne({
+        where: {id: cleanParamMiddle(req.url, 2)}
+      })
+      .then(function (vendorObject) {
+        var vendor = vendorObject;
+        db.Product.findAll({
+          where: {vendor_info_id: cleanParamMiddle(req.url, 2)}
+        })
+        .then(function(productArray){
+        res.render('vendor', {subtitle: vendor.dba, image: vendor.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
+        });
+      });
     });
 
     return router;
