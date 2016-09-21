@@ -109,14 +109,27 @@ footer{
     p{
       color: $white;
     }
-    .copyright{
+    .admin-login{
       margin-top: 20px;
+      a{
+        color: $white;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
     }
     .state-logo{
       background-image: url("/images/state-logo.png");
       background-position: top right;
       background-repeat: no-repeat;
       height: 114px;
+    }
+  }
+  .copyright{
+    text-align: center;
+    font-weight: bold;
+    p{
+      color: $white;
+      font-size: 0.8em;
     }
   }
 }
@@ -504,8 +517,4 @@ hr{
       line-height: 40px;
       font: bold 15px/40px 'Open Sans', sans-serif;
     }
-    .other{
-      display: none;
-    }
-  }
 }
