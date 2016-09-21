@@ -56,7 +56,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           services: services,
           markets: markets,
           certs: certs,
-          zipcode: zipcode
+          // zipcode: zipcode
+          //// currently undefined ////
       });
     });
 
