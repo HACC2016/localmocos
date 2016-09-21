@@ -15,8 +15,7 @@ module.exports = {
       sales_ph: '1-800-935-5510',
       website: 'https://www.bigislandcandies.com',
       email: 'contactus@bigislandcandies.com',
-      zip_id: 1,
-      market_id: 2,
+      zip_id: 18,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -33,8 +32,7 @@ module.exports = {
       sales_ph: '1-808-324-6600',
       website: 'http://www.adaptationsaloha.com/oceanfire',
       email: 'adaptations-hi@earthlink.net',
-      zip_id: 2,
-      market_id: 2,
+      zip_id: 3,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -49,8 +47,7 @@ module.exports = {
       address1: 'P.O. Box 343, Mountain View, Hawaii 96771',
       business_ph: '1-808-968-0648',
       sales_ph: '1-808-968-0648',
-      zip_id: 3,
-      market_id: 2,
+      zip_id: 64,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -67,8 +64,7 @@ module.exports = {
       sales_ph: '1-866-509-1144',
       website: 'http://www.bigislandabalone.com',
       email: 'ldesilva@bigislandabalone.com',
-      zip_id: 4,
-      market_id: 2,
+      zip_id: 34,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -85,8 +81,7 @@ module.exports = {
       sales_ph: '1-808-896-0532',
       website: 'http://myworld.ebay.com/royannique76',
       email: 'royanne76@yahoo.com',
-      zip_id: 2,
-      market_id: 2,
+      zip_id: 3,
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
