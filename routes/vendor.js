@@ -73,6 +73,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         }
       })
       .then((data) => {
+        console.log(locals);
         if(data) {
           var zipId = data.dataValues.id; // zip_id
           return VendorInfo.create({
@@ -93,25 +94,51 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             isActive: true,
           })
           .then(function(vendor) {
-            console.log(vendor);
-            db.Product.findAll({
+            return db.Product.findAll({
               where: {
                 vendor_info_id: vendor.user_id
               }
             })
             .then(function(productArray) {
-              res.render('vendor', {
-                subtitle: vendor.dba,
-                image: vendor.image,
-                vendor: vendor.dba,
-                address: vendor.address1,
-                phone: vendor.business_ph,
-                email: vendor.email,
-                website: vendor.website,
-                description: vendor.business_description,
-                products: productArray
+              return Promise.all(
+                [].concat(
+                  locals.market
+                    .filter(function (id) {
+                      return id;
+                    })
+                    .map(function (id, index, array) {
+                      var marketId = parseInt(id);
+                      var marketDesc = null;
+                      if (isNaN(marketId)) {
+                        marketDesc = id;
+                        marketId = 7;
+                      }
+                      return db.VendorInfoMarket.create({
+                        vendor_info_id: vendor.id,
+                        market_id: marketId,
+                        market_desc: marketDesc
+                      });
+                    })
+                )
+
+              )
+              .catch(function (err) {
+                console.log(err);
+              })
+              .then(function (markets) {
+                return res.render('vendor', {
+                  subtitle: vendor.dba,
+                  image: vendor.image,
+                  vendor: vendor.dba,
+                  address: vendor.address1,
+                  phone: vendor.business_ph,
+                  email: vendor.email,
+                  website: vendor.website,
+                  description: vendor.business_description,
+                  products: productArray
+                });
               });
-            });
+            })
           });
         } else {
           res.send('City, Island, and Zipcode do not match.');
@@ -148,9 +175,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       })
       .then(function (data) {
         var vendor = JSON.parse(JSON.stringify(data));
-        console.log(vendor);
         var vendorLocation = vendor.Zipcode;
-        console.log(vendorLocation);
         return res.render('editVendorForm',{
           formTitle: "Vendor Update",
           id: vendorId,
@@ -165,9 +190,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         });
       })
     });
+
     app.put(/vendor\/\d+$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
       var locals = req.body;
+      console.log(locals);
       return db.Zipcode.findOne({
         where: {
           city: locals.city[0].toUpperCase() + locals.city.slice(1),
