@@ -94,9 +94,36 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             isActive: true,
           })
           .then(function(vendor) {
-            return db.Product.findAll({
+            // creating join table record for each vendor type of business, service
+            // market, and specialty/certification
+            locals.job.forEach((job_id) => {
+              db.VendorInfoType.create({
+                vendor_info_id: vendor.id,
+                type_id: parseInt(job_id)
+              });
+            });
+            locals.service.forEach((service_id) => {
+              db.VendorInfoService.create({
+                vendor_info_id: vendor.id,
+                service_id: parseInt(service_id)
+              });
+            });
+            locals.market.forEach((market_id) => {
+              db.VendorInfoMarket.create({
+                vendor_info_id: vendor.id,
+                market_id: parseInt(market_id)
+              });
+            });
+            locals.specialty.forEach((specialty_id) => {
+              db.VendorInfoCert.create({
+                vendor_info_id: vendor.id,
+                cert_id: parseInt(specialty_id)
+              });
+            });
+
+            db.Product.findAll({
               where: {
-                vendor_info_id: vendor.user_id
+                vendor_info_id: vendor.id
               }
             })
             .then(function(productArray) {
@@ -228,7 +255,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           city: vendorLocation.city,
           island: vendorLocation.island
         });
-      })
+      });
     });
 
     app.put(/vendor\/\d+$/, function(req, res) {
