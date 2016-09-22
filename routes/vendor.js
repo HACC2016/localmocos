@@ -57,48 +57,77 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs,
-          // zipcode: zipcode
-          //// currently undefined ////
+          certs: certs
       });
     });
 
     app.post('/vendor', function(req, res, next) {
-      var locals = req.body;
-      var city = '';
-      var island = '';
-      db.Zipcode.findAll({
+      db.Zipcode.findOne({
         where: {
-          zip: req.body.zip
+          city: req.body.city[0].toUpperCase() + req.body.city.slice(1),
+          island: req.body.island[0].toUpperCase() + req.body.island.slice(1),
+          zip: req.body.zipcode
         }
       })
       .then((data) => {
-        var dataValues = data[0].dataValues;
-        city = dataValues.city;
-        island = dataValues.island;
-        if (city === locals.city && island === locals.island) {
-          res.send('OK!');
+        if(data) {
+          var zipId = data.dataValues.id; // zip_id
+          db.VendorInfo.create({
+            user_id: 1,
+            image: req.body.image,
+            company_name: req.body.company_name,
+            business_reg_num: req.body.business_reg_num,
+            business_description: req.body.description,
+            dba: req.body.dba,
+            address1: req.body.address1,
+            address2: req.body.address2,
+            business_ph: req.body.business_ph,
+            business_ph2: req.body.phoneTwo,
+            sales_ph: req.body.sales_ph,
+            website: req.body.website,
+            email: req.body.email,
+            zip_id: zipId,
+            isActive: true,
+          })
+          .then((vendor) => {
+            console.log(vendor);
+            console.log(vendor.id);
+          });
         } else {
-          console.log(city, locals.city, island, locals.island)
-          throw new TypeError('City and Island do not match')
+          res.send('City, Island, and Zipcode do not match.');
         }
-      })
-      // // .then(() => {
-      //   VendorInfo.create({
-      //     company_name: locals.companyName,
-      //     dba: locals.dba,
-      //     bus_reg_num: locals.regNum,
-      //     address1: locals.addressOne,
-      //     address2: locals.addressTwo,
-      //   })
-      // })
+      });
     });
 
     app.get(/vendor\/\d+\/edit$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
-      db.VendorInfo.findById(vendorId)
+      db.VendorInfo.findById(vendorId, {
+        include: [
+          {
+            model: db.Type,
+            where: {}
+          },
+          {
+            model: db.Service,
+            where: {}
+          },
+          {
+            model: db.Market,
+            where: {}
+          },
+          {
+            model: db.Certification,
+            where: {}
+          },
+          {
+            model: db.Zipcode,
+            where: {}
+          }
+        ]
+      })
       .then((data) => {
         var vendor = JSON.parse(JSON.stringify(data));
+        var vendorLocation = vendor.Zipcode;
         console.log(vendor);
         res.render('vendorForm',{
           vendor: vendor,
@@ -106,7 +135,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           services: services,
           markets: markets,
           certs: certs,
-          // zipcode: zipcode
+          zip: vendorLocation.zip,
+          city: vendorLocation.city,
+          island: vendorLocation.island
         });
       })
 

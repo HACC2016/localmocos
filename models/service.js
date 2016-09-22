@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.Service.belongsToMany(models.VendorInfo, {
-          through: models.vendor_info_service,
+          through: models.VendorInfoService,
           foreignKey: 'service_id'
         });
       }

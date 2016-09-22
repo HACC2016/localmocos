@@ -10,9 +10,11 @@ module.exports = function(sequelize, DataTypes) {
     address1: DataTypes.STRING,
     address2: DataTypes.STRING,
     business_ph: DataTypes.STRING,
+    business_ph2: DataTypes.STRING,
     sales_ph: DataTypes.STRING,
     website: DataTypes.STRING,
     email: DataTypes.STRING,
+    isActive: DataTypes.BOOLEAN
   }, {
     tableName: 'vendor_infos',
     classMethods: {
@@ -34,12 +36,16 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.belongsToMany(models.Certification, {
-          through: models.vendor_info_cert,
+          through: models.VendorInfoCert,
           foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.belongsToMany(models.Service, {
-          through: models.vendor_info_service,
+          through: models.VendorInfoService,
           foreignKey: 'vendor_info_id'
+        });
+        models.VendorInfo.belongsTo(models.Zipcode, {
+          foreignKey: 'zip_id',
+          targetKey: 'id'
         });
       }
     }

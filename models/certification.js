@@ -9,7 +9,7 @@ module.exports = function(sequelize, DataTypes) {
       associate: function(models) {
         // associations can be defined here
         models.Certification.belongsToMany(models.VendorInfo, {
-          through: models.vendor_info_cert,
+          through: models.VendorInfoCert,
           foreignKey: 'cert_id'
         });
         // models.Certification.belongsTo(models.Product, {
