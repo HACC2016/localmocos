@@ -14,6 +14,9 @@ module.exports = {
       market_id: {
         type: Sequelize.INTEGER
       },
+      other_market: {
+        type: Sequelize.STRING
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE
