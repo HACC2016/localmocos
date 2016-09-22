@@ -1,7 +1,6 @@
 $(function () {
   var elements = $("input[type='checkbox']");
   elements.change(function (event) {
-    debugger;
     var input = $(this).parent().siblings(".other");
     if(event.target.parentElement.innerText.toLowerCase() === "other") {
       console.log(event.target.value);
