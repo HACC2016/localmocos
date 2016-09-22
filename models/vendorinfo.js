@@ -36,11 +36,11 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.belongsToMany(models.Certification, {
-          through: models.vendor_info_cert,
+          through: models.VendorInfoCert,
           foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.belongsToMany(models.Service, {
-          through: models.vendor_info_service,
+          through: models.VendorInfoService,
           foreignKey: 'vendor_info_id'
         });
         models.VendorInfo.belongsTo(models.Zipcode, {
