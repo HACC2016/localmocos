@@ -8,11 +8,11 @@ html(lang="en")
       div.main-content
         div.vendor-content
           mixin selectWithOther(fieldname, options)
-            select(name=fieldname)
-              each option in options
-                option(value=option.id)= option[fieldname]
-              option(value="other") Other
-            input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
+            each option in options
+              label
+                input(type="checkbox" name=fieldname + "[]" value=option.id)
+                | #{option[fieldname]}
+            input.other(style="visibility:hidden", type="text", name=fieldname + "[]", disabled)
 
           form(action="/vendor" method="POST" enctype="x-www-form-urlencoded")
             fieldset

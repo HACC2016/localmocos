@@ -62,6 +62,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.post('/vendor', function(req, res, next) {
+      console.log(req.body);
       db.Zipcode.findOne({
         where: {
           city: req.body.city[0].toUpperCase() + req.body.city.slice(1),
