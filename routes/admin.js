@@ -15,6 +15,10 @@ module.exports = function(express,app,path,bodyParser,querystring, db) {
 
   **************/
   ///// testing admin view /////
+  app.get('/admin-login', function (req, res) {
+    res.render('login-admin', {subtitle: "Admin Login"});
+  });
+
   app.get('/admin', function (req, res) {
     res.render('admin');
   });
