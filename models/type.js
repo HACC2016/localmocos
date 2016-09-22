@@ -15,17 +15,17 @@ module.exports = function(sequelize, DataTypes) {
       searchResults: function(searchString) {
         var searchArray=searchString.split(' ');
 
-        var select='SELECT t1.id product_id, name, t1.description,t1.image, "product_info_id",t2.type product_type,"vendor_info_id" ';
-        var selectVendorInfo= ',t3.id bid, t3.dba,t3.address1,t3.address2,t3.business_ph,t3.business_description,t3.business_ph,t3.website,t3.email,t3.image busimage ';
-        var join1=' FROM "products" t1 JOIN product_types t2 ON t1."product_info_id"=t2.id ';
-        var join2=' JOIN vendor_infos t3 ON t1."vendor_info_id"=t3.id ';
+        var select='SELECT P.id product_id, name, P.description,P.image, "product_info_id",PT.type product_type,"vendor_info_id" ';
+        var selectVendorInfo= ',V.id bid, V.dba,V.address1,V.address2,V.business_ph,V.business_description,V.business_ph,V.website,V.email,V.image busimage ';
+        var join1='  FROM vendor_infos V LEFT OUTER JOIN "products" P ON P."vendor_info_id"=V.id  ';
+        var join2='  LEFT OUTER JOIN product_types PT ON P."product_info_id"=PT.id ';
         var where=" WHERE ";
         var thisWhere;
         var whereValues='';
 
         where=where.replace('{Search}',searchArray[0]);
         for(var i=0;i<searchArray.length;i++){
-          thisWhere=" t1.name ILIKE '%" + searchArray[i] +"%' OR t1.description ILIKE '%" + searchArray[i] +"%' OR t2.type ILIKE '%" + searchArray[i] +"%' OR t3.company_name ILIKE '%" + searchArray[i] +"%' OR t3.business_description ILIKE '%" + searchArray[i] +"%' OR t3.dba ILIKE '%" + searchArray[i] +"%'";
+          thisWhere=" P.name ILIKE '%" + searchArray[i] +"%' OR P.description ILIKE '%" + searchArray[i] +"%' OR PT.type ILIKE '%" + searchArray[i] +"%' OR V.company_name ILIKE '%" + searchArray[i] +"%' OR V.business_description ILIKE '%" + searchArray[i] +"%' OR V.dba ILIKE '%" + searchArray[i] +"%'";
           whereValues+=(i==0?'':' OR ' ) + thisWhere;
         }
 
@@ -44,6 +44,6 @@ module.exports = function(sequelize, DataTypes) {
 };
 
 /*
-SELECT t1.name, t1.description, t1."productType_id",t2.type,t2.description,"vendorInfo_id",t3.dba FROM "products" t1 JOIN product_types t2 ON t1."productType_id"=t2.id JOIN vendor_infos t3 ON t1."vendorInfo_id"=t3.id WHERE t1.name ILIKE '%Mac%' AND t1.description ILIKE '%mac%' AND t2.type ILIKE '%food%';
+SELECT P.name, P.description, P."productType_id",PT.type,PT.description,"vendorInfo_id",t3.dba FROM "products" t1 JOIN product_types t2 ON P."productType_id"=PT.id JOIN vendor_infos t3 ON P."vendorInfo_id"=t3.id WHERE P.name ILIKE '%Mac%' AND P.description ILIKE '%mac%' AND PT.type ILIKE '%food%';
 
  */
