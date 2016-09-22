@@ -108,19 +108,18 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     })
                     .map(function (id, index, array) {
                       var marketId = parseInt(id);
-                      var marketDesc = null;
+                      var otherMarket = null;
                       if (isNaN(marketId)) {
-                        marketDesc = id;
+                        otherMarket = id;
                         marketId = 7;
                       }
                       return db.VendorInfoMarket.create({
                         vendor_info_id: vendor.id,
                         market_id: marketId,
-                        market_desc: marketDesc
+                        other_market: otherMarket
                       });
                     })
                 )
-
               )
               .catch(function (err) {
                 console.log(err);
