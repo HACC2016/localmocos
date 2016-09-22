@@ -10,9 +10,9 @@ html(lang="en")
           mixin selectWithOther(fieldname, options)
             each option in options
               label
-                input(type="checkbox" name=fieldname + "[]" value=option.id)
+                input(type="checkbox" name=fieldname value=option.id)
                 | #{option[fieldname]}
-            input.other(style="visibility:hidden", type="text", name=fieldname + "[]", disabled)
+            input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
           block form
             form(action="/vendor" method="POST" enctype="x-www-form-urlencoded")
               include includes/vendorFields.pug

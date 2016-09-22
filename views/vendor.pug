@@ -11,7 +11,7 @@ html(lang="en")
             if image
               img.business-main-image(src= image)
             else
-              img.business-main-image(src="https://placehold.it/525x350")
+              img.business-main-image(src="/images/photo-not-available-525x350.jpg")
           div.col-half
             h2 #{vendor}
             p <strong>Address:</strong> #{address}
@@ -40,7 +40,7 @@ html(lang="en")
                       if products[i].image
                         img(src= products[i].image)
                       else
-                        img(src="https://placehold.it/250x200")
+                        img(src="/images/photo-not-available-250x200.jpg")
                   div.single-product-info
                     h6
                       a(href="/product/" + products[i].id)= products[i].name
