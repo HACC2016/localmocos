@@ -1,21 +1,12 @@
 $(function () {
-  var elements = $("select");
-  console.log(elements.length);
+  var elements = $("input[type='checkbox']");
   elements.change(function (event) {
-    var input = $(this).next(".other");
-    if(event.target.value === "other") {
+    var input = $(this).parent().siblings(".other");
+    if(event.target.parentElement.innerText.toLowerCase() === "other") {
+      console.log(event.target.value);
       input.css({"visibility": "visible", "display": "block"}).attr("disabled", false);
     } else {
       input.css("visibility", "none").attr("disabled", true);
     }
   });
 })
-
-// elements.change(function (event) {
-//   var input = $(this).find("input").each();
-//   if(event.target.value === "Other"){
-//     input.show();
-//   } else {
-//     input.hide();
-//   }
-// });
