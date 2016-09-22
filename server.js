@@ -4,6 +4,7 @@ var app = express();
 var https = require('https');
 var path = require('path');
 var bodyParser = require('body-parser');
+var methodOverride = require('method-override');
 var querystring = require('querystring');
 var db = require('./models');
 
@@ -28,6 +29,13 @@ app.use(bodyParser.urlencoded({
 
 app.use('/', express.static(public));
 app.use(express.static(path.resolve(__dirname, 'public')));
+app.use(methodOverride(function(req, res){
+  if (req.body && typeof req.body === 'object' && '_method' in req.body) {
+    var method = req.body._method;
+    delete req.body._method;
+    return method;
+  }
+}));
 
 var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring,db);
 var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring,db);

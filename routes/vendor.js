@@ -5,6 +5,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         "name": "Product",
         "response": "Ok"
     };
+
+    var VendorInfo = db.VendorInfo;
     var businessType;
     var services;
     var markets;
@@ -73,7 +75,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       .then((data) => {
         if(data) {
           var zipId = data.dataValues.id; // zip_id
-          db.VendorInfo.create({
+          VendorInfo.create({
             user_id: 1,
             image: req.body.image,
             company_name: req.body.company_name,
@@ -102,7 +104,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/vendor\/\d+\/edit$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
-      db.VendorInfo.findById(vendorId, {
+      console.log(vendorId);
+      VendorInfo.findById(vendorId, {
         include: [
           {
             model: db.Type,
@@ -126,11 +129,14 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           }
         ]
       })
-      .then((data) => {
+      .then(function (data) {
         var vendor = JSON.parse(JSON.stringify(data));
-        var vendorLocation = vendor.Zipcode;
         console.log(vendor);
-        res.render('vendorForm',{
+        var vendorLocation = vendor.Zipcode;
+        console.log(vendorLocation);
+        return res.render('editVendorForm',{
+          formTitle: "Vendor Update",
+          id: vendorId,
           vendor: vendor,
           businessType: businessType,
           services: services,
@@ -141,28 +147,75 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           island: vendorLocation.island
         });
       })
-
-           /* } */
-        // testJson.name = "Edit Vendor id=" + cleanParamMiddle(req.url, 2);
-        // res.json(testJson);
-    });
-
-  //////// testing vendor login  page ////////
-    app.get('/vendor', function (req, res) {
-      res.render('vendorDashboard', {user: req.user.usernmae});
+    }); 
+    app.put(/vendor\/\d+$/, function(req, res) {
+      var vendorId = cleanParamMiddle(req.url, 2);
+      var locals = req.body;
+      console.log(vendorId);
+      return db.Zipcode.findOne({
+        where: {
+          city: locals.city[0].toUpperCase() + locals.city.slice(1),
+          island: locals.island[0].toUpperCase() + locals.island.slice(1),
+          zip: locals.zipcode
+        }
+      })
+      .then(function (data) {
+        if(data) {
+          var zipId = data.dataValues.id;
+          return VendorInfo
+            .update(
+              {
+                image: locals.image,
+                company_name: locals.company_name,
+                business_reg_num: locals.business_reg_num,
+                business_description: locals.description,
+                dba: locals.dba,
+                address1: locals.address1,
+                address2: locals.address2,
+                business_ph: locals.business_ph,
+                business_ph2: locals.phoneTwo,
+                sales_ph: locals.sales_ph,
+                website: locals.website,
+                email: locals.email,
+                zip_id: zipId
+              },
+              {
+                where: {
+                  id: vendorId
+                }
+              }
+            )
+            .then(function () {
+              return VendorInfo.findById(vendorId)
+              .then(function(vendor) {
+                db.Product.findAll({
+                  where: {
+                    vendor_info_id: vendorId
+                  }
+                })
+                .then(function(productArray) {
+                  res.render('vendor', {
+                    subtitle: vendor.dba,
+                    image: vendor.image,
+                    vendor: vendor.dba,
+                    address: vendor.address1,
+                    phone: vendor.business_ph,
+                    email: vendor.email,
+                    website: vendor.website,
+                    description: vendor.business_description,
+                    products: productArray
+                  });
+                });
+              });
+            });
+        } else {
+          return res.send('City, Island, and Zipcode do not match.');
+        }
+      })
     });
 
     app.get(/vendor\/\d+$/, function(req, res) {
-        // /* */
-        //         res.render('vendorEditForm', {
-        //             methodType: 'GET',
-        //             actionType: '/vendor/{id}',
-        //             formTitle: 'Edit Vendor'
-        //         });
-        //    /* } */
-        // testJson.name = "View Vendor id=" + cleanParamMiddle(req.url, 2);
-        // res.json(testJson);
-      db.VendorInfo.findOne({
+      VendorInfo.findOne({
         where: {id: cleanParamMiddle(req.url, 2)}
       })
       .then(function (vendorObject) {
