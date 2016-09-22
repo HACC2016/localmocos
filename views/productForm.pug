@@ -7,7 +7,7 @@ html(lang="en")
       include includes/search.pug
       div.main-content
         div.form-container
-          form(action="/product" method="POST" enctype="x-www-form-urlencoded")
+          form(action=actionType method="POST" enctype="x-www-form-urlencoded")
             fieldset
               h1 #{formTitle}
               //- label Name:

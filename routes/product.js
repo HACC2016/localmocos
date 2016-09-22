@@ -1,5 +1,8 @@
 module.exports = function(express, app, path, bodyParser, querystring, db) {
     var router = express.Router();
+    var methodOverride = require('method-override');
+    app.use(methodOverride('_method'));
+
     var testJson = {
         "name": "Product",
         "response": "Ok"
@@ -80,7 +83,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         res.json([testJson]); */
         res.render('productForm', {
             // methodType: 'POST',
-            // actionType: '/product/new',
+            actionType: "/product",
             // formTitle: 'Create New Product',
             product: {},
             productType: productType,
@@ -92,7 +95,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.post('/product', function(req, res, next) {
         // testJson.name = "Product New " + cleanParam(req.url);
         // res.json([testJson]);
-        console.log(req.body,"blah");
         db.Product.create({
             name: req.body.name,
             description: req.body.description,
@@ -123,8 +125,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
                 products: productArray
               });
-            })
-          })
+            });
+          });
         });
     });
 
@@ -138,9 +140,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         }).then(function (data) {
             res.render('editProductForm', {
                 methodType: 'POST',
-                actionType: '/product/new',
-                formTitle: 'Edit New Product',
-                // productsInfo: productsInfo,
+                actionType: "/product/" + data.id + "/edit/?_method=PUT",
+                formTitle: 'Edit Product',
+                productsInfo: db.ProductInfo,
                 product: {
                     name: data.name,
                     description: data.description,
@@ -151,17 +153,58 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     product_info_id: data.product_info_id
                 }
             });
-        })
+        });
     });
 
-    app.put(/product\/\d+\/edit$/, function(req, res, next) {
+    app.put('/product/:id/edit', function(req, res, next) {
         // testJson.name = "Product Edit with id=" + cleanParam(req.url);
         // res.json([testJson]);
-        db.Product.findOne({
-            where: {
-                id: cleanParamMiddle(req.url,2)
+        if(!isNaN(parseInt(req.params.id))){
+          db.Product.findById(req.params.id)
+          .then((product) => {
+            if(product) { // if there is a product with an id of the param
+              db.Product.update({
+                name: req.body.name,
+                description: req.body.description,
+                price: req.body.price,
+                qty: req.body.qty,
+                image: req.body.image,
+                type: req.body.type,
+                product_info_id: req.body.product_info_id
+              }, {
+                where: {
+                  id: req.params.id
+                }
+              })
+              .then(() => {
+                db.Product.findById(req.params.id)
+                .then((product) => {
+                  db.VendorInfo.findById(product.vendor_info_id)
+                  .then(function (vendor) {
+                    db.Product.findAll({
+                      where: {
+                        id: {$ne: product.id},
+                        vendor_info_id: vendor.id,
+                      }
+                    })
+                    .then(function (productArray) {
+                      res.render('product', {
+                        subtitle: product.name,
+                        product: product,
+                        vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+                        products: productArray
+                      });
+                    });
+                  });
+                });
+              });
+            } else { // there is no product with id of param
+              res.send('There is no product with ID: ' + req.params.id);
             }
-        })
+          });
+        } else { // the id isn't a number
+          res.send(req.params.id + ' does not exist.');
+        }
     });
 
     app.put(/product\/\d+\/delete$/, function(req, res, next) {
