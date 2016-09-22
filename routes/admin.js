@@ -22,6 +22,6 @@ module.exports = function(express,app,path,bodyParser,querystring, db) {
   app.get('/admin', function (req, res) {
     res.render('admin');
   });
-
+  
     return router;
 }

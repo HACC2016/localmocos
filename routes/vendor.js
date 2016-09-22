@@ -165,7 +165,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         });
       })
     });
-
     app.put(/vendor\/\d+$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
       var locals = req.body;
@@ -248,6 +247,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     return router;
 }
+
 
 
 function cleanParamMiddle(thisParam, index) {
