@@ -57,9 +57,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           businessType: businessType,
           services: services,
           markets: markets,
-          certs: certs,
-          // zipcode: zipcode
-          //// currently undefined ////
+          certs: certs
       });
     });
 
@@ -103,9 +101,33 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/vendor\/\d+\/edit$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
-      db.VendorInfo.findById(vendorId)
+      db.VendorInfo.findById(vendorId, {
+        include: [
+          {
+            model: db.Type,
+            where: {}
+          },
+          {
+            model: db.Service,
+            where: {}
+          },
+          {
+            model: db.Market,
+            where: {}
+          },
+          {
+            model: db.Certification,
+            where: {}
+          },
+          {
+            model: db.Zipcode,
+            where: {}
+          }
+        ]
+      })
       .then((data) => {
         var vendor = JSON.parse(JSON.stringify(data));
+        var vendorLocation = vendor.Zipcode;
         console.log(vendor);
         res.render('vendorForm',{
           vendor: vendor,
@@ -113,7 +135,9 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           services: services,
           markets: markets,
           certs: certs,
-          zipcode: zipcode
+          zip: vendorLocation.zip,
+          city: vendorLocation.city,
+          island: vendorLocation.island
         });
       })
 
