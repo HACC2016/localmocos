@@ -1,1 +1,13 @@
 extends vendorForm.pug
+
+block form
+  form(
+    action="/vendor/"+id
+    method="POST"
+    enctype="x-www-form-urlencoded"
+  )
+    input(type="hidden"
+    name="_method"
+    value="PUT"
+    )
+    include includes/vendorFields.pug

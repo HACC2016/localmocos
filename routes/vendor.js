@@ -103,6 +103,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/vendor\/\d+\/edit$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
+      console.log(vendorId);
       VendorInfo.findById(vendorId, {
         include: [
           {
@@ -129,9 +130,12 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       })
       .then(function (data) {
         var vendor = JSON.parse(JSON.stringify(data));
-        var vendorLocation = vendor.Zipcode;
         console.log(vendor);
-        res.render('vendorForm',{
+        var vendorLocation = vendor.Zipcode;
+        console.log(vendorLocation);
+        return res.render('editVendorForm',{
+          formTitle: "Vendor Update",
+          id: vendorId,
           vendor: vendor,
           businessType: businessType,
           services: services,
