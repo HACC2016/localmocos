@@ -106,21 +106,61 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     .filter(function (id) {
                       return id;
                     })
-                    .map(function (id, index, array) {
+                    .map(function (id, index) {
                       var marketId = parseInt(id);
-                      var marketDesc = null;
+                      var otherMarket = null;
                       if (isNaN(marketId)) {
-                        marketDesc = id;
-                        marketId = 7;
+                        otherMarket = id;
+                        marketId = 9;
                       }
                       return db.VendorInfoMarket.create({
                         vendor_info_id: vendor.id,
                         market_id: marketId,
-                        market_desc: marketDesc
+                        other_market: otherMarket
+                      });
+                    }),
+                  locals.job
+                    .filter(function (id) {
+                      return id;
+                    })
+                    .map(function (id, index) {
+                      var typeId = parseInt(id);
+                      var otherType = null;
+                      if (isNaN(typeId)) {
+                        otherType = id;
+                        typeId = 7;
+                      }
+                      return db.VendorInfoType.create({
+                        vendor_info_id: vendor.id,
+                        type_id: typeId,
+                        other_type: otherType
+                      });
+                    }),
+                  locals.service
+                    .filter(function (id) {
+                      return id;
+                    })
+                    .map(function (id, index) {
+                      var serviceId = parseInt(id);
+                      var otherService = null;
+                      if (isNaN(serviceId)) {
+                        otherService = id;
+                        serviceId = 5;
+                      }
+                      return db.VendorInfoService.create({
+                        vendor_info_id: vendor.id,
+                        service_id: serviceId,
+                        other_service: otherService
+                      });
+                    }),
+                  locals.specialty
+                    .map(function (id, index) {
+                      return db.VendorInfoCert.create({
+                        vendor_info_id: vendor.id,
+                        cert_id: id
                       });
                     })
                 )
-
               )
               .catch(function (err) {
                 console.log(err);
