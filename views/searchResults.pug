@@ -19,7 +19,7 @@ html(lang="en")
                     if products[i].image
                       img(src= products[i].image)
                     else
-                      img(src="https://placehold.it/200x150")
+                      img(src="/images/photo-not-available-200x150.jpg")
                 div(class="result-details col-two-thirds")
                   h4
                     a(href="/product/" + products[i].pid) #{products[i].name}
@@ -44,7 +44,7 @@ html(lang="en")
                     if vendors[i].image
                       img(src= vendors[i].image)
                     else
-                      img(src="https://placehold.it/200x150")
+                      img(src="/images/photo-not-available-200x150.jpg")
                 div(class="result-details col-two-thirds")
                   h4
                     a(href="/vendor/" + vendors[i].bid) #{vendors[i].dba}
