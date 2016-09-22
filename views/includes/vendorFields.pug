@@ -45,16 +45,16 @@ fieldset
   label
     span Image
     input(type="url" name="image" placeholder="Image Link" value=vendor.image)
-  label
+  label.checkboxes
     span Type of Business:
     +selectWithOther("job", businessType)
-  label
+  label.checkboxes
     span Services:
     +selectWithOther("service", services)
-  label
+  label.checkboxes
     span Markets:
     +selectWithOther("market", markets)
-  label
+  label.checkboxes
     span Certifications/Specialty:
     +selectWithOther("specialty", certs)
   input(type="submit" value="Submit" class="submit")
