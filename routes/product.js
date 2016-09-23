@@ -76,7 +76,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               phone: vendor.business_ph, 
               email: vendor.email, 
               website: vendor.website,
-              hs: vendor.hs,
               products: productArray})
           })
         })
@@ -133,7 +132,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 phone: vendor.business_ph, 
                 email: vendor.email, 
                 website: vendor.website,
-                hs: vendor.hs,
                 products: productArray
               });
             });
@@ -205,7 +203,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                       res.render('product', {
                         subtitle: product.name,
                         product: product,
-                        vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+                        vendor: vendor.dba, 
+                        address: vendor.address1, 
+                        phone: vendor.business_ph, 
+                        email: vendor.email, 
+                        website: vendor.website,
                         products: productArray
                       });
                     });
