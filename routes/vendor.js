@@ -274,10 +274,19 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               return VendorInfo.findById(vendorId)
             })
               .then(function(vendor) {
+                var otherMarket = [];
                 var marketIds = [].concat(locals.market)
+                  .filter(function (id, index, array) {
+                    if (id === '') {
+                      otherMarket = array.splice(index + 1, 1);
+                      return otherMarket;
+                    }
+                    return id;
+                  })
                   .filter(function (id) {
                     return id;
-                  });
+                  })
+                  .concat(9);
                 return db.Market.findAll(
                   {
                     where: {
@@ -289,6 +298,17 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 )
                 .then(function (markets) {
                   return vendor.setMarkets(markets)
+                  .then(function () {
+                    return db.VendorInfoMarket.update({
+                      other_market: otherMarket.toString()
+                    },
+                    {
+                      where: {
+                        vendor_info_id: vendor.id,
+                        market_id: 9
+                      }
+                    })
+                  })
                   .catch(function (err) {
                     console.log(err);
                   })
