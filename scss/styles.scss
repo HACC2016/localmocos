@@ -587,3 +587,9 @@ hr{
     display: none;
   }
 }
+
+@media print {
+  .nav-menu, .search-container, footer{
+    display: none;
+  }
+}
