@@ -205,17 +205,29 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
       var vendorServices = [];
       var vendorMarkets = [];
       var vendorCertifications = [];
+      var otherType = '';
+      var otherService = '';
+      var otherMarket = '';
       return db.VendorInfo.getVendorCheckboxInfo(vendorId)
       .then((data) => {
         data.forEach(function (obj) {
           switch (obj.specific_info) {
             case 'type':
+              if(obj.type_id === 7) {
+                otherType = obj.other_type;
+              }
               vendorTypes.push(obj.type_id);
               break;
             case 'service':
+              if(obj.type_id === 5) {
+                otherService = obj.other_type;
+              }
               vendorServices.push(obj.type_id);
               break;
             case 'market':
+              if(obj.type_id === 9) {
+                otherMarket = obj.other_type;
+              }
               vendorMarkets.push(obj.type_id);
               break;
             case 'certification':
@@ -246,8 +258,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           markets: markets,
           certs: certs,
           checkBoxBusinessType: vendorTypes,
+          otherType: otherType,
           checkBoxServices: vendorServices,
+          otherService: otherService,
           checkBoxMarkets: vendorMarkets,
+          otherMarket: otherMarket,
           checkBoxCerts: vendorCertifications,
           zip: vendorLocation.zip,
           city: vendorLocation.city,
