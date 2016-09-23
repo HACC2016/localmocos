@@ -71,10 +71,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             res.render('product', {
               subtitle: product.name,
               product: product,
-              vendor: vendor.dba, 
-              address: vendor.address1, 
-              phone: vendor.business_ph, 
-              email: vendor.email, 
+              vendor: vendor.dba,
+              address: vendor.address1,
+              phone: vendor.business_ph,
+              email: vendor.email,
               website: vendor.website,
               products: productArray})
           })
@@ -127,10 +127,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               res.render('product', {
                 subtitle: product.name,
                 product: product,
-                vendor: vendor.dba, 
-                address: vendor.address1, 
-                phone: vendor.business_ph, 
-                email: vendor.email, 
+                vendor: vendor.dba,
+                address: vendor.address1,
+                phone: vendor.business_ph,
+                email: vendor.email,
                 website: vendor.website,
                 products: productArray
               });
@@ -142,27 +142,40 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
        /* testJson.name = "Product Form for id=" + cleanParam(req.url);
         res.json([testJson]); */
-        db.Product.findOne({
+        var type_id;
+        var spec_type_id;
+        var type_name;
+        return db.Product.findOne({
             where: {
                 id: cleanParamMiddle(req.url,2)
             }
-        }).then(function (data) {
-            res.render('editProductForm', {
-                methodType: 'POST',
-                actionType: "/product/" + data.id + "/edit/?_method=PUT",
-                formTitle: 'Edit Product',
-                productsInfo: db.ProductInfo,
-                subtitle: 'Edit Product',
-                product: {
-                    name: data.name,
-                    description: data.description,
-                    price: data.price,
-                    qty: data.qty,
-                    image: data.image,
-                    type: data.product_types,
-                    product_info_id: data.product_info_id,
-                    hs: data.hs
-                }
+        })
+        .then(function (data) {
+          return db.Product.getTypes(data.id)
+          .then((product) => {
+            type_id = product[0].product_type_id;
+            spec_type_id = product[0].product_info_id;
+            type_name = product[0].type;
+          })
+          .then(() => {
+            return res.render('editProductForm', {
+                  methodType: 'POST',
+                  actionType: "/product/" + data.id + "/edit/?_method=PUT",
+                  formTitle: 'Edit Product',
+                  productsInfo: db.ProductInfo,
+                  subtitle: 'Edit Product',
+                  product: {
+                      name: data.name,
+                      description: data.description,
+                      price: data.price,
+                      qty: data.qty,
+                      image: data.image,
+                      type: type_id,
+                      type_name: type_name,
+                      product_info_id: spec_type_id,
+                      hs: data.hs
+                  }
+              });
             });
         });
     });
@@ -203,10 +216,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                       res.render('product', {
                         subtitle: product.name,
                         product: product,
-                        vendor: vendor.dba, 
-                        address: vendor.address1, 
-                        phone: vendor.business_ph, 
-                        email: vendor.email, 
+                        vendor: vendor.dba,
+                        address: vendor.address1,
+                        phone: vendor.business_ph,
+                        email: vendor.email,
                         website: vendor.website,
                         products: productArray
                       });
