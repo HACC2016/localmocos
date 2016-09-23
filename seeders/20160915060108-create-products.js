@@ -141,6 +141,7 @@ module.exports = {
       price: 49.95,
       qty: 1000,
       image: 'http://www.fitclarity.com/wp-content/uploads/2016/01/papaya-seed-enzymes.jpg',
+      hs:'0811.90.40.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -153,6 +154,20 @@ module.exports = {
       price: 49.95,
       qty: 1000,
       image: 'http://1.bp.blogspot.com/-FVIE5ltqOM0/VADoQXn9NOI/AAAAAAAADUE/0yMb-8SC_hU/s1600/Papaya.jpg',
+      hs:'0811.90.40.00',
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      name: 'Rainbow Papaya',
+      description: 'Enjoy fresh, naturally sweet Papayas from Hawaii. 1 Case of Papayas (10 lbs., approx. 8-10 pcs.)',
+      product_info_id: 33,
+      vendor_info_id: 7,
+      price: 65.00,
+      qty: 1000,
+      image: 'http://www.dolefruithawaii.com/v/vspfiles/photos/Papayas-3.jpg',
+      hs:'0811.90.40.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
