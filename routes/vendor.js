@@ -306,7 +306,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                       }
                     )
                     .then(function (markets) {
-                      console.log(marketIds);
                       return vendor.setMarkets(markets)
                       .then(function () {
                         return db.VendorInfoMarket.update(
@@ -403,14 +402,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                       })
                     }),
                     certIds = [].concat(locals.specialty)
-                      .filter(function (id, index, array) {
-                        if (id === '') {
-                          otherCert = array.splice(index + 1, 1);
-                          array.push(5);
-                          return otherCert;
-                        }
-                        return id;
-                      })
                       .filter(function (id) {
                         return id;
                       }),
@@ -424,24 +415,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                         }
                       )
                       .then(function (certs) {
-                        return vendor.setCertifications(certs);
-                      })
-                      .then(function () {
-                        return db.VendorInfoCert.update(
-                          {
-                            other_service: otherCert.toString()
-                          },
-                          {
-                            where: {
-                              vendor_info_id: vendor.id,
-                              service_id: 5
-                            }
-                          }
-                        )
+                        return vendor.setCertifications(certs)
                       })
                   ]
                 )
-
                 .then(function () {
                   return db.Product.findAll({
                     where: {
