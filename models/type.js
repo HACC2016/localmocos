@@ -15,7 +15,7 @@ module.exports = function(sequelize, DataTypes) {
       searchResults: function(searchString) {
         var searchArray=searchString.split(' ');
 
-        var select='SELECT P.id product_id, name, P.description,P.image, "product_info_id",PT.type product_type,"vendor_info_id" ';
+        var select='SELECT P.id product_id, name, P.description,P.image,P.hs, "product_info_id",PT.type product_type,"vendor_info_id" ';
         var selectVendorInfo= ',V.id bid, V.dba,V.address1,V.address2,V.business_ph,V.business_description,V.business_ph,V.website,V.email,V.image busimage ';
         var join1='  FROM vendor_infos V LEFT OUTER JOIN "products" P ON P."vendor_info_id"=V.id  ';
         var join2='  LEFT OUTER JOIN product_types PT ON P."product_info_id"=PT.id ';
@@ -25,7 +25,7 @@ module.exports = function(sequelize, DataTypes) {
 
         where=where.replace('{Search}',searchArray[0]);
         for(var i=0;i<searchArray.length;i++){
-          thisWhere=" P.name ILIKE '%" + searchArray[i] +"%' OR P.description ILIKE '%" + searchArray[i] +"%' OR PT.type ILIKE '%" + searchArray[i] +"%' OR V.company_name ILIKE '%" + searchArray[i] +"%' OR V.business_description ILIKE '%" + searchArray[i] +"%' OR V.dba ILIKE '%" + searchArray[i] +"%'";
+          thisWhere=" P.name ILIKE '%" + searchArray[i] +"%' OR P.description ILIKE '%" + searchArray[i] +"%' OR PT.type ILIKE '%" + searchArray[i] +"%' OR V.company_name ILIKE '%" + searchArray[i] +"%' OR V.business_description ILIKE '%" + searchArray[i] +"%' OR V.dba ILIKE '%" + searchArray[i] +"%' OR P.hs ILIKE '%" + searchArray[i] +"%'";
           whereValues+=(i==0?'':' OR ' ) + thisWhere;
         }
 
