@@ -94,9 +94,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             isActive: true,
           })
           .then(function(vendor) {
-            return db.Product.findAll({
+            // creating join table record for each vendor type of business, service
+            // market, and specialty/certification
+            db.Product.findAll({
               where: {
-                vendor_info_id: vendor.user_id
+                vendor_info_id: vendor.id
               }
             })
             .then(function(productArray) {
@@ -228,7 +230,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           city: vendorLocation.city,
           island: vendorLocation.island
         });
-      })
+      });
     });
 
     app.put(/vendor\/\d+$/, function(req, res) {
