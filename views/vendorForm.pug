@@ -9,7 +9,8 @@ html(lang="en")
         div.vendor-content
           mixin selectWithOther(fieldname, options, values)
             each option in options
-              -var isChecked = values.indexOf(option.id) !== -1;
+              -if(values)
+                -var isChecked = values.indexOf(option.id) !== -1;
               label
                 input(type="checkbox" name=fieldname value=option.id checked=isChecked)
                 | #{option[fieldname]}
