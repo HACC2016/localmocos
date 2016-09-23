@@ -11,6 +11,7 @@ module.exports = {
       price: 12.50,
       qty: 1000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/2/0/2016-09-06_macadamia_nut-1_1.jpg',
+      hs:'0802.62.00.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -23,6 +24,7 @@ module.exports = {
       price: 11.75,
       qty: 2000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/1/1/1100macnutmilk_0641.jpg',
+      hs:'0802.62.00.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -35,6 +37,7 @@ module.exports = {
       price: 45.00,
       qty: 2000,
       image: 'https://bigislandabalone.com/media/catalog/product/cache/1/image/5e06319eda06f020e43594a9c230972d/f/i/file_3_1.jpg',
+      hs:'0307.81.00.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -47,6 +50,7 @@ module.exports = {
       price: 10.00,
       qty: 2000,
       image: 'https://bigislandabalone.com/media/catalog/product/cache/1/image/5e06319eda06f020e43594a9c230972d/l/i/live.jpg',
+      hs:'0307.81.00.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -59,6 +63,7 @@ module.exports = {
       price: 20.00,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/4/0/4012konacoffeepremium_0466.jpg',
+      hs:'0901.11.00.15',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -71,6 +76,7 @@ module.exports = {
       price: 12.00,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/2/0/2016-09-02_coffee_beans-1.jpg',
+      hs:'0901.11.00.15',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -83,6 +89,7 @@ module.exports = {
       price: 7.70,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/s/a/sakuraarare_0639-edit-6.jpg',
+      hs:'403',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -95,6 +102,7 @@ module.exports = {
       price: 6.50,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/l/i/lihingmuicookies_0597-3.jpg',
+      hs:'0403.90.20.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -107,6 +115,7 @@ module.exports = {
       price: 12.50,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/3/7/3706sbpineapple_0117centered.jpg',
+      hs:'0403.90.20.00',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
@@ -119,6 +128,7 @@ module.exports = {
       price: 12.75,
       qty: 5000,
       image: 'https://bic-bigislandcandies.netdna-ssl.com/media/catalog/product/cache/1/image/320x/9df78eab33525d08d6e5fb8d27136e95/m/i/mikapassion_0674-1.jpg',
+      hs:'403',
       isActive: true,
       createdAt: new Date(),
       updatedAt: new Date()
