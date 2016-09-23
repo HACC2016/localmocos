@@ -105,7 +105,7 @@ module.exports = {
     },
     {
       user_id: 7,
-      image: 'http://healthadvisorgroup.com/wp-content/uploads/2015/10/Papaya-1.jpg',
+      image: 'http://www.aloha-hawaii.com/wp-content/uploads/2009/11/dole-plantation1.jpg',
       company_name: 'Dole Food Company Hawaii',
       business_reg_num: 12341240,
       business_description: 'Share Hawaiian heritage and culture with family and friends by giving a taste of Hawaii from DOLE. DOLE fruits are grown in rich volcanic soil with warm tropical rainfall, and kissed with Hawaiian sunshine for the best Hawaii has to offer.',
