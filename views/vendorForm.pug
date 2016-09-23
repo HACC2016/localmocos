@@ -7,14 +7,17 @@ html(lang="en")
       include includes/search.pug
       div.main-content
         div.vendor-content
-          mixin selectWithOther(fieldname, options, values)
+          mixin selectWithOther(fieldname, options, values, other)
             each option in options
               -if(values)
                 -var isChecked = values.indexOf(option.id) !== -1;
               label
                 input(type="checkbox" name=fieldname value=option.id checked=isChecked)
                 | #{option[fieldname]}
-            input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
+            -if(other)
+              input.other(style="visibility:visible; display:block", type="text", name=fieldname value=other)
+            -else
+              input.other(style="visibility:hidden", type="text", name=fieldname, disabled)
           block form
             form(action="/vendor" method="POST" enctype="x-www-form-urlencoded")
               include includes/vendorFields.pug
