@@ -165,7 +165,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               .catch(function (err) {
                 console.log(err);
               })
-              .then(function (markets) {
+              .then(function () {
                 return res.render('vendor', {
                   subtitle: vendor.dba,
                   image: vendor.image,
@@ -270,27 +270,48 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             )
             .then(function () {
               return VendorInfo.findById(vendorId)
+            })
               .then(function(vendor) {
-                db.Product.findAll({
-                  where: {
-                    vendor_info_id: vendorId
-                  }
-                })
-                .then(function(productArray) {
-                  res.render('vendor', {
-                    subtitle: vendor.dba,
-                    image: vendor.image,
-                    vendor: vendor.dba,
-                    address: vendor.address1,
-                    phone: vendor.business_ph,
-                    email: vendor.email,
-                    website: vendor.website,
-                    description: vendor.business_description,
-                    products: productArray
+                var marketIds = [].concat(locals.market)
+                  .filter(function (id) {
+                    return id;
                   });
-                });
-              });
-            });
+                return db.Market.findAll(
+                  {
+                    where: {
+                      id: {
+                        $in: marketIds
+                      }
+                    }
+                  }
+                )
+                .then(function (markets) {
+                  return vendor.setMarkets(markets)
+                  .catch(function (err) {
+                    console.log(err);
+                  })
+                })
+                .then(function () {
+                  return db.Product.findAll({
+                    where: {
+                      vendor_info_id: vendorId
+                    }
+                  })
+                  .then(function (productArray) {
+                    res.render('vendor', {
+                      subtitle: vendor.dba,
+                      image: vendor.image,
+                      vendor: vendor.dba,
+                      address: vendor.address1,
+                      phone: vendor.business_ph,
+                      email: vendor.email,
+                      website: vendor.website,
+                      description: vendor.business_description,
+                      products: productArray
+                    });
+                  })
+                })
+              })
         } else {
           return res.send('City, Island, and Zipcode do not match.');
         }
