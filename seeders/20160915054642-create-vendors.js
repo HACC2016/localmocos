@@ -86,6 +86,23 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
+    {
+      user_id: 6,
+      image: 'http://healthadvisorgroup.com/wp-content/uploads/2015/10/Papaya-1.jpg',
+      company_name: 'Volcano Isle Fruit Company',
+      business_reg_num: 12341239,
+      business_description: 'We\'re largely focused on papaya. We are based in Kapoho and have been committed to growing the fruit in the rich, volcanic soil of the Big Island for the past 30 years.',
+      dba: 'Volcano Isle Fruit Company',
+      address1: 'P.O. Box 537, Pahoa, HI. 96778',
+      business_ph: '1-808-359-1618',
+      sales_ph: '1-808-359-1618',
+      website: 'http://www.papayas.net/',
+      email: 'sales@papayas.net',
+      zip_id: 70,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
     ], {});
   },
 
