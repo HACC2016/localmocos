@@ -43,13 +43,13 @@ label
   input(type="url" name="image" placeholder="Image Link" value=vendor.image)
 label.checkboxes
   span Type of Business:
-  +selectWithOther("job", businessType, checkBoxBusinessType)
+  +selectWithOther("job", businessType, checkBoxBusinessType, otherType)
 label.checkboxes
   span Services:
-  +selectWithOther("service", services, checkBoxServices)
+  +selectWithOther("service", services, checkBoxServices, otherService)
 label.checkboxes
   span Markets:
-  +selectWithOther("market", markets, checkBoxMarkets)
+  +selectWithOther("market", markets, checkBoxMarkets, otherMarket)
 label.checkboxes
   span Certifications/Specialty:
   +selectWithOther("specialty", certs, checkBoxCerts)
