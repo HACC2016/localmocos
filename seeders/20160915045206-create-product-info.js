@@ -195,6 +195,12 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
+    {
+      product_type_id: 8,
+      specific_type: 'Papaya',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
     ],{})
   },
 

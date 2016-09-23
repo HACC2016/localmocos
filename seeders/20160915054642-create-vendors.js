@@ -86,6 +86,40 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
+    {
+      user_id: 6,
+      image: 'http://healthadvisorgroup.com/wp-content/uploads/2015/10/Papaya-1.jpg',
+      company_name: 'Volcano Isle Fruit Company',
+      business_reg_num: 12341239,
+      business_description: 'We\'re largely focused on papayas. We are based in Kapoho and have been committed to growing the fruit in the rich, volcanic soil of the Big Island for the past 30 years.',
+      dba: 'Volcano Isle Fruit Company',
+      address1: 'P.O. Box 537, Pahoa, HI. 96778',
+      business_ph: '1-808-359-1618',
+      sales_ph: '1-808-359-1618',
+      website: 'http://www.papayas.net/',
+      email: 'sales@papayas.net',
+      zip_id: 70,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      user_id: 7,
+      image: 'http://www.aloha-hawaii.com/wp-content/uploads/2009/11/dole-plantation1.jpg',
+      company_name: 'Dole Food Company Hawaii',
+      business_reg_num: 12341240,
+      business_description: 'Share Hawaiian heritage and culture with family and friends by giving a taste of Hawaii from DOLE. DOLE fruits are grown in rich volcanic soil with warm tropical rainfall, and kissed with Hawaiian sunshine for the best Hawaii has to offer.',
+      dba: 'Dole Food Company Hawaii',
+      address1: '64-1551 Kamehameha Hwy., Wahiawa, HI 96786',
+      business_ph: '1-808-847-3234',
+      sales_ph: '1-808-847-3234',
+      website: 'http://www.dolefruithawaii.com/',
+      email: 'sales@dolefruithawaii.com',
+      zip_id: 78,
+      isActive: true,
+      createdAt: new Date(),
+      updatedAt: new Date()
+    }
     ], {});
   },
 
