@@ -178,7 +178,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               .catch(function (err) {
                 console.log(err);
               })
-              .then(function (markets) {
+              .then(function () {
                 return res.render('vendor', {
                   subtitle: vendor.dba,
                   image: vendor.image,
@@ -294,27 +294,174 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             )
             .then(function () {
               return VendorInfo.findById(vendorId)
+            })
               .then(function(vendor) {
-                db.Product.findAll({
-                  where: {
-                    vendor_info_id: vendorId
-                  }
+                var marketIds = [];
+                var typeIds = [];
+                var serviceIds = [];
+                var certIds = [];
+                var otherMarket = [];
+                var otherType = [];
+                var otherService = [];
+                var otherCert = [];
+                return Promise.all(
+                  [
+                    marketIds = [].concat(locals.market)
+                      .filter(function (id, index, array) {
+                        if (id === '') {
+                          otherMarket = array.splice(index + 1, 1);
+                          array.push(9);
+                          return otherMarket;
+                        }
+                        return id;
+                      })
+                      .filter(function (id) {
+                        return id;
+                      }),
+                    db.Market.findAll(
+                      {
+                        where: {
+                          id: {
+                            $in: marketIds
+                          }
+                        }
+                      }
+                    )
+                    .then(function (markets) {
+                      return vendor.setMarkets(markets)
+                      .then(function () {
+                        return db.VendorInfoMarket.update(
+                          {
+                            other_market: otherMarket.toString()
+                          },
+                          {
+                            where: {
+                              vendor_info_id: vendor.id,
+                              market_id: 9
+                            }
+                          }
+                        )
+                      })
+                      .catch(function (err) {
+                        console.log(err);
+                      })
+                    }),
+                    typeIds = [].concat(locals.job)
+                      .filter(function (id, index, array) {
+                        if (id === '') {
+                          otherType = array.splice(index + 1, 1);
+                          array.push(7);
+                          return otherType;
+                        }
+                        return id;
+                      })
+                      .filter(function (id) {
+                        return id;
+                      }),
+                    db.Type.findAll(
+                      {
+                        where: {
+                          id: {
+                            $in: typeIds
+                          }
+                        }
+                      }
+                    )
+                    .then(function (types) {
+                      return vendor.setTypes(types)
+                      .then(function () {
+                        return db.VendorInfoType.update(
+                          {
+                            other_type: otherType.toString()
+                          },
+                          {
+                            where: {
+                              vendor_info_id: vendor.id,
+                              type_id: 7
+                            }
+                          }
+                        )
+                      })
+                      .catch(function (err) {
+                        console.log(err);
+                      })
+                    }),
+                    serviceIds = [].concat(locals.service)
+                      .filter(function (id, index, array) {
+                        if (id === '') {
+                          otherService = array.splice(index + 1, 1);
+                          array.push(5);
+                          return otherService;
+                        }
+                        return id;
+                      })
+                      .filter(function (id) {
+                        return id;
+                      }),
+                    db.Service.findAll(
+                      {
+                        where: {
+                          id: {
+                            $in: serviceIds
+                          }
+                        }
+                      }
+                    )
+                    .then(function (services) {
+                      return vendor.setServices(services)
+                      .then(function () {
+                        return db.VendorInfoService.update(
+                          {
+                            other_service: otherService.toString()
+                          },
+                          {
+                            where: {
+                              vendor_info_id: vendor.id,
+                              service_id: 5
+                            }
+                          }
+                        )
+                      })
+                    }),
+                    certIds = [].concat(locals.specialty)
+                      .filter(function (id) {
+                        return id;
+                      }),
+                      db.Certification.findAll(
+                        {
+                          where: {
+                            id: {
+                              $in: certIds
+                            }
+                          }
+                        }
+                      )
+                      .then(function (certs) {
+                        return vendor.setCertifications(certs)
+                      })
+                  ]
+                )
+                .then(function () {
+                  return db.Product.findAll({
+                    where: {
+                      vendor_info_id: vendorId
+                    }
+                  })
+                  .then(function (productArray) {
+                    res.render('vendor', {
+                      subtitle: vendor.dba,
+                      image: vendor.image,
+                      vendor: vendor.dba,
+                      address: vendor.address1,
+                      phone: vendor.business_ph,
+                      email: vendor.email,
+                      website: vendor.website,
+                      description: vendor.business_description,
+                      products: productArray
+                    });
+                  })
                 })
-                .then(function(productArray) {
-                  res.render('vendor', {
-                    subtitle: vendor.dba,
-                    image: vendor.image,
-                    vendor: vendor.dba,
-                    address: vendor.address1,
-                    phone: vendor.business_ph,
-                    email: vendor.email,
-                    website: vendor.website,
-                    description: vendor.business_description,
-                    products: productArray
-                  });
-                });
-              });
-            });
+              })
         } else {
           return res.send('City, Island, and Zipcode do not match.');
         }
