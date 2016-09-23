@@ -25,13 +25,13 @@ html(lang="en")
               //- label Type Of Product:
               select(id="type" name="type")
                 option(value="") Choose Product Type
-                option(value="farmedSeafood") Farmed Seafood
-                option(value="snackFoods") Snack Foods
-                option(value="beverages") Beverages
-                option(value="coffee") Coffee
-                option(value="condiments") Condiments
-                option(value="dairy") Dairy
-                option(value="floral") Floral
+                option(value="1") Farmed Seafood
+                option(value="2") Snack Foods
+                option(value="3") Beverages
+                option(value="4") Coffee
+                option(value="5") Condiments
+                option(value="6") Dairy
+                option(value="7") Floral
               //- label Specific Type:
               select(id="specType" name="product_info_id" disabled)
                 option(value="") Choose 1
@@ -78,25 +78,25 @@ html(lang="en")
                       element.hidden = true;
                   }); // hiding all values in Specific Types
                   switch (selectedVal) {
-                    case 'farmedSeafood':
+                    case '1':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'snackFoods':
+                    case '2':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'beverages':
+                    case '3':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'coffee':
+                    case '4':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'condiments':
+                    case '5':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'dairy':
+                    case '6':
                       showOptions(specType, selectedVal);
                       break;
-                    case 'floral':
+                    case '7':
                       showOptions(specType, selectedVal);
                       break;
                     default:
