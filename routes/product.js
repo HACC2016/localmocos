@@ -147,12 +147,12 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 id: cleanParamMiddle(req.url,2)
             }
         }).then(function (data) {
-          console.log(data);
             res.render('editProductForm', {
                 methodType: 'POST',
                 actionType: "/product/" + data.id + "/edit/?_method=PUT",
                 formTitle: 'Edit Product',
                 productsInfo: db.ProductInfo,
+                subtitle: 'Edit Product',
                 product: {
                     name: data.name,
                     description: data.description,
