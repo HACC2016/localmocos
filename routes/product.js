@@ -71,7 +71,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             res.render('product', {
               subtitle: product.name,
               product: product,
-              vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+              vendor: vendor.dba, 
+              address: vendor.address1, 
+              phone: vendor.business_ph, 
+              email: vendor.email, 
+              website: vendor.website,
               products: productArray})
           })
         })
@@ -103,6 +107,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
             price: req.body.price,
             qty: req.body.qty,
             image: req.body.image,
+            hs: req.body.hs,
             isActive: 1
         })
         .then(function (newProductObject) {
@@ -122,7 +127,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
               res.render('product', {
                 subtitle: product.name,
                 product: product,
-                vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+                vendor: vendor.dba, 
+                address: vendor.address1, 
+                phone: vendor.business_ph, 
+                email: vendor.email, 
+                website: vendor.website,
                 products: productArray
               });
             });
@@ -143,6 +152,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 actionType: "/product/" + data.id + "/edit/?_method=PUT",
                 formTitle: 'Edit Product',
                 productsInfo: db.ProductInfo,
+                subtitle: 'Edit Product',
                 product: {
                     name: data.name,
                     description: data.description,
@@ -150,7 +160,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                     qty: data.qty,
                     image: data.image,
                     type: data.product_types,
-                    product_info_id: data.product_info_id
+                    product_info_id: data.product_info_id,
+                    hs: data.hs
                 }
             });
         });
@@ -170,7 +181,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                 qty: req.body.qty,
                 image: req.body.image,
                 type: req.body.type,
-                product_info_id: req.body.product_info_id
+                product_info_id: req.body.product_info_id,
+                hs: req.body.hs
               }, {
                 where: {
                   id: req.params.id
@@ -191,7 +203,11 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
                       res.render('product', {
                         subtitle: product.name,
                         product: product,
-                        vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
+                        vendor: vendor.dba, 
+                        address: vendor.address1, 
+                        phone: vendor.business_ph, 
+                        email: vendor.email, 
+                        website: vendor.website,
                         products: productArray
                       });
                     });

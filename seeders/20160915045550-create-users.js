@@ -37,6 +37,20 @@ module.exports = {
       role: 'Vendor',
       createdAt: new Date(),
       updatedAt: new Date()
+    },
+    {
+      username: 'volcanoisle',
+      password: 'papaya',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
+    {
+      username: 'dolefoods',
+      password: 'pineapple',
+      role: 'Vendor',
+      createdAt: new Date(),
+      updatedAt: new Date()
     }
     ], {});
   },

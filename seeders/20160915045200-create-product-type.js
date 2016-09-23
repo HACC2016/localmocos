@@ -38,6 +38,11 @@ module.exports = {
       createdAt: new Date(),
       updatedAt: new Date()
     },
+    {
+      type: 'Fruit',
+      createdAt: new Date(),
+      updatedAt: new Date()
+    },
     ], {})
   },
 

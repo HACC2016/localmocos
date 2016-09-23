@@ -65,6 +65,18 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.post('/vendor', function(req, res, next) {
       var locals = req.body;
+      if(!locals.market){
+        locals.market = [];
+      }
+      if(!locals.job) {
+        locals.job = [];
+      }
+      if(!locals.service) {
+        locals.service = [];
+      }
+      if(!locals.specialty) {
+        locals.specialty = [];
+      }
       return db.Zipcode.findOne({
         where: {
           city: locals.city[0].toUpperCase() + locals.city.slice(1),
@@ -73,7 +85,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         }
       })
       .then((data) => {
-        console.log(locals);
         if(data) {
           var zipId = data.dataValues.id; // zip_id
           return VendorInfo.create({
@@ -190,30 +201,38 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.get(/vendor\/\d+\/edit$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
-      console.log(vendorId);
-      VendorInfo.findById(vendorId, {
-        include: [
-          {
-            model: db.Type,
-            where: {}
-          },
-          {
-            model: db.Service,
-            where: {}
-          },
-          {
-            model: db.Market,
-            where: {}
-          },
-          {
-            model: db.Certification,
-            where: {}
-          },
-          {
-            model: db.Zipcode,
-            where: {}
+      var vendorTypes = [];
+      var vendorServices = [];
+      var vendorMarkets = [];
+      var vendorCertifications = [];
+      return db.VendorInfo.getVendorCheckboxInfo(vendorId)
+      .then((data) => {
+        data.forEach(function (obj) {
+          switch (obj.specific_info) {
+            case 'type':
+              vendorTypes.push(obj.type_id);
+              break;
+            case 'service':
+              vendorServices.push(obj.type_id);
+              break;
+            case 'market':
+              vendorMarkets.push(obj.type_id);
+              break;
+            case 'certification':
+              vendorCertifications.push(obj.type_id);
+              break;
           }
-        ]
+        });
+      })
+      .then(() => {
+        return VendorInfo.findById(vendorId, {
+          include: [
+            {
+              model: db.Zipcode,
+              where: {}
+            }
+          ]
+        });
       })
       .then(function (data) {
         var vendor = JSON.parse(JSON.stringify(data));
@@ -226,6 +245,10 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
           services: services,
           markets: markets,
           certs: certs,
+          checkBoxBusinessType: vendorTypes,
+          checkBoxServices: vendorServices,
+          checkBoxMarkets: vendorMarkets,
+          checkBoxCerts: vendorCertifications,
           zip: vendorLocation.zip,
           city: vendorLocation.city,
           island: vendorLocation.island
@@ -236,7 +259,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.put(/vendor\/\d+$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
       var locals = req.body;
-      console.log(locals);
       return db.Zipcode.findOne({
         where: {
           city: locals.city[0].toUpperCase() + locals.city.slice(1),
