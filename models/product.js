@@ -23,6 +23,12 @@ module.exports = function(sequelize, DataTypes) {
           foreignKey: 'product_info_id',
           targetKey: 'id'
         });
+      },
+      getTypes: function (product_id) {
+        var typeQuery = "SELECT products.id, products.name, product_info_id, specific_type, type, product_types.id as product_type_id FROM products JOIN product_infos ON products.product_info_id=product_infos.id JOIN product_types ON product_types.id=product_infos.product_type_id WHERE products.id=" + product_id + ";";
+        return sequelize.query(typeQuery, {
+          type: sequelize.QueryTypes.SELECT
+        });
       }
     }
   });

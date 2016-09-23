@@ -1,1 +1,24 @@
 extends productForm.pug
+block script
+  script.
+    showSelected(#{product.type}, #{product.product_info_id}, '#{product.type_name}');
+    function showSelected (type, spec_type_id, typename) {
+      var typeArr = document.getElementById('type').options;
+      var spec_type = document.getElementById('specType');
+      Array.prototype.slice.call(typeArr).forEach(function (element) {
+        if(parseInt(element.value) === type) {
+          element.selected = true;
+        }
+      });
+      Array.prototype.slice.call(spec_type.options).forEach(function (element) {
+        spec_type.disabled = false;
+        if(parseInt(element.value) === spec_type_id) {
+          element.selected = true;
+        }
+        if(element.className === typename) {
+          element.hidden = false;
+        } else {
+          element.hidden = true;
+        }
+      });
+    }

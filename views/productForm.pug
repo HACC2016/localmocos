@@ -35,39 +35,40 @@ html(lang="en")
               //- label Specific Type:
               select(id="specType" name="product_info_id" disabled)
                 option(value="") Choose 1
-                option(value="1" class="farmedSeafood") Fresh Seafood
-                option(value="2" class="farmedSeafood") Frozen Seafood
-                option(value="3" class="farmedSeafood") Processed Seafood
-                option(value="4" class="snackFoods") Candies
-                option(value="5" class="snackFoods") Chips
-                option(value="6" class="snackFoods") Cookies
-                option(value="7" class="snackFoods") Crackers
-                option(value="8" class="snackFoods") Dried Fruits
-                option(value="9" class="beverages") Alcoholic
-                option(value="10" class="beverages") Concentrates
-                option(value="11" class="beverages") Drink Mixes
-                option(value="12" class="beverages") Juices
-                option(value="13" class="beverages") Tea
-                option(value="14" class="beverages") Water
-                option(value="15" class="coffee") Big Island (Excluding Kona)
-                option(value="16" class="coffee") Kauai
-                option(value="17" class="coffee") Kona
-                option(value="18" class="coffee") Maui
-                option(value="19" class="coffee") Molokai
-                option(value="20" class="coffee") Oahu
-                option(value="21" class="condiments") Dressings
-                option(value="22" class="condiments") Jam/Jellies
-                option(value="23" class="condiments") Pickled Vegetables
-                option(value="24" class="condiments") Preserved Fruits
-                option(value="25" class="condiments") Sauces
-                option(value="26" class="dairy") Butter
-                option(value="27" class="dairy") Cheese
-                option(value="28" class="dairy") Ice Cream
-                option(value="29" class="dairy") Milk
-                option(value="30" class="floral") Anthuriums
-                option(value="31" class="floral") Foliage
-                option(value="32" class="floral") Leis
-                option(value="33" class="floral") Other
+                option(value="1" class="Farmed Seafood") Fresh Seafood
+                option(value="2" class="Farmed Seafood") Frozen Seafood
+                option(value="3" class="Farmed Seafood") Processed Seafood
+                option(value="4" class="SnackFoods") Candies
+                option(value="5" class="Snack Foods") Chips
+                option(value="6" class="Snack Foods") Cookies
+                option(value="7" class="Snack Foods") Crackers
+                option(value="8" class="Snack Foods") Dried Fruits
+                option(value="9" class="Beverages") Alcoholic
+                option(value="10" class="Beverages") Concentrates
+                option(value="11" class="Beverages") Drink Mixes
+                option(value="12" class="Beverages") Juices
+                option(value="13" class="Beverages") Tea
+                option(value="14" class="Beverages") Water
+                option(value="15" class="Coffee") Big Island (Excluding Kona)
+                option(value="16" class="Coffee") Kauai
+                option(value="17" class="Coffee") Kona
+                option(value="18" class="Coffee") Maui
+                option(value="19" class="Coffee") Molokai
+                option(value="20" class="Coffee") Oahu
+                option(value="21" class="Condiments") Dressings
+                option(value="22" class="Condiments") Jam/Jellies
+                option(value="23" class="Condiments") Pickled Vegetables
+                option(value="24" class="Condiments") Preserved Fruits
+                option(value="25" class="Condiments") Sauces
+                option(value="26" class="Dairy") Butter
+                option(value="27" class="Dairy") Cheese
+                option(value="28" class="Dairy") Ice Cream
+                option(value="29" class="Dairy") Milk
+                option(value="30" class="Floral") Anthuriums
+                option(value="31" class="Floral") Foliage
+                option(value="32" class="Floral") Leis
+                option(value="33" class="Floral") Other
+              block script
               script.
                 var type = document.getElementById('type');
                 type.addEventListener('change', function (e) {
@@ -79,30 +80,31 @@ html(lang="en")
                   }); // hiding all values in Specific Types
                   switch (selectedVal) {
                     case '1':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Farmed Seafood');
                       break;
                     case '2':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Snack Foods');
                       break;
                     case '3':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Beverages');
                       break;
                     case '4':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Coffee');
                       break;
                     case '5':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Condiments');
                       break;
                     case '6':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Dairy');
                       break;
                     case '7':
-                      showOptions(specType, selectedVal);
+                      showOptions(specType, 'Floral');
                       break;
                     default:
                       break;
                   }
                 });
+
                 function showOptions (array, compVal) {
                   Array.prototype.slice.call(array.options).forEach(function (element) {
                     if(element.className === compVal) {
