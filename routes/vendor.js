@@ -65,6 +65,18 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     app.post('/vendor', function(req, res, next) {
       var locals = req.body;
+      if(!locals.market){
+        locals.market = [];
+      }
+      if(!locals.job) {
+        locals.job = [];
+      }
+      if(!locals.service) {
+        locals.service = [];
+      }
+      if(!locals.specialty) {
+        locals.specialty = [];
+      }
       return db.Zipcode.findOne({
         where: {
           city: locals.city[0].toUpperCase() + locals.city.slice(1),
@@ -247,7 +259,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     app.put(/vendor\/\d+$/, function(req, res) {
       var vendorId = cleanParamMiddle(req.url, 2);
       var locals = req.body;
-      console.log(locals);
       return db.Zipcode.findOne({
         where: {
           city: locals.city[0].toUpperCase() + locals.city.slice(1),
