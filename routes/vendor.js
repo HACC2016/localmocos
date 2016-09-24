@@ -250,6 +250,7 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
         var vendor = JSON.parse(JSON.stringify(data));
         var vendorLocation = vendor.Zipcode;
         return res.render('editVendorForm',{
+          subtitle: "Vendor Update",
           formTitle: "Vendor Update",
           id: vendorId,
           vendor: vendor,
