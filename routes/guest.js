@@ -7,8 +7,6 @@ module.exports = function(express,app,path,bodyParser,querystring, db) {
     };
 
 
-
-
   /**************** Log In ***********************/
 
 app.get('/Logout',function(req, res, next) {
@@ -22,8 +20,6 @@ app.get('/Logout',function(req, res, next) {
 
   /**************** Log Out **********************/
 app.get('/Login',function(req, res, next) {
-    //   testJson.name="LogIn";
-    // res.json(testJson);
     res.render('login-vendor', {subtitle: "Vendor Login"})
 });
 
@@ -78,18 +74,13 @@ app.post('/Search', function(req, res, next) {
         }
 
          res.render('searchResults', {subtitle: 'Search Results', term: req.body.search, products:products, vendors: vendors});
-      // res.json(products);
         });
     }
     );
 
-    //  res.render('searchResults',{productList:productList,sellerList:sellerList})
-
     /**************** Home Page ***********************/
 
 app.get('/',function(req, res, next) {
-    // testJson.name="Home Page";
-    // res.json(testJson);
   db.VendorInfo.findAll({
     where: {id: {gte: 2, lte: 5}}
   })

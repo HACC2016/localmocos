@@ -23,14 +23,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
 
     // Pass to Pug
 
-    sellerList = [{
-        "phone": "(808)848-0581",
-        "email": "info@okuharafoods.com",
-        "website": "www.okuharafoods.com",
-        "address": "881 North King Street. Honolulu, HI, 96817",
-        "image": "./Images/1442369634.png"
-    }]
-
     var productType;
 
     db.ProductType.findAll({
@@ -43,14 +35,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
   1. Search Products
   2. View Product
   **************/
-    // app.get(/products\/\d+$/, function(req, res, next) {
-    //     testJson.name = "Products from Buyer id =" + cleanParam(req.url);
-    //     res.json([testJson, productList]); //  <--- Pug should render here
-    // });
 
     app.get(/product\/\d+$/, function(req, res, next) {
-        // testJson.name = "Product View with id=" + cleanParam(req.url);
-        // res.json([testJson, productList, sellerList]);
       db.Product.findOne({
         where: {id: cleanParam(req.url)}
       })
@@ -83,12 +69,8 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.get('/product/new', function(req, res, next) {
-        /* testJson.name = "New Product Form" + cleanParam(req.url);
-        res.json([testJson]); */
         res.render('productForm', {
-            // methodType: 'POST',
             actionType: "/product",
-            // formTitle: 'Create New Product',
             product: {},
             productType: productType,
             subtitle: "Add A New Product",
@@ -97,8 +79,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.post('/product', function(req, res, next) {
-        // testJson.name = "Product New " + cleanParam(req.url);
-        // res.json([testJson]);
         db.Product.create({
             name: req.body.name,
             description: req.body.description,
@@ -140,8 +120,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.get(/product\/\d+\/edit$/, function(req, res, next) {
-       /* testJson.name = "Product Form for id=" + cleanParam(req.url);
-        res.json([testJson]); */
         var type_id;
         var spec_type_id;
         var type_name;
@@ -181,8 +159,6 @@ module.exports = function(express, app, path, bodyParser, querystring, db) {
     });
 
     app.put('/product/:id/edit', function(req, res, next) {
-        // testJson.name = "Product Edit with id=" + cleanParam(req.url);
-        // res.json([testJson]);
         if(!isNaN(parseInt(req.params.id))){
           db.Product.findById(req.params.id)
           .then((product) => {
