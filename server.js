@@ -40,54 +40,9 @@ app.use(methodOverride(function(req, res){
 var adminRoute=require('./routes/admin')(express,app,path,bodyParser,querystring,db);
 var buyeroute=require('./routes/buyer')(express,app,path,bodyParser,querystring,db);
 var vendorRoute=require('./routes/vendor')(express,app,path,bodyParser,querystring,db);
-//var heyJaxRoute=require('./routes/heyjax')(express,app,path,bodyParser,querystring);
 var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring,db);
 var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring, db);
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring,db);
-
-//////// ROUTES TO TEST PAGES ////////
-// app.get('/product-test/:id', function (req, res) {
-//   db.Product.findOne({
-//     where: {id: req.params.id}
-//   })
-//   .then(function (productObject) {
-//     var product = productObject;
-//     db.VendorInfo.findOne({
-//       where: {id: product.vendor_info_id}
-//     })
-//     .then(function (vendorObject) {
-//       var vendor = vendorObject;
-//       db.Product.findAll({
-//         where: {
-//           id: {$ne: product.id},
-//           vendor_info_id: vendor.id,
-//         }
-//       })
-//       .then(function (productArray) {
-//         res.render('product', {
-//           subtitle: product.name,
-//           product: product,
-//           vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website,
-//           products: productArray})
-//       })
-//     })
-//   })
-// })
-
-// app.get('/vendor/:id', function (req, res) {
-//   db.VendorInfo.findOne({
-//     where: {id: req.params.id}
-//   })
-//   .then(function (vendorObject) {
-//     var vendor = vendorObject;
-//     db.Product.findAll({
-//       where: {vendor_info_id: req.params.id}
-//     })
-//     .then(function(productArray){
-//     res.render('vendor', {subtitle: vendor.dba, image: vendor.image, vendor: vendor.dba, address: vendor.address1, phone: vendor.business_ph, email: vendor.email, website: vendor.website, description: vendor.business_description, products: productArray})
-//     });
-//   });
-// })
 
 app.get('/productForm', function (req, res) {
   res.render('productForm', {})
