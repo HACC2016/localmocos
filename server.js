@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-//var pug = require('pug');
 var https = require('https');
 var path = require('path');
 var bodyParser = require('body-parser');
