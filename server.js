@@ -1,6 +1,5 @@
 var express = require('express');
 var app = express();
-//var pug = require('pug');
 var https = require('https');
 var path = require('path');
 var bodyParser = require('body-parser');
@@ -43,26 +42,6 @@ var vendorRoute=require('./routes/vendor')(express,app,path,bodyParser,querystri
 var productRoute=require('./routes/product')(express,app,path,bodyParser,querystring,db);
 var apiRoute = require('./routes/api')(express, app, https, path, bodyParser, querystring, db);
 var guestRoute=require('./routes/guest')(express,app,path,bodyParser,querystring,db);
-
-app.get('/productForm', function (req, res) {
-  res.render('productForm', {})
-})
-app.get('/editProductForm', function (req, res) {
-  res.render('editProductForm', {})
-})
-app.get('/vendorForm', function (req, res) {
-  res.render('vendorForm', {})
-})
-app.get('/editVendorForm', function (req, res) {
-  res.render('editVendorForm', {})
-})
-app.get('/login-vendor', function (req, res) {
-  res.render('login-vendor', {subtitle: "Vendor Login"})
-})
-app.get('/login-admin', function (req, res) {
-  res.render('login-admin', {subtitle: "Admin Login"})
-})
-////////// END OF TESTING //////////
 
 app.use(function(req, res) {
   res.status(404).render('404', {subtitle: "Page Not Found"});
