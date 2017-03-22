@@ -1,5 +1,5 @@
 # Made In Hawaii
-An app to find Hawaii products! Created by [Bryce Saito](https://github.com/tokumori), [Javen Nakamoto](https://github.com/javenkn), [Lisa Zhou](https://github.com/herrolisa), [Nikki Kobayashi](https://github.com/ynikki), and [Steven Yamashiro](https://github.com/SpaceKins).
+An app to find Hawaii products! Created by [Bryce Saito](https://github.com/tokumori), [Javen Nakamoto](https://github.com/javenkn), [Lisa Zhou](https://github.com/lisazhou), [Nikki Kobayashi](https://github.com/ynikki), and [Steven Yamashiro](https://github.com/SpaceKins).
 
 ## How To Use
 * Clone the repository
